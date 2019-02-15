@@ -1,0 +1,18 @@
+#!/bin/bash --login
+#
+#PBS -l select=1:ncpu-36
+#PBS -l place=excl
+#PBS -N bench_c
+#PBS -A d154
+#PBS -l walltime=0:14:0
+
+
+
+# Switch to current working directory
+cd $PBS_O_WORKDIR/C
+
+# Run the parallel program
+./MD
+
+
+
