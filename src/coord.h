@@ -19,11 +19,12 @@
 #else
 #define DEF extern
 #endif
+
 #define Nbody 4*1024
 #define  Npair ((Nbody*(Nbody-1))/2)
 
 enum{ Xcoord=0, Ycoord, Zcoord, Ndim };
-      
+
 DEF double *pos[Ndim], *velo[Ndim];
 DEF double *f[Ndim], *vis, *mass, *radius;
 DEF double *delta_pos[3];
