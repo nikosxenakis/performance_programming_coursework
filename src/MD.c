@@ -34,15 +34,15 @@ void evolve(int count,double dt)
     for(i=0;i<Nbody;i++)
     {
       r[i] = 0.0;
-          
+
       for(k=0;k<Ndim;k++)
       {
-        r[i] += (pos[k] * pos[k]); // or pow(delta[k], 2)
+        r[i] += (pos[k][i] * pos[k][i]); // or pow(pos[k][i], 2)
       }
-      
-      r[i] = sqrt(r[i]);
-    }
 
+      r[i] = sqrt(r[i]);
+
+    }
     
     /* calculate central force */
     for(i=0;i<Nbody;i++)
@@ -71,16 +71,14 @@ void evolve(int count,double dt)
     /* calculate norm of separation vector */
     for(i=0;i<Npair;i++)
     {
-
       delta_r[i] = 0.0;
 
       for(k=0;k<Ndim;k++)
       {
-        delta_r[i] += (delta_pos[k][i] * delta_pos[k][i]); // or pow(delta[k], 2)
+        delta_r[i] += (delta_pos[k][i] * delta_pos[k][i]); // or pow(delta_pos[k][i], 2)
       }
 
       delta_r[i] = sqrt(delta_r[i]);
-
     }
 
     /*
