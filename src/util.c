@@ -18,10 +18,11 @@ void add_norm(int N,double *r, double *delta)
 {
   int k;
   for(k=0;k<N;k++){
-    r[k] += (delta[k] * delta[k]);
+    r[k] += (delta[k] * delta[k]); // or pow(delta[k], 2)
   }
 }
 
-double force(double W, double delta, double r){
+inline double force(double W, double delta, double r)
+{
   return W*delta/(pow(r,3.0));
 }
