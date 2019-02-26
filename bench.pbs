@@ -1,0 +1,19 @@
+#!/bin/bash --login
+#
+#PBS -l select=1:ncpus=36
+#PBS -l place=excl
+#PBS -N bench
+#PBS -A d167-s1770309
+#PBS -l walltime=0:02:00
+# initial -> walltime=1:40:0
+
+# Switch to current working directory
+cd $PBS_O_WORKDIR/src
+
+module load intel-compilers-17
+# module load valgrind
+
+# Run the parallel program
+./MD
+# ./MD_initial
+# valgrind --tool=cachegrind --cachegrind-out-file=cachegrind_output.txt ./MD
