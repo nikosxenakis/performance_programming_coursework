@@ -1,0 +1,2695 @@
+	.section .text
+.LNDBG_TX:
+# mark_description "Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 17.0.2.174 Build 20170213";
+# mark_description "-Wall -Winline -g -S -fsource-asm -c -fcode-asm -unroll=0";
+	.file "MD.c"
+	.text
+..TXTST0:
+.L_2__routine_start_evolve_0:
+# -- Begin  evolve
+	.section .rodata, "a"
+	.align 16
+	.align 16
+.L_2il0floatpacket.2:
+	.long	0x00000000,0x80000000,0x00000000,0x00000000
+	.type	.L_2il0floatpacket.2,@object
+	.size	.L_2il0floatpacket.2,16
+	.align 8
+.L_2il0floatpacket.0:
+	.long	0x00000000,0x409f4000
+	.type	.L_2il0floatpacket.0,@object
+	.size	.L_2il0floatpacket.0,8
+	.align 8
+.L_2il0floatpacket.1:
+	.long	0x00000000,0x40000000
+	.type	.L_2il0floatpacket.1,@object
+	.size	.L_2il0floatpacket.1,8
+	.align 4
+.L_2__STRING.0:
+	.long	1701669236
+	.long	1885697139
+	.long	174335264
+	.byte	0
+	.type	.L_2__STRING.0,@object
+	.size	.L_2__STRING.0,13
+	.space 3, 0x00 	# pad
+	.align 4
+.L_2__STRING.1:
+	.long	1819045731
+	.long	1869181801
+	.long	622883694
+	.word	2660
+	.byte	0
+	.type	.L_2__STRING.1,@object
+	.size	.L_2__STRING.1,15
+	.text
+# mark_begin;
+
+	.globl evolve
+# --- evolve(int, double)
+evolve:
+# parameter 1(count): %edi
+# parameter 2(dt): %xmm0
+..B1.1:                         # Preds ..B1.0
+                                # Execution count [0.00e+00]
+
+### {
+
+	.cfi_startproc
+..___tag_value_evolve.2:
+..L3:
+                                                          #MD.c:11.1
+..LN0:
+	.file   1 "MD.c"
+	.loc    1  11  is_stmt 1
+        pushq     %rbp                                          #MD.c:11.1
+	.cfi_def_cfa_offset 16
+..LN1:
+        movq      %rsp, %rbp                                    #MD.c:11.1
+	.cfi_def_cfa 6, 16
+	.cfi_offset 6, -16
+..LN2:
+        subq      $128, %rsp                                    #MD.c:11.1
+..LN3:
+        movl      %edi, -96(%rbp)                               #MD.c:11.1
+..LN4:
+        movsd     %xmm0, -88(%rbp)                              #MD.c:11.1
+..LN5:
+	.loc    1  31  prologue_end  is_stmt 1
+
+###   unsigned int  step;
+###   int i, j, k, l;
+###   double size;
+###   double tmp_val, tmp_val2, tmp_val3;
+### 
+###   // printf("vis: first: %p , last: %p, next: %p\n", &vis[0], &vis[Nbody-1], &vis[Nbody-1]+1);
+###   // printf("mass: first: %p , last: %p, next: %p\n", &mass[0], &mass[Nbody-1], &mass[Nbody-1]+1);
+###   // printf("pos: first: %p , last: %p, next: %p\n", &pos[0], &pos[Ndim-1][Nbody-1], &pos[Ndim-1][Nbody-1]+1);
+###   // printf("delta_r: first: %p , last: %p, next: %p\n", &delta_r[0], &delta_r[Nbody_power2-1], &delta_r[Nbody_power2-1]+1);
+###   // printf("velo: first: %p , last: %p, next: %p\n", &velo[0], &velo[Ndim-1][Nbody-1], &velo[Ndim-1][Nbody-1]+1);
+###   // printf("r: first: %p , last: %p, next: %p\n", &r[0], &r[Nbody-1], &r[Nbody-1]+1);
+###   // printf("f: first: %p , last: %p, next: %p\n", &f[0], &f[Ndim-1][Nbody-1], &f[Ndim-1][Nbody-1]+1);
+###   // printf("wind: first: %p , last: %p, next: %p\n", &wind[0], &wind[Ndim-1], &wind[Ndim-1]+1);
+###   // printf("radius: first: %p , last: %p, next: %p\n", &radius[0], &radius[Nbody-1], &radius[Nbody-1]+1);
+###   // printf("delta_pos: first: %p , last: %p, next: %p\n", &delta_pos[0], &delta_pos[Nbody-1][Nbody_power2-1], &delta_pos[Nbody-1][Nbody_power2-1]+1);
+### 
+###   /*
+###    * Loop over timesteps.
+###   */
+###   for(step = 1;step<=count;step++)
+
+        movl      $1, -128(%rbp)                                #MD.c:31.7
+..LN6:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.2:                         # Preds ..B1.3 ..B1.1
+                                # Execution count [0.00e+00]
+..LN7:
+        movl      -128(%rbp), %eax                              #MD.c:31.16
+..LN8:
+        movl      -96(%rbp), %edx                               #MD.c:31.22
+..LN9:
+        cmpl      %edx, %eax                                    #MD.c:31.22
+..LN10:
+        jbe       ..B1.4        # Prob 50%                      #MD.c:31.22
+..LN11:
+        jmp       ..B1.64       # Prob 100%                     #MD.c:31.22
+..LN12:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.3:                         # Preds ..B1.59
+                                # Execution count [0.00e+00]
+..LN13:
+        movl      $1, %eax                                      #MD.c:31.28
+..LN14:
+        addl      -128(%rbp), %eax                              #MD.c:31.28
+..LN15:
+        movl      %eax, -128(%rbp)                              #MD.c:31.28
+..LN16:
+        jmp       ..B1.2        # Prob 100%                     #MD.c:31.28
+..LN17:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.4:                         # Preds ..B1.2
+                                # Execution count [0.00e+00]
+..LN18:
+	.loc    1  33  is_stmt 1
+
+###   {
+###     printf("timestep %d\n",step);
+
+        movl      $.L_2__STRING.0, %eax                         #MD.c:33.5
+..LN19:
+        movl      -128(%rbp), %edx                              #MD.c:33.5
+..LN20:
+        movq      %rax, %rdi                                    #MD.c:33.5
+..LN21:
+        movl      %edx, %esi                                    #MD.c:33.5
+..LN22:
+        movl      $0, %eax                                      #MD.c:33.5
+..___tag_value_evolve.8:
+..LN23:
+#       printf(const char *__restrict__, ...)
+        call      printf                                        #MD.c:33.5
+..___tag_value_evolve.9:
+..LN24:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip eax
+..B1.67:                        # Preds ..B1.4
+                                # Execution count [0.00e+00]
+..LN25:
+        movl      %eax, -124(%rbp)                              #MD.c:33.5
+..LN26:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.5:                         # Preds ..B1.67
+                                # Execution count [0.00e+00]
+..LN27:
+	.loc    1  34  is_stmt 1
+
+###     printf("collisions %d\n",collisions);
+
+        movl      $.L_2__STRING.1, %eax                         #MD.c:34.5
+..LN28:
+        movl      collisions(%rip), %edx                        #MD.c:34.5
+..LN29:
+        movq      %rax, %rdi                                    #MD.c:34.5
+..LN30:
+        movl      %edx, %esi                                    #MD.c:34.5
+..LN31:
+        movl      $0, %eax                                      #MD.c:34.5
+..___tag_value_evolve.10:
+..LN32:
+#       printf(const char *__restrict__, ...)
+        call      printf                                        #MD.c:34.5
+..___tag_value_evolve.11:
+..LN33:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip eax
+..B1.68:                        # Preds ..B1.5
+                                # Execution count [0.00e+00]
+..LN34:
+        movl      %eax, -120(%rbp)                              #MD.c:34.5
+..LN35:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.6:                         # Preds ..B1.68
+                                # Execution count [0.00e+00]
+..LN36:
+	.loc    1  37  is_stmt 1
+
+### 
+###     /* calculate distance from central mass */
+###     for(i=0;i<Nbody;i++)
+
+        movl      $0, -116(%rbp)                                #MD.c:37.9
+..LN37:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.7:                         # Preds ..B1.12 ..B1.6
+                                # Execution count [0.00e+00]
+..LN38:
+        movl      -116(%rbp), %eax                              #MD.c:37.13
+..LN39:
+        cmpl      $4096, %eax                                   #MD.c:37.15
+..LN40:
+        jge       ..B1.13       # Prob 50%                      #MD.c:37.15
+..LN41:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.8:                         # Preds ..B1.7
+                                # Execution count [0.00e+00]
+..LN42:
+	.loc    1  39  is_stmt 1
+
+###     {
+###       tmp_val = 0.0;
+
+        pxor      %xmm0, %xmm0                                  #MD.c:39.7
+..LN43:
+        movsd     %xmm0, -80(%rbp)                              #MD.c:39.7
+..LN44:
+	.loc    1  41  is_stmt 1
+
+### 
+###       for(k=0;k<Ndim;k++)
+
+        movl      $0, -112(%rbp)                                #MD.c:41.11
+..LN45:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.9:                         # Preds ..B1.10 ..B1.8
+                                # Execution count [0.00e+00]
+..LN46:
+        movl      -112(%rbp), %eax                              #MD.c:41.15
+..LN47:
+        cmpl      $3, %eax                                      #MD.c:41.17
+..LN48:
+        jge       ..B1.11       # Prob 50%                      #MD.c:41.17
+..LN49:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.10:                        # Preds ..B1.9
+                                # Execution count [0.00e+00]
+..LN50:
+	.loc    1  43  is_stmt 1
+
+###       {
+###         tmp_val += (pos[k][i] * pos[k][i]); // or pow(pos[k][i], 2)
+
+        movl      -112(%rbp), %eax                              #MD.c:43.25
+..LN51:
+        movslq    %eax, %rax                                    #MD.c:43.21
+..LN52:
+        imulq     $32768, %rax, %rax                            #MD.c:43.21
+..LN53:
+        movl      $pos, %edx                                    #MD.c:43.21
+..LN54:
+        addq      %rax, %rdx                                    #MD.c:43.21
+..LN55:
+        movl      -116(%rbp), %eax                              #MD.c:43.28
+..LN56:
+        movslq    %eax, %rax                                    #MD.c:43.21
+..LN57:
+        imulq     $8, %rax, %rax                                #MD.c:43.21
+..LN58:
+        addq      %rax, %rdx                                    #MD.c:43.21
+..LN59:
+        movsd     (%rdx), %xmm0                                 #MD.c:43.21
+..LN60:
+        movl      -112(%rbp), %eax                              #MD.c:43.37
+..LN61:
+        movslq    %eax, %rax                                    #MD.c:43.33
+..LN62:
+        imulq     $32768, %rax, %rax                            #MD.c:43.33
+..LN63:
+        movl      $pos, %edx                                    #MD.c:43.33
+..LN64:
+        addq      %rax, %rdx                                    #MD.c:43.33
+..LN65:
+        movl      -116(%rbp), %eax                              #MD.c:43.40
+..LN66:
+        movslq    %eax, %rax                                    #MD.c:43.33
+..LN67:
+        imulq     $8, %rax, %rax                                #MD.c:43.33
+..LN68:
+        addq      %rax, %rdx                                    #MD.c:43.33
+..LN69:
+        movsd     (%rdx), %xmm1                                 #MD.c:43.33
+..LN70:
+        mulsd     %xmm1, %xmm0                                  #MD.c:43.33
+..LN71:
+        movsd     -80(%rbp), %xmm1                              #MD.c:43.9
+..LN72:
+        addsd     %xmm0, %xmm1                                  #MD.c:43.9
+..LN73:
+        movsd     %xmm1, -80(%rbp)                              #MD.c:43.9
+..LN74:
+	.loc    1  41  is_stmt 1
+        movl      $1, %eax                                      #MD.c:41.22
+..LN75:
+        addl      -112(%rbp), %eax                              #MD.c:41.22
+..LN76:
+        movl      %eax, -112(%rbp)                              #MD.c:41.22
+..LN77:
+        jmp       ..B1.9        # Prob 100%                     #MD.c:41.22
+..LN78:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.11:                        # Preds ..B1.9
+                                # Execution count [0.00e+00]
+..LN79:
+	.loc    1  46  is_stmt 1
+
+###       }
+### 
+###       r[i] = sqrt(tmp_val);
+
+        movsd     -80(%rbp), %xmm0                              #MD.c:46.14
+..___tag_value_evolve.12:
+..LN80:
+#       sqrt(double)
+        call      sqrt                                          #MD.c:46.14
+..___tag_value_evolve.13:
+..LN81:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip xmm0
+..B1.69:                        # Preds ..B1.11
+                                # Execution count [0.00e+00]
+..LN82:
+        movsd     %xmm0, -72(%rbp)                              #MD.c:46.14
+..LN83:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.12:                        # Preds ..B1.69
+                                # Execution count [0.00e+00]
+..LN84:
+        movl      -116(%rbp), %eax                              #MD.c:46.9
+..LN85:
+        movslq    %eax, %rax                                    #MD.c:46.7
+..LN86:
+        imulq     $8, %rax, %rax                                #MD.c:46.7
+..LN87:
+        movl      $r, %edx                                      #MD.c:46.7
+..LN88:
+        addq      %rax, %rdx                                    #MD.c:46.7
+..LN89:
+        movsd     -72(%rbp), %xmm0                              #MD.c:46.14
+..LN90:
+        movsd     %xmm0, (%rdx)                                 #MD.c:46.7
+..LN91:
+	.loc    1  37  is_stmt 1
+        movl      $1, %eax                                      #MD.c:37.21
+..LN92:
+        addl      -116(%rbp), %eax                              #MD.c:37.21
+..LN93:
+        movl      %eax, -116(%rbp)                              #MD.c:37.21
+..LN94:
+        jmp       ..B1.7        # Prob 100%                     #MD.c:37.21
+..LN95:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.13:                        # Preds ..B1.7
+                                # Execution count [0.00e+00]
+..LN96:
+	.loc    1  50  is_stmt 1
+
+### 
+###     }
+### 
+###     for(i=Ndim-1;i>=0;i--)
+
+        movl      $2, -116(%rbp)                                #MD.c:50.9
+..LN97:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.14:                        # Preds ..B1.15 ..B1.13
+                                # Execution count [0.00e+00]
+..LN98:
+        movl      -116(%rbp), %eax                              #MD.c:50.18
+..LN99:
+        testl     %eax, %eax                                    #MD.c:50.21
+..LN100:
+        jge       ..B1.16       # Prob 50%                      #MD.c:50.21
+..LN101:
+        jmp       ..B1.19       # Prob 100%                     #MD.c:50.21
+..LN102:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.15:                        # Preds ..B1.17
+                                # Execution count [0.00e+00]
+..LN103:
+        movl      $-1, %eax                                     #MD.c:50.23
+..LN104:
+        addl      -116(%rbp), %eax                              #MD.c:50.23
+..LN105:
+        movl      %eax, -116(%rbp)                              #MD.c:50.23
+..LN106:
+        jmp       ..B1.14       # Prob 100%                     #MD.c:50.23
+..LN107:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.16:                        # Preds ..B1.14
+                                # Execution count [0.00e+00]
+..LN108:
+	.loc    1  52  is_stmt 1
+
+###     {
+###       tmp_val = wind[i];
+
+        movl      -116(%rbp), %eax                              #MD.c:52.22
+..LN109:
+        movslq    %eax, %rax                                    #MD.c:52.17
+..LN110:
+        imulq     $8, %rax, %rax                                #MD.c:52.17
+..LN111:
+        movl      $wind, %edx                                   #MD.c:52.17
+..LN112:
+        addq      %rax, %rdx                                    #MD.c:52.17
+..LN113:
+        movsd     (%rdx), %xmm0                                 #MD.c:52.17
+..LN114:
+        movsd     %xmm0, -80(%rbp)                              #MD.c:52.7
+..LN115:
+	.loc    1  54  is_stmt 1
+
+### 
+###       for(j=Nbody-1; j>=0; j--)
+
+        movl      $4095, -108(%rbp)                             #MD.c:54.11
+..LN116:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.17:                        # Preds ..B1.18 ..B1.16
+                                # Execution count [0.00e+00]
+..LN117:
+        movl      -108(%rbp), %eax                              #MD.c:54.22
+..LN118:
+        testl     %eax, %eax                                    #MD.c:54.25
+..LN119:
+        jl        ..B1.15       # Prob 50%                      #MD.c:54.25
+..LN120:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.18:                        # Preds ..B1.17
+                                # Execution count [0.00e+00]
+..LN121:
+	.loc    1  58  is_stmt 1
+
+###       {
+###          // set the viscosity term in the force calculation 
+###         /* add the wind term in the force calculation */
+###         f[i][j] = - vis[j] * (velo[i][j] + tmp_val);
+
+        movl      -108(%rbp), %eax                              #MD.c:58.25
+..LN122:
+        movslq    %eax, %rax                                    #MD.c:58.21
+..LN123:
+        imulq     $8, %rax, %rax                                #MD.c:58.21
+..LN124:
+        movl      $vis, %edx                                    #MD.c:58.21
+..LN125:
+        addq      %rax, %rdx                                    #MD.c:58.21
+..LN126:
+        movsd     (%rdx), %xmm0                                 #MD.c:58.21
+..LN127:
+        xorpd     .L_2il0floatpacket.2(%rip), %xmm0             #MD.c:58.21
+..LN128:
+        movl      -116(%rbp), %eax                              #MD.c:58.36
+..LN129:
+        movslq    %eax, %rax                                    #MD.c:58.31
+..LN130:
+        imulq     $32768, %rax, %rax                            #MD.c:58.31
+..LN131:
+        movl      $velo, %edx                                   #MD.c:58.31
+..LN132:
+        addq      %rax, %rdx                                    #MD.c:58.31
+..LN133:
+        movl      -108(%rbp), %eax                              #MD.c:58.39
+..LN134:
+        movslq    %eax, %rax                                    #MD.c:58.31
+..LN135:
+        imulq     $8, %rax, %rax                                #MD.c:58.31
+..LN136:
+        addq      %rax, %rdx                                    #MD.c:58.31
+..LN137:
+        movsd     (%rdx), %xmm1                                 #MD.c:58.31
+..LN138:
+        movsd     -80(%rbp), %xmm2                              #MD.c:58.44
+..LN139:
+        addsd     %xmm2, %xmm1                                  #MD.c:58.44
+..LN140:
+        mulsd     %xmm1, %xmm0                                  #MD.c:58.44
+..LN141:
+        movl      -116(%rbp), %eax                              #MD.c:58.11
+..LN142:
+        movslq    %eax, %rax                                    #MD.c:58.9
+..LN143:
+        imulq     $32768, %rax, %rax                            #MD.c:58.9
+..LN144:
+        movl      $f, %edx                                      #MD.c:58.9
+..LN145:
+        addq      %rax, %rdx                                    #MD.c:58.9
+..LN146:
+        movl      -108(%rbp), %eax                              #MD.c:58.14
+..LN147:
+        movslq    %eax, %rax                                    #MD.c:58.9
+..LN148:
+        imulq     $8, %rax, %rax                                #MD.c:58.9
+..LN149:
+        addq      %rax, %rdx                                    #MD.c:58.9
+..LN150:
+        movsd     %xmm0, (%rdx)                                 #MD.c:58.9
+..LN151:
+	.loc    1  54  is_stmt 1
+        movl      $-1, %eax                                     #MD.c:54.28
+..LN152:
+        addl      -108(%rbp), %eax                              #MD.c:54.28
+..LN153:
+        movl      %eax, -108(%rbp)                              #MD.c:54.28
+..LN154:
+        jmp       ..B1.17       # Prob 100%                     #MD.c:54.28
+..LN155:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.19:                        # Preds ..B1.14
+                                # Execution count [0.00e+00]
+..LN156:
+	.loc    1  63  is_stmt 1
+
+###       }
+###     }
+### 
+###     /* calculate central force */
+###     for(i=0;i<Ndim;i++)
+
+        movl      $0, -116(%rbp)                                #MD.c:63.9
+..LN157:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.20:                        # Preds ..B1.21 ..B1.19
+                                # Execution count [0.00e+00]
+..LN158:
+        movl      -116(%rbp), %eax                              #MD.c:63.13
+..LN159:
+        cmpl      $3, %eax                                      #MD.c:63.15
+..LN160:
+        jl        ..B1.22       # Prob 50%                      #MD.c:63.15
+..LN161:
+        jmp       ..B1.26       # Prob 100%                     #MD.c:63.15
+..LN162:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.21:                        # Preds ..B1.23
+                                # Execution count [0.00e+00]
+..LN163:
+        movl      $1, %eax                                      #MD.c:63.20
+..LN164:
+        addl      -116(%rbp), %eax                              #MD.c:63.20
+..LN165:
+        movl      %eax, -116(%rbp)                              #MD.c:63.20
+..LN166:
+        jmp       ..B1.20       # Prob 100%                     #MD.c:63.20
+..LN167:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.22:                        # Preds ..B1.20
+                                # Execution count [0.00e+00]
+..LN168:
+	.loc    1  65  is_stmt 1
+
+###     {
+###       for(j=0;j<Nbody;j++)
+
+        movl      $0, -108(%rbp)                                #MD.c:65.11
+..LN169:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.23:                        # Preds ..B1.25 ..B1.22
+                                # Execution count [0.00e+00]
+..LN170:
+        movl      -108(%rbp), %eax                              #MD.c:65.15
+..LN171:
+        cmpl      $4096, %eax                                   #MD.c:65.17
+..LN172:
+        jge       ..B1.21       # Prob 50%                      #MD.c:65.17
+..LN173:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.24:                        # Preds ..B1.23
+                                # Execution count [0.00e+00]
+..LN174:
+	.loc    1  67  is_stmt 1
+
+###       {
+###         f[i][j] -= force(M_central_x_G*mass[j],pos[i][j],r[j]);
+
+        movsd     .L_2il0floatpacket.0(%rip), %xmm0             #MD.c:67.20
+..LN175:
+        movl      -108(%rbp), %eax                              #MD.c:67.20
+..LN176:
+        movslq    %eax, %rax                                    #MD.c:67.20
+..LN177:
+        imulq     $8, %rax, %rax                                #MD.c:67.20
+..LN178:
+        movl      $mass, %edx                                   #MD.c:67.20
+..LN179:
+        addq      %rax, %rdx                                    #MD.c:67.20
+..LN180:
+        movsd     (%rdx), %xmm1                                 #MD.c:67.20
+..LN181:
+        mulsd     %xmm1, %xmm0                                  #MD.c:67.20
+..LN182:
+        movl      -116(%rbp), %eax                              #MD.c:67.20
+..LN183:
+        movslq    %eax, %rax                                    #MD.c:67.20
+..LN184:
+        imulq     $32768, %rax, %rax                            #MD.c:67.20
+..LN185:
+        movl      $pos, %edx                                    #MD.c:67.20
+..LN186:
+        addq      %rax, %rdx                                    #MD.c:67.20
+..LN187:
+        movl      -108(%rbp), %eax                              #MD.c:67.20
+..LN188:
+        movslq    %eax, %rax                                    #MD.c:67.20
+..LN189:
+        imulq     $8, %rax, %rax                                #MD.c:67.20
+..LN190:
+        addq      %rax, %rdx                                    #MD.c:67.20
+..LN191:
+        movsd     (%rdx), %xmm1                                 #MD.c:67.20
+..LN192:
+        movl      -108(%rbp), %eax                              #MD.c:67.20
+..LN193:
+        movslq    %eax, %rax                                    #MD.c:67.20
+..LN194:
+        imulq     $8, %rax, %rax                                #MD.c:67.20
+..LN195:
+        movl      $r, %edx                                      #MD.c:67.20
+..LN196:
+        addq      %rax, %rdx                                    #MD.c:67.20
+..LN197:
+        movsd     (%rdx), %xmm2                                 #MD.c:67.20
+..___tag_value_evolve.14:
+..LN198:
+#       force(double, double, double)
+        call      force                                         #MD.c:67.20
+..___tag_value_evolve.15:
+..LN199:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip xmm0
+..B1.70:                        # Preds ..B1.24
+                                # Execution count [0.00e+00]
+..LN200:
+        movsd     %xmm0, -64(%rbp)                              #MD.c:67.20
+..LN201:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.25:                        # Preds ..B1.70
+                                # Execution count [0.00e+00]
+..LN202:
+        movl      -116(%rbp), %eax                              #MD.c:67.11
+..LN203:
+        movslq    %eax, %rax                                    #MD.c:67.9
+..LN204:
+        imulq     $32768, %rax, %rax                            #MD.c:67.9
+..LN205:
+        movl      $f, %edx                                      #MD.c:67.9
+..LN206:
+        addq      %rax, %rdx                                    #MD.c:67.9
+..LN207:
+        movl      -108(%rbp), %eax                              #MD.c:67.14
+..LN208:
+        movslq    %eax, %rax                                    #MD.c:67.9
+..LN209:
+        imulq     $8, %rax, %rax                                #MD.c:67.9
+..LN210:
+        addq      %rax, %rdx                                    #MD.c:67.9
+..LN211:
+        movsd     (%rdx), %xmm0                                 #MD.c:67.9
+..LN212:
+        movsd     -64(%rbp), %xmm1                              #MD.c:67.20
+..LN213:
+        subsd     %xmm1, %xmm0                                  #MD.c:67.9
+..LN214:
+        movl      -116(%rbp), %eax                              #MD.c:67.11
+..LN215:
+        movslq    %eax, %rax                                    #MD.c:67.9
+..LN216:
+        imulq     $32768, %rax, %rax                            #MD.c:67.9
+..LN217:
+        movl      $f, %edx                                      #MD.c:67.9
+..LN218:
+        addq      %rax, %rdx                                    #MD.c:67.9
+..LN219:
+        movl      -108(%rbp), %eax                              #MD.c:67.14
+..LN220:
+        movslq    %eax, %rax                                    #MD.c:67.9
+..LN221:
+        imulq     $8, %rax, %rax                                #MD.c:67.9
+..LN222:
+        addq      %rax, %rdx                                    #MD.c:67.9
+..LN223:
+        movsd     %xmm0, (%rdx)                                 #MD.c:67.9
+..LN224:
+	.loc    1  65  is_stmt 1
+        movl      $1, %eax                                      #MD.c:65.23
+..LN225:
+        addl      -108(%rbp), %eax                              #MD.c:65.23
+..LN226:
+        movl      %eax, -108(%rbp)                              #MD.c:65.23
+..LN227:
+        jmp       ..B1.23       # Prob 100%                     #MD.c:65.23
+..LN228:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.26:                        # Preds ..B1.20
+                                # Execution count [0.00e+00]
+..LN229:
+	.loc    1  72  is_stmt 1
+
+### 	    }
+### 	  }
+### 
+###     /* calculate pairwise separation of particles */
+###     for(l=0;l<Ndim;l++)
+
+        movl      $0, -104(%rbp)                                #MD.c:72.9
+..LN230:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.27:                        # Preds ..B1.28 ..B1.26
+                                # Execution count [0.00e+00]
+..LN231:
+        movl      -104(%rbp), %eax                              #MD.c:72.13
+..LN232:
+        cmpl      $3, %eax                                      #MD.c:72.15
+..LN233:
+        jl        ..B1.29       # Prob 50%                      #MD.c:72.15
+..LN234:
+        jmp       ..B1.35       # Prob 100%                     #MD.c:72.15
+..LN235:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.28:                        # Preds ..B1.30
+                                # Execution count [0.00e+00]
+..LN236:
+        movl      $1, %eax                                      #MD.c:72.20
+..LN237:
+        addl      -104(%rbp), %eax                              #MD.c:72.20
+..LN238:
+        movl      %eax, -104(%rbp)                              #MD.c:72.20
+..LN239:
+        jmp       ..B1.27       # Prob 100%                     #MD.c:72.20
+..LN240:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.29:                        # Preds ..B1.27
+                                # Execution count [0.00e+00]
+..LN241:
+	.loc    1  74  is_stmt 1
+
+###     {
+###       k = 0;
+
+        movl      $0, -112(%rbp)                                #MD.c:74.7
+..LN242:
+	.loc    1  75  is_stmt 1
+
+###       for(i=0;i<Nbody;i++)
+
+        movl      $0, -116(%rbp)                                #MD.c:75.11
+..LN243:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.30:                        # Preds ..B1.31 ..B1.29
+                                # Execution count [0.00e+00]
+..LN244:
+        movl      -116(%rbp), %eax                              #MD.c:75.15
+..LN245:
+        cmpl      $4096, %eax                                   #MD.c:75.17
+..LN246:
+        jl        ..B1.32       # Prob 50%                      #MD.c:75.17
+..LN247:
+        jmp       ..B1.28       # Prob 100%                     #MD.c:75.17
+..LN248:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.31:                        # Preds ..B1.33
+                                # Execution count [0.00e+00]
+..LN249:
+        movl      $1, %eax                                      #MD.c:75.23
+..LN250:
+        addl      -116(%rbp), %eax                              #MD.c:75.23
+..LN251:
+        movl      %eax, -116(%rbp)                              #MD.c:75.23
+..LN252:
+        jmp       ..B1.30       # Prob 100%                     #MD.c:75.23
+..LN253:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.32:                        # Preds ..B1.30
+                                # Execution count [0.00e+00]
+..LN254:
+	.loc    1  77  is_stmt 1
+
+###       {
+###         tmp_val = pos[l][i];
+
+        movl      -104(%rbp), %eax                              #MD.c:77.23
+..LN255:
+        movslq    %eax, %rax                                    #MD.c:77.19
+..LN256:
+        imulq     $32768, %rax, %rax                            #MD.c:77.19
+..LN257:
+        movl      $pos, %edx                                    #MD.c:77.19
+..LN258:
+        addq      %rax, %rdx                                    #MD.c:77.19
+..LN259:
+        movl      -116(%rbp), %eax                              #MD.c:77.26
+..LN260:
+        movslq    %eax, %rax                                    #MD.c:77.19
+..LN261:
+        imulq     $8, %rax, %rax                                #MD.c:77.19
+..LN262:
+        addq      %rax, %rdx                                    #MD.c:77.19
+..LN263:
+        movsd     (%rdx), %xmm0                                 #MD.c:77.19
+..LN264:
+        movsd     %xmm0, -80(%rbp)                              #MD.c:77.9
+..LN265:
+	.loc    1  78  is_stmt 1
+
+###         for(j=i+1;j<Nbody;j++)
+
+        movl      $1, %eax                                      #MD.c:78.13
+..LN266:
+        addl      -116(%rbp), %eax                              #MD.c:78.17
+..LN267:
+        movl      %eax, -108(%rbp)                              #MD.c:78.13
+..LN268:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.33:                        # Preds ..B1.34 ..B1.32
+                                # Execution count [0.00e+00]
+..LN269:
+        movl      -108(%rbp), %eax                              #MD.c:78.19
+..LN270:
+        cmpl      $4096, %eax                                   #MD.c:78.21
+..LN271:
+        jge       ..B1.31       # Prob 50%                      #MD.c:78.21
+..LN272:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.34:                        # Preds ..B1.33
+                                # Execution count [0.00e+00]
+..LN273:
+	.loc    1  80  is_stmt 1
+
+###         {
+###           delta_pos[l][k] = tmp_val - pos[l][j];
+
+        movl      -104(%rbp), %eax                              #MD.c:80.43
+..LN274:
+        movslq    %eax, %rax                                    #MD.c:80.39
+..LN275:
+        imulq     $32768, %rax, %rax                            #MD.c:80.39
+..LN276:
+        movl      $pos, %edx                                    #MD.c:80.39
+..LN277:
+        addq      %rax, %rdx                                    #MD.c:80.39
+..LN278:
+        movl      -108(%rbp), %eax                              #MD.c:80.46
+..LN279:
+        movslq    %eax, %rax                                    #MD.c:80.39
+..LN280:
+        imulq     $8, %rax, %rax                                #MD.c:80.39
+..LN281:
+        addq      %rax, %rdx                                    #MD.c:80.39
+..LN282:
+        movsd     -80(%rbp), %xmm0                              #MD.c:80.29
+..LN283:
+        movsd     (%rdx), %xmm1                                 #MD.c:80.39
+..LN284:
+        subsd     %xmm1, %xmm0                                  #MD.c:80.39
+..LN285:
+        movl      -104(%rbp), %eax                              #MD.c:80.21
+..LN286:
+        movslq    %eax, %rax                                    #MD.c:80.11
+..LN287:
+        imulq     $134217728, %rax, %rax                        #MD.c:80.11
+..LN288:
+        movl      $delta_pos, %edx                              #MD.c:80.11
+..LN289:
+        addq      %rax, %rdx                                    #MD.c:80.11
+..LN290:
+        movl      -112(%rbp), %eax                              #MD.c:80.24
+..LN291:
+        movslq    %eax, %rax                                    #MD.c:80.11
+..LN292:
+        imulq     $8, %rax, %rax                                #MD.c:80.11
+..LN293:
+        addq      %rax, %rdx                                    #MD.c:80.11
+..LN294:
+        movsd     %xmm0, (%rdx)                                 #MD.c:80.11
+..LN295:
+	.loc    1  81  is_stmt 1
+
+###           k = k + 1;
+
+        movl      $1, %eax                                      #MD.c:81.11
+..LN296:
+        addl      -112(%rbp), %eax                              #MD.c:81.19
+..LN297:
+        movl      %eax, -112(%rbp)                              #MD.c:81.11
+..LN298:
+	.loc    1  78  is_stmt 1
+        movl      $1, %eax                                      #MD.c:78.27
+..LN299:
+        addl      -108(%rbp), %eax                              #MD.c:78.27
+..LN300:
+        movl      %eax, -108(%rbp)                              #MD.c:78.27
+..LN301:
+        jmp       ..B1.33       # Prob 100%                     #MD.c:78.27
+..LN302:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.35:                        # Preds ..B1.27
+                                # Execution count [0.00e+00]
+..LN303:
+	.loc    1  100  is_stmt 1
+
+###         }
+###       }
+###     }
+###     // for(l=Ndim-1;l>=0;l--)
+###     // {
+###     //   k = 0;
+###     //   for(i=Nbody-1;i>=0;i--)
+###     //   {
+###     //     tmp_val = pos[l][i];
+###     //     for(j=Nbody-1;j>=i+1;j--)
+###     //     {
+###     //       delta_pos[l][k] = tmp_val - pos[l][j];
+###     //       k = k + 1;
+###     //     }
+###     //   }
+###     // }
+### 
+###     /* calculate norm of separation vector */
+###     for(i=Npair-1;i>=0;i--)
+
+        movl      $8386559, -116(%rbp)                          #MD.c:100.9
+..LN304:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.36:                        # Preds ..B1.41 ..B1.35
+                                # Execution count [0.00e+00]
+..LN305:
+        movl      -116(%rbp), %eax                              #MD.c:100.19
+..LN306:
+        testl     %eax, %eax                                    #MD.c:100.22
+..LN307:
+        jl        ..B1.42       # Prob 50%                      #MD.c:100.22
+..LN308:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.37:                        # Preds ..B1.36
+                                # Execution count [0.00e+00]
+..LN309:
+	.loc    1  103  is_stmt 1
+
+###     // for(i=0;i<Npair;i++)
+###     {
+###       tmp_val = 0.0;
+
+        pxor      %xmm0, %xmm0                                  #MD.c:103.7
+..LN310:
+        movsd     %xmm0, -80(%rbp)                              #MD.c:103.7
+..LN311:
+	.loc    1  105  is_stmt 1
+
+### 
+###       for(k=0;k<Ndim;k++)
+
+        movl      $0, -112(%rbp)                                #MD.c:105.11
+..LN312:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.38:                        # Preds ..B1.39 ..B1.37
+                                # Execution count [0.00e+00]
+..LN313:
+        movl      -112(%rbp), %eax                              #MD.c:105.15
+..LN314:
+        cmpl      $3, %eax                                      #MD.c:105.17
+..LN315:
+        jge       ..B1.40       # Prob 50%                      #MD.c:105.17
+..LN316:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.39:                        # Preds ..B1.38
+                                # Execution count [0.00e+00]
+..LN317:
+	.loc    1  107  is_stmt 1
+
+###       {
+###         tmp_val += (delta_pos[k][i] * delta_pos[k][i]); // or pow(delta_pos[k][i], 2)
+
+        movl      -112(%rbp), %eax                              #MD.c:107.31
+..LN318:
+        movslq    %eax, %rax                                    #MD.c:107.21
+..LN319:
+        imulq     $134217728, %rax, %rax                        #MD.c:107.21
+..LN320:
+        movl      $delta_pos, %edx                              #MD.c:107.21
+..LN321:
+        addq      %rax, %rdx                                    #MD.c:107.21
+..LN322:
+        movl      -116(%rbp), %eax                              #MD.c:107.34
+..LN323:
+        movslq    %eax, %rax                                    #MD.c:107.21
+..LN324:
+        imulq     $8, %rax, %rax                                #MD.c:107.21
+..LN325:
+        addq      %rax, %rdx                                    #MD.c:107.21
+..LN326:
+        movsd     (%rdx), %xmm0                                 #MD.c:107.21
+..LN327:
+        movl      -112(%rbp), %eax                              #MD.c:107.49
+..LN328:
+        movslq    %eax, %rax                                    #MD.c:107.39
+..LN329:
+        imulq     $134217728, %rax, %rax                        #MD.c:107.39
+..LN330:
+        movl      $delta_pos, %edx                              #MD.c:107.39
+..LN331:
+        addq      %rax, %rdx                                    #MD.c:107.39
+..LN332:
+        movl      -116(%rbp), %eax                              #MD.c:107.52
+..LN333:
+        movslq    %eax, %rax                                    #MD.c:107.39
+..LN334:
+        imulq     $8, %rax, %rax                                #MD.c:107.39
+..LN335:
+        addq      %rax, %rdx                                    #MD.c:107.39
+..LN336:
+        movsd     (%rdx), %xmm1                                 #MD.c:107.39
+..LN337:
+        mulsd     %xmm1, %xmm0                                  #MD.c:107.39
+..LN338:
+        movsd     -80(%rbp), %xmm1                              #MD.c:107.9
+..LN339:
+        addsd     %xmm0, %xmm1                                  #MD.c:107.9
+..LN340:
+        movsd     %xmm1, -80(%rbp)                              #MD.c:107.9
+..LN341:
+	.loc    1  105  is_stmt 1
+        movl      $1, %eax                                      #MD.c:105.22
+..LN342:
+        addl      -112(%rbp), %eax                              #MD.c:105.22
+..LN343:
+        movl      %eax, -112(%rbp)                              #MD.c:105.22
+..LN344:
+        jmp       ..B1.38       # Prob 100%                     #MD.c:105.22
+..LN345:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.40:                        # Preds ..B1.38
+                                # Execution count [0.00e+00]
+..LN346:
+	.loc    1  110  is_stmt 1
+
+###       }
+### 
+###       delta_r[i] = sqrt(tmp_val);
+
+        movsd     -80(%rbp), %xmm0                              #MD.c:110.20
+..___tag_value_evolve.16:
+..LN347:
+#       sqrt(double)
+        call      sqrt                                          #MD.c:110.20
+..___tag_value_evolve.17:
+..LN348:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip xmm0
+..B1.71:                        # Preds ..B1.40
+                                # Execution count [0.00e+00]
+..LN349:
+        movsd     %xmm0, -56(%rbp)                              #MD.c:110.20
+..LN350:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.41:                        # Preds ..B1.71
+                                # Execution count [0.00e+00]
+..LN351:
+        movl      -116(%rbp), %eax                              #MD.c:110.15
+..LN352:
+        movslq    %eax, %rax                                    #MD.c:110.7
+..LN353:
+        imulq     $8, %rax, %rax                                #MD.c:110.7
+..LN354:
+        movl      $delta_r, %edx                                #MD.c:110.7
+..LN355:
+        addq      %rax, %rdx                                    #MD.c:110.7
+..LN356:
+        movsd     -56(%rbp), %xmm0                              #MD.c:110.20
+..LN357:
+        movsd     %xmm0, (%rdx)                                 #MD.c:110.7
+..LN358:
+	.loc    1  100  is_stmt 1
+        movl      $-1, %eax                                     #MD.c:100.24
+..LN359:
+        addl      -116(%rbp), %eax                              #MD.c:100.24
+..LN360:
+        movl      %eax, -116(%rbp)                              #MD.c:100.24
+..LN361:
+        jmp       ..B1.36       # Prob 100%                     #MD.c:100.24
+..LN362:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.42:                        # Preds ..B1.36
+                                # Execution count [0.00e+00]
+..LN363:
+	.loc    1  116  is_stmt 1
+
+###     }
+### 
+###     /*
+###      * add pairwise forces.
+###     */
+###     k = 0;
+
+        movl      $0, -112(%rbp)                                #MD.c:116.5
+..LN364:
+	.loc    1  117  is_stmt 1
+
+###     for(i=0;i<Nbody;i++)
+
+        movl      $0, -116(%rbp)                                #MD.c:117.9
+..LN365:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.43:                        # Preds ..B1.44 ..B1.42
+                                # Execution count [0.00e+00]
+..LN366:
+        movl      -116(%rbp), %eax                              #MD.c:117.13
+..LN367:
+        cmpl      $4096, %eax                                   #MD.c:117.15
+..LN368:
+        jl        ..B1.45       # Prob 50%                      #MD.c:117.15
+..LN369:
+        jmp       ..B1.58       # Prob 100%                     #MD.c:117.15
+..LN370:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.44:                        # Preds ..B1.46
+                                # Execution count [0.00e+00]
+..LN371:
+        movl      $1, %eax                                      #MD.c:117.21
+..LN372:
+        addl      -116(%rbp), %eax                              #MD.c:117.21
+..LN373:
+        movl      %eax, -116(%rbp)                              #MD.c:117.21
+..LN374:
+        jmp       ..B1.43       # Prob 100%                     #MD.c:117.21
+..LN375:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.45:                        # Preds ..B1.43
+                                # Execution count [0.00e+00]
+..LN376:
+	.loc    1  119  is_stmt 1
+
+###     {
+###       for(j=i+1;j<Nbody;j++)
+
+        movl      $1, %eax                                      #MD.c:119.11
+..LN377:
+        addl      -116(%rbp), %eax                              #MD.c:119.15
+..LN378:
+        movl      %eax, -108(%rbp)                              #MD.c:119.11
+..LN379:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.46:                        # Preds ..B1.57 ..B1.45
+                                # Execution count [0.00e+00]
+..LN380:
+        movl      -108(%rbp), %eax                              #MD.c:119.17
+..LN381:
+        cmpl      $4096, %eax                                   #MD.c:119.19
+..LN382:
+        jge       ..B1.44       # Prob 50%                      #MD.c:119.19
+..LN383:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.47:                        # Preds ..B1.46
+                                # Execution count [0.00e+00]
+..LN384:
+	.loc    1  121  is_stmt 1
+
+###       {
+###         size = radius[i] + radius[j];
+
+        movl      -116(%rbp), %eax                              #MD.c:121.23
+..LN385:
+        movslq    %eax, %rax                                    #MD.c:121.16
+..LN386:
+        imulq     $8, %rax, %rax                                #MD.c:121.16
+..LN387:
+        movl      $radius, %edx                                 #MD.c:121.16
+..LN388:
+        addq      %rax, %rdx                                    #MD.c:121.16
+..LN389:
+        movl      -108(%rbp), %eax                              #MD.c:121.35
+..LN390:
+        movslq    %eax, %rax                                    #MD.c:121.28
+..LN391:
+        imulq     $8, %rax, %rax                                #MD.c:121.28
+..LN392:
+        movl      $radius, %ecx                                 #MD.c:121.28
+..LN393:
+        addq      %rax, %rcx                                    #MD.c:121.28
+..LN394:
+        movsd     (%rdx), %xmm0                                 #MD.c:121.16
+..LN395:
+        movsd     (%rcx), %xmm1                                 #MD.c:121.28
+..LN396:
+        addsd     %xmm1, %xmm0                                  #MD.c:121.28
+..LN397:
+        movsd     %xmm0, -48(%rbp)                              #MD.c:121.9
+..LN398:
+	.loc    1  122  is_stmt 1
+
+###         tmp_val2 = G*mass[i]*mass[j];
+
+        movsd     .L_2il0floatpacket.1(%rip), %xmm0             #MD.c:122.20
+..LN399:
+        movl      -116(%rbp), %eax                              #MD.c:122.27
+..LN400:
+        movslq    %eax, %rax                                    #MD.c:122.22
+..LN401:
+        imulq     $8, %rax, %rax                                #MD.c:122.22
+..LN402:
+        movl      $mass, %edx                                   #MD.c:122.22
+..LN403:
+        addq      %rax, %rdx                                    #MD.c:122.22
+..LN404:
+        movsd     (%rdx), %xmm1                                 #MD.c:122.22
+..LN405:
+        mulsd     %xmm1, %xmm0                                  #MD.c:122.22
+..LN406:
+        movl      -108(%rbp), %eax                              #MD.c:122.35
+..LN407:
+        movslq    %eax, %rax                                    #MD.c:122.30
+..LN408:
+        imulq     $8, %rax, %rax                                #MD.c:122.30
+..LN409:
+        movl      $mass, %edx                                   #MD.c:122.30
+..LN410:
+        addq      %rax, %rdx                                    #MD.c:122.30
+..LN411:
+        movsd     (%rdx), %xmm1                                 #MD.c:122.30
+..LN412:
+        mulsd     %xmm1, %xmm0                                  #MD.c:122.30
+..LN413:
+        movsd     %xmm0, -40(%rbp)                              #MD.c:122.9
+..LN414:
+	.loc    1  123  is_stmt 1
+
+###         tmp_val3 = delta_r[k];
+
+        movl      -112(%rbp), %eax                              #MD.c:123.28
+..LN415:
+        movslq    %eax, %rax                                    #MD.c:123.20
+..LN416:
+        imulq     $8, %rax, %rax                                #MD.c:123.20
+..LN417:
+        movl      $delta_r, %edx                                #MD.c:123.20
+..LN418:
+        addq      %rax, %rdx                                    #MD.c:123.20
+..LN419:
+        movsd     (%rdx), %xmm0                                 #MD.c:123.20
+..LN420:
+        movsd     %xmm0, -32(%rbp)                              #MD.c:123.9
+..LN421:
+	.loc    1  125  is_stmt 1
+
+### 
+###         if( tmp_val3 >= size )
+
+        movsd     -32(%rbp), %xmm0                              #MD.c:125.13
+..LN422:
+        movsd     -48(%rbp), %xmm1                              #MD.c:125.25
+..LN423:
+        comisd    %xmm1, %xmm0                                  #MD.c:125.25
+..LN424:
+        jb        ..B1.52       # Prob 50%                      #MD.c:125.25
+..LN425:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.48:                        # Preds ..B1.47
+                                # Execution count [0.00e+00]
+..LN426:
+	.loc    1  127  is_stmt 1
+
+###         {
+###           for(l=0;l<Ndim;l++)
+
+        movl      $0, -104(%rbp)                                #MD.c:127.15
+..LN427:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.49:                        # Preds ..B1.51 ..B1.48
+                                # Execution count [0.00e+00]
+..LN428:
+        movl      -104(%rbp), %eax                              #MD.c:127.19
+..LN429:
+        cmpl      $3, %eax                                      #MD.c:127.21
+..LN430:
+        jge       ..B1.57       # Prob 50%                      #MD.c:127.21
+..LN431:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.50:                        # Preds ..B1.49
+                                # Execution count [0.00e+00]
+..LN432:
+	.loc    1  129  is_stmt 1
+
+###           {
+###             tmp_val = force(tmp_val2, delta_pos[l][k], tmp_val3);
+
+        movsd     -40(%rbp), %xmm0                              #MD.c:129.23
+..LN433:
+        movl      -104(%rbp), %eax                              #MD.c:129.23
+..LN434:
+        movslq    %eax, %rax                                    #MD.c:129.23
+..LN435:
+        imulq     $134217728, %rax, %rax                        #MD.c:129.23
+..LN436:
+        movl      $delta_pos, %edx                              #MD.c:129.23
+..LN437:
+        addq      %rax, %rdx                                    #MD.c:129.23
+..LN438:
+        movl      -112(%rbp), %eax                              #MD.c:129.23
+..LN439:
+        movslq    %eax, %rax                                    #MD.c:129.23
+..LN440:
+        imulq     $8, %rax, %rax                                #MD.c:129.23
+..LN441:
+        addq      %rax, %rdx                                    #MD.c:129.23
+..LN442:
+        movsd     (%rdx), %xmm1                                 #MD.c:129.23
+..LN443:
+        movsd     -32(%rbp), %xmm2                              #MD.c:129.23
+..___tag_value_evolve.18:
+..LN444:
+#       force(double, double, double)
+        call      force                                         #MD.c:129.23
+..___tag_value_evolve.19:
+..LN445:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip xmm0
+..B1.72:                        # Preds ..B1.50
+                                # Execution count [0.00e+00]
+..LN446:
+        movsd     %xmm0, -24(%rbp)                              #MD.c:129.23
+..LN447:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.51:                        # Preds ..B1.72
+                                # Execution count [0.00e+00]
+..LN448:
+        movsd     -24(%rbp), %xmm0                              #MD.c:129.23
+..LN449:
+        movsd     %xmm0, -80(%rbp)                              #MD.c:129.13
+..LN450:
+	.loc    1  131  is_stmt 1
+
+###             /*  flip force if close in */
+###             f[l][j] += tmp_val;
+
+        movl      -104(%rbp), %eax                              #MD.c:131.15
+..LN451:
+        movslq    %eax, %rax                                    #MD.c:131.13
+..LN452:
+        imulq     $32768, %rax, %rax                            #MD.c:131.13
+..LN453:
+        movl      $f, %edx                                      #MD.c:131.13
+..LN454:
+        addq      %rax, %rdx                                    #MD.c:131.13
+..LN455:
+        movl      -108(%rbp), %eax                              #MD.c:131.18
+..LN456:
+        movslq    %eax, %rax                                    #MD.c:131.13
+..LN457:
+        imulq     $8, %rax, %rax                                #MD.c:131.13
+..LN458:
+        addq      %rax, %rdx                                    #MD.c:131.13
+..LN459:
+        movsd     (%rdx), %xmm0                                 #MD.c:131.13
+..LN460:
+        movsd     -80(%rbp), %xmm1                              #MD.c:131.24
+..LN461:
+        addsd     %xmm1, %xmm0                                  #MD.c:131.13
+..LN462:
+        movl      -104(%rbp), %eax                              #MD.c:131.15
+..LN463:
+        movslq    %eax, %rax                                    #MD.c:131.13
+..LN464:
+        imulq     $32768, %rax, %rax                            #MD.c:131.13
+..LN465:
+        movl      $f, %edx                                      #MD.c:131.13
+..LN466:
+        addq      %rax, %rdx                                    #MD.c:131.13
+..LN467:
+        movl      -108(%rbp), %eax                              #MD.c:131.18
+..LN468:
+        movslq    %eax, %rax                                    #MD.c:131.13
+..LN469:
+        imulq     $8, %rax, %rax                                #MD.c:131.13
+..LN470:
+        addq      %rax, %rdx                                    #MD.c:131.13
+..LN471:
+        movsd     %xmm0, (%rdx)                                 #MD.c:131.13
+..LN472:
+	.loc    1  132  is_stmt 1
+
+###             f[l][i] += - tmp_val;
+
+        movl      -104(%rbp), %eax                              #MD.c:132.15
+..LN473:
+        movslq    %eax, %rax                                    #MD.c:132.13
+..LN474:
+        imulq     $32768, %rax, %rax                            #MD.c:132.13
+..LN475:
+        movl      $f, %edx                                      #MD.c:132.13
+..LN476:
+        addq      %rax, %rdx                                    #MD.c:132.13
+..LN477:
+        movl      -116(%rbp), %eax                              #MD.c:132.18
+..LN478:
+        movslq    %eax, %rax                                    #MD.c:132.13
+..LN479:
+        imulq     $8, %rax, %rax                                #MD.c:132.13
+..LN480:
+        addq      %rax, %rdx                                    #MD.c:132.13
+..LN481:
+        movsd     -80(%rbp), %xmm0                              #MD.c:132.26
+..LN482:
+        xorpd     .L_2il0floatpacket.2(%rip), %xmm0             #MD.c:132.26
+..LN483:
+        movsd     (%rdx), %xmm1                                 #MD.c:132.13
+..LN484:
+        addsd     %xmm0, %xmm1                                  #MD.c:132.13
+..LN485:
+        movl      -104(%rbp), %eax                              #MD.c:132.15
+..LN486:
+        movslq    %eax, %rax                                    #MD.c:132.13
+..LN487:
+        imulq     $32768, %rax, %rax                            #MD.c:132.13
+..LN488:
+        movl      $f, %edx                                      #MD.c:132.13
+..LN489:
+        addq      %rax, %rdx                                    #MD.c:132.13
+..LN490:
+        movl      -116(%rbp), %eax                              #MD.c:132.18
+..LN491:
+        movslq    %eax, %rax                                    #MD.c:132.13
+..LN492:
+        imulq     $8, %rax, %rax                                #MD.c:132.13
+..LN493:
+        addq      %rax, %rdx                                    #MD.c:132.13
+..LN494:
+        movsd     %xmm1, (%rdx)                                 #MD.c:132.13
+..LN495:
+	.loc    1  127  is_stmt 1
+        movl      $1, %eax                                      #MD.c:127.26
+..LN496:
+        addl      -104(%rbp), %eax                              #MD.c:127.26
+..LN497:
+        movl      %eax, -104(%rbp)                              #MD.c:127.26
+..LN498:
+        jmp       ..B1.49       # Prob 100%                     #MD.c:127.26
+..LN499:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.52:                        # Preds ..B1.47
+                                # Execution count [0.00e+00]
+..LN500:
+	.loc    1  139  is_stmt 1
+
+###           }
+###         }
+###         else
+###         {
+###           // collided=0;
+### 
+###           for(l=0;l<Ndim;l++)
+
+        movl      $0, -104(%rbp)                                #MD.c:139.15
+..LN501:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.53:                        # Preds ..B1.55 ..B1.52
+                                # Execution count [0.00e+00]
+..LN502:
+        movl      -104(%rbp), %eax                              #MD.c:139.19
+..LN503:
+        cmpl      $3, %eax                                      #MD.c:139.21
+..LN504:
+        jge       ..B1.56       # Prob 50%                      #MD.c:139.21
+..LN505:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.54:                        # Preds ..B1.53
+                                # Execution count [0.00e+00]
+..LN506:
+	.loc    1  141  is_stmt 1
+
+###           {
+###             tmp_val = force(tmp_val2, delta_pos[l][k], tmp_val3);
+
+        movsd     -40(%rbp), %xmm0                              #MD.c:141.23
+..LN507:
+        movl      -104(%rbp), %eax                              #MD.c:141.23
+..LN508:
+        movslq    %eax, %rax                                    #MD.c:141.23
+..LN509:
+        imulq     $134217728, %rax, %rax                        #MD.c:141.23
+..LN510:
+        movl      $delta_pos, %edx                              #MD.c:141.23
+..LN511:
+        addq      %rax, %rdx                                    #MD.c:141.23
+..LN512:
+        movl      -112(%rbp), %eax                              #MD.c:141.23
+..LN513:
+        movslq    %eax, %rax                                    #MD.c:141.23
+..LN514:
+        imulq     $8, %rax, %rax                                #MD.c:141.23
+..LN515:
+        addq      %rax, %rdx                                    #MD.c:141.23
+..LN516:
+        movsd     (%rdx), %xmm1                                 #MD.c:141.23
+..LN517:
+        movsd     -32(%rbp), %xmm2                              #MD.c:141.23
+..___tag_value_evolve.20:
+..LN518:
+#       force(double, double, double)
+        call      force                                         #MD.c:141.23
+..___tag_value_evolve.21:
+..LN519:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip xmm0
+..B1.73:                        # Preds ..B1.54
+                                # Execution count [0.00e+00]
+..LN520:
+        movsd     %xmm0, -16(%rbp)                              #MD.c:141.23
+..LN521:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.55:                        # Preds ..B1.73
+                                # Execution count [0.00e+00]
+..LN522:
+        movsd     -16(%rbp), %xmm0                              #MD.c:141.23
+..LN523:
+        movsd     %xmm0, -80(%rbp)                              #MD.c:141.13
+..LN524:
+	.loc    1  143  is_stmt 1
+
+###             /*  flip force if close in */
+###             f[l][j] += - tmp_val;
+
+        movl      -104(%rbp), %eax                              #MD.c:143.15
+..LN525:
+        movslq    %eax, %rax                                    #MD.c:143.13
+..LN526:
+        imulq     $32768, %rax, %rax                            #MD.c:143.13
+..LN527:
+        movl      $f, %edx                                      #MD.c:143.13
+..LN528:
+        addq      %rax, %rdx                                    #MD.c:143.13
+..LN529:
+        movl      -108(%rbp), %eax                              #MD.c:143.18
+..LN530:
+        movslq    %eax, %rax                                    #MD.c:143.13
+..LN531:
+        imulq     $8, %rax, %rax                                #MD.c:143.13
+..LN532:
+        addq      %rax, %rdx                                    #MD.c:143.13
+..LN533:
+        movsd     -80(%rbp), %xmm0                              #MD.c:143.26
+..LN534:
+        xorpd     .L_2il0floatpacket.2(%rip), %xmm0             #MD.c:143.26
+..LN535:
+        movsd     (%rdx), %xmm1                                 #MD.c:143.13
+..LN536:
+        addsd     %xmm0, %xmm1                                  #MD.c:143.13
+..LN537:
+        movl      -104(%rbp), %eax                              #MD.c:143.15
+..LN538:
+        movslq    %eax, %rax                                    #MD.c:143.13
+..LN539:
+        imulq     $32768, %rax, %rax                            #MD.c:143.13
+..LN540:
+        movl      $f, %edx                                      #MD.c:143.13
+..LN541:
+        addq      %rax, %rdx                                    #MD.c:143.13
+..LN542:
+        movl      -108(%rbp), %eax                              #MD.c:143.18
+..LN543:
+        movslq    %eax, %rax                                    #MD.c:143.13
+..LN544:
+        imulq     $8, %rax, %rax                                #MD.c:143.13
+..LN545:
+        addq      %rax, %rdx                                    #MD.c:143.13
+..LN546:
+        movsd     %xmm1, (%rdx)                                 #MD.c:143.13
+..LN547:
+	.loc    1  144  is_stmt 1
+
+###             f[l][i] += tmp_val;
+
+        movl      -104(%rbp), %eax                              #MD.c:144.15
+..LN548:
+        movslq    %eax, %rax                                    #MD.c:144.13
+..LN549:
+        imulq     $32768, %rax, %rax                            #MD.c:144.13
+..LN550:
+        movl      $f, %edx                                      #MD.c:144.13
+..LN551:
+        addq      %rax, %rdx                                    #MD.c:144.13
+..LN552:
+        movl      -116(%rbp), %eax                              #MD.c:144.18
+..LN553:
+        movslq    %eax, %rax                                    #MD.c:144.13
+..LN554:
+        imulq     $8, %rax, %rax                                #MD.c:144.13
+..LN555:
+        addq      %rax, %rdx                                    #MD.c:144.13
+..LN556:
+        movsd     (%rdx), %xmm0                                 #MD.c:144.13
+..LN557:
+        movsd     -80(%rbp), %xmm1                              #MD.c:144.24
+..LN558:
+        addsd     %xmm1, %xmm0                                  #MD.c:144.13
+..LN559:
+        movl      -104(%rbp), %eax                              #MD.c:144.15
+..LN560:
+        movslq    %eax, %rax                                    #MD.c:144.13
+..LN561:
+        imulq     $32768, %rax, %rax                            #MD.c:144.13
+..LN562:
+        movl      $f, %edx                                      #MD.c:144.13
+..LN563:
+        addq      %rax, %rdx                                    #MD.c:144.13
+..LN564:
+        movl      -116(%rbp), %eax                              #MD.c:144.18
+..LN565:
+        movslq    %eax, %rax                                    #MD.c:144.13
+..LN566:
+        imulq     $8, %rax, %rax                                #MD.c:144.13
+..LN567:
+        addq      %rax, %rdx                                    #MD.c:144.13
+..LN568:
+        movsd     %xmm0, (%rdx)                                 #MD.c:144.13
+..LN569:
+	.loc    1  139  is_stmt 1
+        movl      $1, %eax                                      #MD.c:139.26
+..LN570:
+        addl      -104(%rbp), %eax                              #MD.c:139.26
+..LN571:
+        movl      %eax, -104(%rbp)                              #MD.c:139.26
+..LN572:
+        jmp       ..B1.53       # Prob 100%                     #MD.c:139.26
+..LN573:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.56:                        # Preds ..B1.53
+                                # Execution count [0.00e+00]
+..LN574:
+	.loc    1  147  is_stmt 1
+
+###           }
+### 
+###             collisions++;
+
+        movl      $1, %eax                                      #MD.c:147.13
+..LN575:
+        addl      collisions(%rip), %eax                        #MD.c:147.13
+..LN576:
+        movl      %eax, collisions(%rip)                        #MD.c:147.13
+..LN577:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.57:                        # Preds ..B1.49 ..B1.56
+                                # Execution count [0.00e+00]
+..LN578:
+	.loc    1  150  is_stmt 1
+
+###         }
+### 
+###         k = k + 1;
+
+        movl      $1, %eax                                      #MD.c:150.9
+..LN579:
+        addl      -112(%rbp), %eax                              #MD.c:150.17
+..LN580:
+        movl      %eax, -112(%rbp)                              #MD.c:150.9
+..LN581:
+	.loc    1  119  is_stmt 1
+        movl      $1, %eax                                      #MD.c:119.25
+..LN582:
+        addl      -108(%rbp), %eax                              #MD.c:119.25
+..LN583:
+        movl      %eax, -108(%rbp)                              #MD.c:119.25
+..LN584:
+        jmp       ..B1.46       # Prob 100%                     #MD.c:119.25
+..LN585:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.58:                        # Preds ..B1.43
+                                # Execution count [0.00e+00]
+..LN586:
+	.loc    1  154  is_stmt 1
+
+###       }
+###     }
+### 
+###     for(i=Ndim-1;i>=0;i--)
+
+        movl      $2, -116(%rbp)                                #MD.c:154.9
+..LN587:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.59:                        # Preds ..B1.60 ..B1.58
+                                # Execution count [0.00e+00]
+..LN588:
+        movl      -116(%rbp), %eax                              #MD.c:154.18
+..LN589:
+        testl     %eax, %eax                                    #MD.c:154.21
+..LN590:
+        jge       ..B1.61       # Prob 50%                      #MD.c:154.21
+..LN591:
+        jmp       ..B1.3        # Prob 100%                     #MD.c:154.21
+..LN592:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.60:                        # Preds ..B1.62
+                                # Execution count [0.00e+00]
+..LN593:
+        movl      $-1, %eax                                     #MD.c:154.23
+..LN594:
+        addl      -116(%rbp), %eax                              #MD.c:154.23
+..LN595:
+        movl      %eax, -116(%rbp)                              #MD.c:154.23
+..LN596:
+        jmp       ..B1.59       # Prob 100%                     #MD.c:154.23
+..LN597:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.61:                        # Preds ..B1.59
+                                # Execution count [0.00e+00]
+..LN598:
+	.loc    1  156  is_stmt 1
+
+###     {
+###       for(j=Nbody-1;j>=0;j--)
+
+        movl      $4095, -108(%rbp)                             #MD.c:156.11
+..LN599:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.62:                        # Preds ..B1.63 ..B1.61
+                                # Execution count [0.00e+00]
+..LN600:
+        movl      -108(%rbp), %eax                              #MD.c:156.21
+..LN601:
+        testl     %eax, %eax                                    #MD.c:156.24
+..LN602:
+        jl        ..B1.60       # Prob 50%                      #MD.c:156.24
+..LN603:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.63:                        # Preds ..B1.62
+                                # Execution count [0.00e+00]
+..LN604:
+	.loc    1  159  is_stmt 1
+
+###       {
+###         /* update positions */
+###         pos[i][j] += dt * velo[i][j];
+
+        movl      -116(%rbp), %eax                              #MD.c:159.13
+..LN605:
+        movslq    %eax, %rax                                    #MD.c:159.9
+..LN606:
+        imulq     $32768, %rax, %rax                            #MD.c:159.9
+..LN607:
+        movl      $pos, %edx                                    #MD.c:159.9
+..LN608:
+        addq      %rax, %rdx                                    #MD.c:159.9
+..LN609:
+        movl      -108(%rbp), %eax                              #MD.c:159.16
+..LN610:
+        movslq    %eax, %rax                                    #MD.c:159.9
+..LN611:
+        imulq     $8, %rax, %rax                                #MD.c:159.9
+..LN612:
+        addq      %rax, %rdx                                    #MD.c:159.9
+..LN613:
+        movsd     -88(%rbp), %xmm0                              #MD.c:159.22
+..LN614:
+        movl      -116(%rbp), %eax                              #MD.c:159.32
+..LN615:
+        movslq    %eax, %rax                                    #MD.c:159.27
+..LN616:
+        imulq     $32768, %rax, %rax                            #MD.c:159.27
+..LN617:
+        movl      $velo, %ecx                                   #MD.c:159.27
+..LN618:
+        addq      %rax, %rcx                                    #MD.c:159.27
+..LN619:
+        movl      -108(%rbp), %eax                              #MD.c:159.35
+..LN620:
+        movslq    %eax, %rax                                    #MD.c:159.27
+..LN621:
+        imulq     $8, %rax, %rax                                #MD.c:159.27
+..LN622:
+        addq      %rax, %rcx                                    #MD.c:159.27
+..LN623:
+        movsd     (%rcx), %xmm1                                 #MD.c:159.27
+..LN624:
+        mulsd     %xmm1, %xmm0                                  #MD.c:159.27
+..LN625:
+        movsd     (%rdx), %xmm1                                 #MD.c:159.9
+..LN626:
+        addsd     %xmm0, %xmm1                                  #MD.c:159.9
+..LN627:
+        movl      -116(%rbp), %eax                              #MD.c:159.13
+..LN628:
+        movslq    %eax, %rax                                    #MD.c:159.9
+..LN629:
+        imulq     $32768, %rax, %rax                            #MD.c:159.9
+..LN630:
+        movl      $pos, %edx                                    #MD.c:159.9
+..LN631:
+        addq      %rax, %rdx                                    #MD.c:159.9
+..LN632:
+        movl      -108(%rbp), %eax                              #MD.c:159.16
+..LN633:
+        movslq    %eax, %rax                                    #MD.c:159.9
+..LN634:
+        imulq     $8, %rax, %rax                                #MD.c:159.9
+..LN635:
+        addq      %rax, %rdx                                    #MD.c:159.9
+..LN636:
+        movsd     %xmm1, (%rdx)                                 #MD.c:159.9
+..LN637:
+	.loc    1  161  is_stmt 1
+
+###         /* update velocities */
+###         velo[i][j] += dt * (f[i][j]/mass[j]);
+
+        movl      -116(%rbp), %eax                              #MD.c:161.14
+..LN638:
+        movslq    %eax, %rax                                    #MD.c:161.9
+..LN639:
+        imulq     $32768, %rax, %rax                            #MD.c:161.9
+..LN640:
+        movl      $velo, %edx                                   #MD.c:161.9
+..LN641:
+        addq      %rax, %rdx                                    #MD.c:161.9
+..LN642:
+        movl      -108(%rbp), %eax                              #MD.c:161.17
+..LN643:
+        movslq    %eax, %rax                                    #MD.c:161.9
+..LN644:
+        imulq     $8, %rax, %rax                                #MD.c:161.9
+..LN645:
+        addq      %rax, %rdx                                    #MD.c:161.9
+..LN646:
+        movsd     -88(%rbp), %xmm0                              #MD.c:161.23
+..LN647:
+        movl      -116(%rbp), %eax                              #MD.c:161.31
+..LN648:
+        movslq    %eax, %rax                                    #MD.c:161.29
+..LN649:
+        imulq     $32768, %rax, %rax                            #MD.c:161.29
+..LN650:
+        movl      $f, %ecx                                      #MD.c:161.29
+..LN651:
+        addq      %rax, %rcx                                    #MD.c:161.29
+..LN652:
+        movl      -108(%rbp), %eax                              #MD.c:161.34
+..LN653:
+        movslq    %eax, %rax                                    #MD.c:161.29
+..LN654:
+        imulq     $8, %rax, %rax                                #MD.c:161.29
+..LN655:
+        addq      %rax, %rcx                                    #MD.c:161.29
+..LN656:
+        movsd     (%rcx), %xmm1                                 #MD.c:161.29
+..LN657:
+        movl      -108(%rbp), %eax                              #MD.c:161.42
+..LN658:
+        movslq    %eax, %rax                                    #MD.c:161.37
+..LN659:
+        imulq     $8, %rax, %rax                                #MD.c:161.37
+..LN660:
+        movl      $mass, %ecx                                   #MD.c:161.37
+..LN661:
+        addq      %rax, %rcx                                    #MD.c:161.37
+..LN662:
+        movsd     (%rcx), %xmm2                                 #MD.c:161.37
+..LN663:
+        divsd     %xmm2, %xmm1                                  #MD.c:161.37
+..LN664:
+        mulsd     %xmm1, %xmm0                                  #MD.c:161.37
+..LN665:
+        movsd     (%rdx), %xmm1                                 #MD.c:161.9
+..LN666:
+        addsd     %xmm0, %xmm1                                  #MD.c:161.9
+..LN667:
+        movl      -116(%rbp), %eax                              #MD.c:161.14
+..LN668:
+        movslq    %eax, %rax                                    #MD.c:161.9
+..LN669:
+        imulq     $32768, %rax, %rax                            #MD.c:161.9
+..LN670:
+        movl      $velo, %edx                                   #MD.c:161.9
+..LN671:
+        addq      %rax, %rdx                                    #MD.c:161.9
+..LN672:
+        movl      -108(%rbp), %eax                              #MD.c:161.17
+..LN673:
+        movslq    %eax, %rax                                    #MD.c:161.9
+..LN674:
+        imulq     $8, %rax, %rax                                #MD.c:161.9
+..LN675:
+        addq      %rax, %rdx                                    #MD.c:161.9
+..LN676:
+        movsd     %xmm1, (%rdx)                                 #MD.c:161.9
+..LN677:
+	.loc    1  156  is_stmt 1
+        movl      $-1, %eax                                     #MD.c:156.26
+..LN678:
+        addl      -108(%rbp), %eax                              #MD.c:156.26
+..LN679:
+        movl      %eax, -108(%rbp)                              #MD.c:156.26
+..LN680:
+        jmp       ..B1.62       # Prob 100%                     #MD.c:156.26
+..LN681:
+                                # LOE rbx rbp rsp r12 r13 r14 r15 rip
+..B1.64:                        # Preds ..B1.2
+                                # Execution count [0.00e+00]
+
+###       }
+###     }
+### 
+###   }
+### 
+### }
+
+..LN682:
+	.loc    1  167  epilogue_begin  is_stmt 1
+        leave                                                   #MD.c:167.1
+	.cfi_restore 6
+..LN683:
+        ret                                                     #MD.c:167.1
+..LN684:
+                                # LOE
+..LN685:
+	.cfi_endproc
+# mark_end;
+	.type	evolve,@function
+	.size	evolve,.-evolve
+..LNevolve.686:
+.LNevolve:
+	.data
+# -- End  evolve
+	.data
+	.section .note.GNU-stack, ""
+	.file   2 "coord.h"
+// -- Begin DWARF2 SEGMENT .debug_info
+	.section .debug_info
+.debug_info_seg:
+	.align 1
+	.4byte 0x00000208
+	.2byte 0x0004
+	.4byte .debug_abbrev_seg
+	.byte 0x08
+//	DW_TAG_compile_unit:
+	.byte 0x01
+//	DW_AT_comp_dir:
+	.4byte .debug_str
+//	DW_AT_name:
+	.4byte .debug_str+0x45
+//	DW_AT_producer:
+	.4byte .debug_str+0x4a
+	.4byte .debug_str+0xb6
+//	DW_AT_language:
+	.byte 0x01
+//	DW_AT_use_UTF8:
+	.byte 0x01
+//	DW_AT_low_pc:
+	.8byte ..LN0
+//	DW_AT_high_pc:
+	.8byte ..LNevolve.686-..LN0
+//	DW_AT_stmt_list:
+	.4byte .debug_line_seg
+//	DW_TAG_subprogram:
+	.byte 0x02
+//	DW_AT_decl_line:
+	.byte 0x0a
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_prototyped:
+	.byte 0x01
+//	DW_AT_name:
+	.4byte .debug_str+0xf0
+	.4byte .debug_str+0xf0
+//	DW_AT_low_pc:
+	.8byte ..L3
+//	DW_AT_high_pc:
+	.8byte ..LNevolve.686-..L3
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_formal_parameter:
+	.byte 0x03
+//	DW_AT_decl_line:
+	.byte 0x0a
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_type:
+	.4byte 0x000000e9
+//	DW_AT_name:
+	.4byte .debug_str+0xf7
+//	DW_AT_location:
+	.4byte 0x7fa07603
+//	DW_TAG_formal_parameter:
+	.byte 0x04
+//	DW_AT_decl_line:
+	.byte 0x0a
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_name:
+	.2byte 0x7464
+	.byte 0x00
+//	DW_AT_location:
+	.4byte 0x7fa87603
+//	DW_TAG_variable:
+	.byte 0x05
+//	DW_AT_decl_line:
+	.byte 0x0c
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.4byte .debug_str+0x111
+//	DW_AT_type:
+	.4byte 0x000000f7
+//	DW_AT_location:
+	.4byte 0x7f807603
+//	DW_TAG_variable:
+	.byte 0x06
+//	DW_AT_decl_line:
+	.byte 0x0d
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.2byte 0x0069
+//	DW_AT_type:
+	.4byte 0x000000e9
+//	DW_AT_location:
+	.4byte 0x7f8c7603
+//	DW_TAG_variable:
+	.byte 0x06
+//	DW_AT_decl_line:
+	.byte 0x0d
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.2byte 0x006a
+//	DW_AT_type:
+	.4byte 0x000000e9
+//	DW_AT_location:
+	.4byte 0x7f947603
+//	DW_TAG_variable:
+	.byte 0x06
+//	DW_AT_decl_line:
+	.byte 0x0d
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.2byte 0x006b
+//	DW_AT_type:
+	.4byte 0x000000e9
+//	DW_AT_location:
+	.4byte 0x7f907603
+//	DW_TAG_variable:
+	.byte 0x06
+//	DW_AT_decl_line:
+	.byte 0x0d
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.2byte 0x006c
+//	DW_AT_type:
+	.4byte 0x000000e9
+//	DW_AT_location:
+	.4byte 0x7f987603
+//	DW_TAG_variable:
+	.byte 0x05
+//	DW_AT_decl_line:
+	.byte 0x0e
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.4byte .debug_str+0x116
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_location:
+	.2byte 0x7602
+	.byte 0x50
+//	DW_TAG_variable:
+	.byte 0x05
+//	DW_AT_decl_line:
+	.byte 0x0f
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.4byte .debug_str+0x11b
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_location:
+	.4byte 0x7fb07603
+//	DW_TAG_variable:
+	.byte 0x05
+//	DW_AT_decl_line:
+	.byte 0x0f
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.4byte .debug_str+0x123
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_location:
+	.2byte 0x7602
+	.byte 0x58
+//	DW_TAG_variable:
+	.byte 0x05
+//	DW_AT_decl_line:
+	.byte 0x0f
+//	DW_AT_decl_file:
+	.byte 0x01
+//	DW_AT_name:
+	.4byte .debug_str+0x12c
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_location:
+	.2byte 0x7602
+	.byte 0x60
+	.byte 0x00
+//	DW_TAG_base_type:
+	.byte 0x07
+//	DW_AT_byte_size:
+	.byte 0x04
+//	DW_AT_encoding:
+	.byte 0x05
+//	DW_AT_name:
+	.4byte 0x00746e69
+//	DW_TAG_base_type:
+	.byte 0x08
+//	DW_AT_byte_size:
+	.byte 0x08
+//	DW_AT_encoding:
+	.byte 0x04
+//	DW_AT_name:
+	.4byte .debug_str+0xfd
+//	DW_TAG_base_type:
+	.byte 0x08
+//	DW_AT_byte_size:
+	.byte 0x04
+//	DW_AT_encoding:
+	.byte 0x07
+//	DW_AT_name:
+	.4byte .debug_str+0x104
+//	DW_TAG_variable:
+	.byte 0x09
+//	DW_AT_decl_line:
+	.byte 0x20
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte 0x00736976
+//	DW_AT_type:
+	.4byte 0x0000010b
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0a
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.2byte 0x8000
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x20
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x135
+//	DW_AT_type:
+	.4byte 0x00000123
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0a
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.2byte 0x8000
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x09
+//	DW_AT_decl_line:
+	.byte 0x21
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte 0x00736f70
+//	DW_AT_type:
+	.4byte 0x0000013b
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0d
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.4byte 0x00018000
+//	DW_TAG_subrange_type:
+	.byte 0x0e
+//	DW_AT_upper_bound:
+	.byte 0x02
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x22
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x13a
+//	DW_AT_type:
+	.4byte 0x00000157
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0d
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.4byte 0x08000000
+//	DW_TAG_subrange_type:
+	.byte 0x0f
+//	DW_AT_upper_bound:
+	.4byte 0x00ffffff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x23
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x142
+//	DW_AT_type:
+	.4byte 0x00000173
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0d
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.4byte 0x00018000
+//	DW_TAG_subrange_type:
+	.byte 0x0e
+//	DW_AT_upper_bound:
+	.byte 0x02
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x09
+//	DW_AT_decl_line:
+	.byte 0x24
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.2byte 0x0072
+//	DW_AT_type:
+	.4byte 0x0000018d
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0a
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.2byte 0x8000
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x09
+//	DW_AT_decl_line:
+	.byte 0x25
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.2byte 0x0066
+//	DW_AT_type:
+	.4byte 0x000001a3
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0d
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.4byte 0x00018000
+//	DW_TAG_subrange_type:
+	.byte 0x0e
+//	DW_AT_upper_bound:
+	.byte 0x02
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x26
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x147
+//	DW_AT_type:
+	.4byte 0x000001bf
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x10
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.byte 0x18
+//	DW_TAG_subrange_type:
+	.byte 0x0e
+//	DW_AT_upper_bound:
+	.byte 0x02
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x27
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x14c
+//	DW_AT_type:
+	.4byte 0x000001d5
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0a
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.2byte 0x8000
+//	DW_TAG_subrange_type:
+	.byte 0x0b
+//	DW_AT_upper_bound:
+	.2byte 0x0fff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x28
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x153
+//	DW_AT_type:
+	.4byte 0x000001ed
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+//	DW_TAG_array_type:
+	.byte 0x0d
+//	DW_AT_type:
+	.4byte 0x000000f0
+//	DW_AT_byte_size:
+	.4byte 0x18000000
+//	DW_TAG_subrange_type:
+	.byte 0x0e
+//	DW_AT_upper_bound:
+	.byte 0x02
+//	DW_TAG_subrange_type:
+	.byte 0x0f
+//	DW_AT_upper_bound:
+	.4byte 0x00ffffff
+	.byte 0x00
+//	DW_TAG_variable:
+	.byte 0x0c
+//	DW_AT_decl_line:
+	.byte 0x29
+//	DW_AT_decl_file:
+	.byte 0x02
+//	DW_AT_name:
+	.4byte .debug_str+0x15d
+//	DW_AT_type:
+	.4byte 0x000000f7
+//	DW_AT_declaration:
+	.byte 0x01
+//	DW_AT_external:
+	.byte 0x01
+	.byte 0x00
+// -- Begin DWARF2 SEGMENT .debug_line
+	.section .debug_line
+.debug_line_seg:
+	.align 1
+// -- Begin DWARF2 SEGMENT .debug_abbrev
+	.section .debug_abbrev
+.debug_abbrev_seg:
+	.align 1
+	.byte 0x01
+	.byte 0x11
+	.byte 0x01
+	.byte 0x1b
+	.byte 0x0e
+	.byte 0x03
+	.byte 0x0e
+	.byte 0x25
+	.byte 0x0e
+	.2byte 0x7681
+	.byte 0x0e
+	.byte 0x13
+	.byte 0x0b
+	.byte 0x53
+	.byte 0x0c
+	.byte 0x11
+	.byte 0x01
+	.byte 0x12
+	.byte 0x07
+	.byte 0x10
+	.byte 0x17
+	.2byte 0x0000
+	.byte 0x02
+	.byte 0x2e
+	.byte 0x01
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x27
+	.byte 0x0c
+	.byte 0x03
+	.byte 0x0e
+	.2byte 0x4087
+	.byte 0x0e
+	.byte 0x11
+	.byte 0x01
+	.byte 0x12
+	.byte 0x07
+	.byte 0x3f
+	.byte 0x0c
+	.2byte 0x0000
+	.byte 0x03
+	.byte 0x05
+	.byte 0x00
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x49
+	.byte 0x13
+	.byte 0x03
+	.byte 0x0e
+	.byte 0x02
+	.byte 0x18
+	.2byte 0x0000
+	.byte 0x04
+	.byte 0x05
+	.byte 0x00
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x49
+	.byte 0x13
+	.byte 0x03
+	.byte 0x08
+	.byte 0x02
+	.byte 0x18
+	.2byte 0x0000
+	.byte 0x05
+	.byte 0x34
+	.byte 0x00
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x03
+	.byte 0x0e
+	.byte 0x49
+	.byte 0x13
+	.byte 0x02
+	.byte 0x18
+	.2byte 0x0000
+	.byte 0x06
+	.byte 0x34
+	.byte 0x00
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x03
+	.byte 0x08
+	.byte 0x49
+	.byte 0x13
+	.byte 0x02
+	.byte 0x18
+	.2byte 0x0000
+	.byte 0x07
+	.byte 0x24
+	.byte 0x00
+	.byte 0x0b
+	.byte 0x0b
+	.byte 0x3e
+	.byte 0x0b
+	.byte 0x03
+	.byte 0x08
+	.2byte 0x0000
+	.byte 0x08
+	.byte 0x24
+	.byte 0x00
+	.byte 0x0b
+	.byte 0x0b
+	.byte 0x3e
+	.byte 0x0b
+	.byte 0x03
+	.byte 0x0e
+	.2byte 0x0000
+	.byte 0x09
+	.byte 0x34
+	.byte 0x00
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x03
+	.byte 0x08
+	.byte 0x49
+	.byte 0x13
+	.byte 0x3c
+	.byte 0x0c
+	.byte 0x3f
+	.byte 0x0c
+	.2byte 0x0000
+	.byte 0x0a
+	.byte 0x01
+	.byte 0x01
+	.byte 0x49
+	.byte 0x13
+	.byte 0x0b
+	.byte 0x05
+	.2byte 0x0000
+	.byte 0x0b
+	.byte 0x21
+	.byte 0x00
+	.byte 0x2f
+	.byte 0x05
+	.2byte 0x0000
+	.byte 0x0c
+	.byte 0x34
+	.byte 0x00
+	.byte 0x3b
+	.byte 0x0b
+	.byte 0x3a
+	.byte 0x0b
+	.byte 0x03
+	.byte 0x0e
+	.byte 0x49
+	.byte 0x13
+	.byte 0x3c
+	.byte 0x0c
+	.byte 0x3f
+	.byte 0x0c
+	.2byte 0x0000
+	.byte 0x0d
+	.byte 0x01
+	.byte 0x01
+	.byte 0x49
+	.byte 0x13
+	.byte 0x0b
+	.byte 0x06
+	.2byte 0x0000
+	.byte 0x0e
+	.byte 0x21
+	.byte 0x00
+	.byte 0x2f
+	.byte 0x0b
+	.2byte 0x0000
+	.byte 0x0f
+	.byte 0x21
+	.byte 0x00
+	.byte 0x2f
+	.byte 0x06
+	.2byte 0x0000
+	.byte 0x10
+	.byte 0x01
+	.byte 0x01
+	.byte 0x49
+	.byte 0x13
+	.byte 0x0b
+	.byte 0x0b
+	.2byte 0x0000
+	.byte 0x00
+// -- Begin DWARF2 SEGMENT .debug_frame
+	.section .debug_frame
+.debug_frame_seg:
+	.align 1
+// -- Begin DWARF2 SEGMENT .debug_str
+	.section .debug_str,"MS",@progbits,1
+.debug_str_seg:
+	.align 1
+	.8byte 0x2f65727473756c2f
+	.8byte 0x3631642f656d6f68
+	.8byte 0x3330373731732f37
+	.8byte 0x65702f50502f3930
+	.8byte 0x636e616d726f6672
+	.8byte 0x6172676f72705f65
+	.8byte 0x6f635f676e696d6d
+	.8byte 0x6b726f7765737275
+	.4byte 0x6372732f
+	.byte 0x00
+	.4byte 0x632e444d
+	.byte 0x00
+	.8byte 0x2952286c65746e49
+	.8byte 0x6c65746e49204320
+	.8byte 0x4320343620295228
+	.8byte 0x2072656c69706d6f
+	.8byte 0x6c70706120726f66
+	.8byte 0x736e6f6974616369
+	.8byte 0x676e696e6e757220
+	.8byte 0x65746e49206e6f20
+	.8byte 0x2c3436202952286c
+	.8byte 0x6e6f697372655620
+	.8byte 0x2e322e302e373120
+	.8byte 0x6c69754220343731
+	.8byte 0x3230373130322064
+	.4byte 0x000a3331
+	.8byte 0x572d206c6c61572d
+	.8byte 0x2d20656e696c6e69
+	.8byte 0x73662d20532d2067
+	.8byte 0x73612d656372756f
+	.8byte 0x63662d20632d206d
+	.8byte 0x206d73612d65646f
+	.8byte 0x3d6c6c6f726e752d
+	.2byte 0x0030
+	.4byte 0x6c6f7665
+	.2byte 0x6576
+	.byte 0x00
+	.4byte 0x6e756f63
+	.2byte 0x0074
+	.4byte 0x62756f64
+	.2byte 0x656c
+	.byte 0x00
+	.8byte 0x64656e6769736e75
+	.4byte 0x746e6920
+	.byte 0x00
+	.4byte 0x70657473
+	.byte 0x00
+	.4byte 0x657a6973
+	.byte 0x00
+	.8byte 0x006c61765f706d74
+	.8byte 0x326c61765f706d74
+	.byte 0x00
+	.8byte 0x336c61765f706d74
+	.byte 0x00
+	.4byte 0x7373616d
+	.byte 0x00
+	.8byte 0x00725f61746c6564
+	.4byte 0x6f6c6576
+	.byte 0x00
+	.4byte 0x646e6977
+	.byte 0x00
+	.4byte 0x69646172
+	.2byte 0x7375
+	.byte 0x00
+	.8byte 0x6f705f61746c6564
+	.2byte 0x0073
+	.8byte 0x6f6973696c6c6f63
+	.2byte 0x736e
+	.byte 0x00
+// -- Begin DWARF2 SEGMENT .eh_frame
+	.section .eh_frame,"a",@progbits
+.eh_frame_seg:
+	.align 8
+	.section .text
+.LNDBG_TXe:
+# End

@@ -1,6 +1,6 @@
 #!/bin/bash
 #B136013
 #
-cd src
-make clean
-make all
+make -C ./src clean;
+make -C ./src MD;
+make -C ./src MD output.dat;

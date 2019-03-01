@@ -14,7 +14,7 @@ double second(void);
 
 int main(int argc, char *argv[])
 {
-  int i,j;
+  short unsigned int i,j;
   FILE *in, *out;
   double tstart,tstop;
   double start,stop;
@@ -34,7 +34,10 @@ int main(int argc, char *argv[])
   wind[Xcoord] = 0.9;
   wind[Ycoord] = 0.4;
   wind[Zcoord] = 0.0;
-
+  // wind.Xcoord = 0.9;
+  // wind.Ycoord = 0.4;
+  // wind.Zcoord = 0.0;
+  
   /* read the initial data from a file */
 
   collisions=0;
@@ -89,7 +92,7 @@ int main(int argc, char *argv[])
   }
   tstop=second();
   printf("%d timesteps took %f seconds\n",Nsave*Nstep,tstop-tstart);
-
+  return 0;
 }
 
 double second()
@@ -102,9 +105,8 @@ double second()
 
   struct timeval tp;
   struct timezone tzp;
-  int i;
 
-  i = gettimeofday(&tp,&tzp);
+  gettimeofday(&tp,&tzp);
   return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
 }
 

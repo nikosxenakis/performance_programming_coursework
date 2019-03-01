@@ -4,16 +4,25 @@
 #PBS -l place=excl
 #PBS -N bench
 #PBS -A d167-s1770309
-#PBS -l walltime=0:02:00
+#PBS -l walltime=0:01:30
 # initial -> walltime=1:40:0
 
 # Switch to current working directory
-cd $PBS_O_WORKDIR/src
+cd $PBS_O_WORKDIR
 
+# load modules
 module load intel-compilers-17
-# module load valgrind
+module load valgrind
+
+make -C ./src clean;
+make -C ./src MD;
+
+# spawn 1 thread
+export OMP_NUM_THREADS=1
+
 
 # Run the parallel program
-./MD
+make -C ./src MD output.dat;
+
 # ./MD_initial
 # valgrind --tool=cachegrind --cachegrind-out-file=cachegrind_output.txt ./MD

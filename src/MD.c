@@ -5,13 +5,11 @@
 #include <stdio.h>
 #include <math.h>
 #include "coord.h"
-#include "util.h"
 
 void evolve(int count,double dt)
 {
-  int  step;
-  int i,j,k,l;
-  // int collided;
+  unsigned int  step;
+  int i, j, k, l;
   double size;
   double tmp_val, tmp_val2, tmp_val3;
 
@@ -51,7 +49,8 @@ void evolve(int count,double dt)
     for(i=Ndim-1;i>=0;i--)
     {
       tmp_val = wind[i];
-      for(j=Nbody-1;j>=0;j--)
+
+      for(j=Nbody-1; j>=0; j--)
       {
          // set the viscosity term in the force calculation 
         /* add the wind term in the force calculation */
@@ -59,12 +58,25 @@ void evolve(int count,double dt)
       }
     }
 
+      // for(j=Nbody-1; j>=0; j--)
+      // {
+      //   f[0][j] = - vis[j] * (velo[0][j] + wind.Xcoord);
+      // }
+      // for(j=Nbody-1; j>=0; j--)
+      // {
+      //   f[1][j] = - vis[j] * (velo[1][j] + wind.Ycoord);
+      // }
+      // for(j=Nbody-1; j>=0; j--)
+      // {
+      //   f[2][j] = - vis[j] * (velo[2][j] + wind.Zcoord);
+      // }
+
     /* calculate central force */
     for(i=0;i<Ndim;i++)
     {
       for(j=0;j<Nbody;j++)
       {
-        f[i][j] -= force(M_central_x_G*mass[j],pos[i][j],r[j]);
+        f[i][j] -= (M_central_x_G*mass[j])*pos[i][j]/(pow(r[j],3.0));         
 	    }
 	  }
 
@@ -104,7 +116,7 @@ void evolve(int count,double dt)
 
       for(k=0;k<Ndim;k++)
       {
-        tmp_val += (delta_pos[k][i] * delta_pos[k][i]); // or pow(delta_pos[k][i], 2)
+        tmp_val += pow(delta_pos[k][i], 2); // or pow(delta_pos[k][i], 2)
       }
 
       delta_r[i] = sqrt(tmp_val);
@@ -126,7 +138,8 @@ void evolve(int count,double dt)
         {
           for(l=0;l<Ndim;l++)
           {
-            tmp_val = force(tmp_val2, delta_pos[l][k], tmp_val3);
+            tmp_val = tmp_val2*delta_pos[l][k]/(pow(tmp_val3,3.0));
+
             /*  flip force if close in */
             f[l][j] += tmp_val;
             f[l][i] += - tmp_val;
@@ -138,17 +151,14 @@ void evolve(int count,double dt)
 
           for(l=0;l<Ndim;l++)
           {
-            tmp_val = force(tmp_val2, delta_pos[l][k], tmp_val3);
+            tmp_val = tmp_val2*delta_pos[l][k]/(pow(tmp_val3,3.0));
+
             /*  flip force if close in */
             f[l][j] += - tmp_val;
             f[l][i] += tmp_val;
-            // collided=1;
           }
 
-          // if( collided == 1 )
-          // {
             collisions++;
-          // }
         }
 
         k = k + 1;

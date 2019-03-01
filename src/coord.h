@@ -27,21 +27,11 @@
 
 enum{ Xcoord=0, Ycoord, Zcoord, Ndim };
 
-// DEF double *pos[Ndim], *velo[Ndim];
-// DEF double *f[Ndim], *vis, *mass, *radius;
-// DEF double *delta_pos[3];
-// DEF double *r;
-// DEF double *delta_r;
-// DEF double wind[Ndim];
-// DEF int collisions;
-
-// DEF double pos[Ndim][Nbody], velo[Ndim][Nbody];
-// DEF double f[Ndim][Nbody], vis[Nbody], mass[Nbody], radius[Nbody];
-// DEF double delta_pos[Ndim][Nbody_power2];
-// DEF double r[Nbody];
-// DEF double delta_r[Nbody_power2];
-// DEF double wind[Ndim];
-// DEF int collisions;
+// typedef struct Dim3{
+// 	double Xcoord;
+// 	double Ycoord;
+// 	double Zcoord;
+// } Dim3;
 
 #define padding 0 // 64
 
@@ -51,10 +41,11 @@ DEF double delta_r[Nbody_power2+padding];
 DEF double velo[Ndim][Nbody+padding];
 DEF double r[Nbody+padding];
 DEF double f[Ndim][Nbody+padding];
+// DEF Dim3 wind;
 DEF double wind[Ndim+padding];
 DEF double radius[Nbody+padding];
 DEF double delta_pos[Ndim][Nbody_power2+padding];
-DEF int collisions;
+DEF unsigned int collisions;
 
 
 #define G 2.0

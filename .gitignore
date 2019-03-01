@@ -1,0 +1,11 @@
+# Shared objects
+*.dylib
+
+# Executables
+bin/*
+
+# Debug files
+*.dSYM/
+
+# Kernel Module Compile Results
+.DS_Store
