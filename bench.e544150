@@ -1,0 +1,4 @@
+ld: cannot find -lstdc++
+make: *** [MD] Error 1
+ld: cannot find -lstdc++
+make: *** [MD] Error 1

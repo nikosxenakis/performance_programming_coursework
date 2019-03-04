@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
   /*
   * Run Nstep timesteps and time how long it took
   */
-  // Nsave = 1;
+ 
   tstart=second();
   for(j=1;j<=Nsave;j++)
   {
