@@ -4,184 +4,94 @@
  */
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include "coord.h"
 #include "util.h"
 
-void evolve(int count,double dt)
-{
+#include <assert.h>
+
+void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , double * restrict vis, \
+  double velo[][Ndim] , double * restrict mass, double * restrict radius, const double * restrict wind, unsigned int collisions) {
+
   unsigned int step;
-  int i, ii, j, jj, k, l;
-  double size;
-  double tmp_val, tmp_val2, tmp_val3;
+  int i, j, k, l;
+  double size, force_val, mass_square, radious_add, delta_r, r;
+  double delta_pos[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double tmp_f[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE)));
+
   /*
    * Loop over timesteps.
   */
-  // count=1;
-  for(step = 1;step<=count;++step)
+  // Nstep=1;
+  for(step = 1;step<=Nstep;++step)
   {
     printf("timestep %d\n",step);
     printf("collisions %d\n",collisions);
 
     /* calculate distance from central mass */
-    for(i=0;i<Nbody;++i)
-    {
-      tmp_val = 0.0;
-      for(k=0;k<Ndim;++k)
-      {
-        tmp_val += pow(pos[k][i], 2);
-      }
-      r[i] = sqrt(tmp_val);
+    #pragma vector aligned
+    for(i=0; i<Nbody; ++i) {
+
+      r = 0.0;
+      // add_norm(Ndim, &r, pos[i]);
+      for(l=0; l<Ndim; l++)
+        r += pow(pos[i][l], 2.0);
+      r = sqrt(r);
+
+      // wind_visc_force(Ndim, f[i], vis[i], velo[i], wind);
+      for(l=0; l<Ndim; l++)
+        f[i][l] = - vis[i] * (velo[i][l] + wind[l]);
+
+      for(l=0; l<Ndim; ++l)
+        f[i][l] -= force(M_central_x_G*mass[i], pos[i][l], r);
     }
-
-
-    for(j=0;j<Ndim;++j){
-      visc_force(Nbody,f[j],vis,velo[j]);
-      wind_force(Nbody,f[j],vis,wind[j]);
-    }
-
-    /* calculate central force */
-    for(i=0;i<Ndim;++i)
-    {
-      for(j=0;j<Nbody;++j)
-      {
-        f[i][j] -= force(M_central_x_G*mass[j], pos[i][j], r[j]);
-	    }
-	  }
-
-    /* calculate pairwise separation of particles */
-    for(l=0;l<Ndim;++l)
-    {
-      k = 0;
-      for(i=0;i<Nbody;++i)
-      {
-        tmp_val = pos[l][i];
-        for(j=i+1;j<Nbody;++j)
-        {
-          // pos[l][j] += tmp_val;
-          delta_pos[l][k] = tmp_val - pos[l][j];
-          k = k + 1;
-        }
-      }
-    }
-
-// printf("%d\n", k);
-// 8386560 
-// 4*1024=4096
-
-
-
-// 2048*4096 = 8386560
-
-              // 8388608
-// 4096 * ( 4096-1  + ... + 0 ) = 4096 * 8392704
-
-          // printf("%d , %d \n", k, Npair);
-// k max = 34376515584
-
-// Nobody - 1  +   Nobody - 2  + ... +  Nbody - Nobody =
-// Nbody * Nbody - (1 + ... + Nobody) =
-// Nbody * Nbody - (Nbody+1)*(Nbody/2) =
-// 4096 * 4096 - (4096+1)*(2048) =
-// 8386560
-
-    // for(l=0;l<Ndim;l++)
-    // {
-    //   for (k=0;k<8386560;k++)
-    //   {
-    //     // i = k/Nbody;
-    //     i = k >> 12;
-    //     j = k - (i << 12);
-    //     delta_pos[l][k] = pos[l][i] - pos[l][j];
-    //     // printf("%d, %d, %d, %d\n", Nbody, k, i, j);
-    //   }
-    // }
-
-    // for(l=0;l<Ndim;++l)
-    // {
-    //   k = 0;
-    //   for(i=0;i<Nbody;++i)
-    //   {
-    //     tmp_val = pos[l][i];
-    //     for(j=i+1;j<Nbody;++j)
-    //     {
-    //       delta_pos[l][k] = tmp_val;
-    //       k = k + 1;
-    //     }
-    //   }
-    // }
-
-    // for(l=0;l<Ndim;++l)
-    // {
-    //   k = 0;
-    //   for(i=0;i<Nbody;++i)
-    //   {
-    //     for(j=i+1;j<Nbody;++j)
-    //     {
-    //       delta_pos[l][k] -= pos[l][j];
-    //       k = k + 1;
-    //     }
-    //   }
-    // }
-
-    /* calculate norm of separation vector */
-    for(i=Npair-1;i>=0;--i)
-    {
-      tmp_val = 0.0;
-      for(k=0;k<Ndim;++k)
-      {
-        tmp_val += pow(delta_pos[k][i], 2);
-      }
-      delta_r[i] = sqrt(tmp_val);
-    }
-
-    /*
-     * add pairwise forces.
-    */
 
     k = 0;
-    for(i=0;i<Nbody;++i)
-    {
-        for(j=i+1;j<Nbody;++j)
-        {
-            size = radius[i] + radius[j];
-            tmp_val2 = G*mass[i]*mass[j];
-            tmp_val3 = delta_r[k];
 
-            if( tmp_val3 >= size )
-            {
-              for(l=0;l<Ndim;l++)
-              {
-                tmp_val = force(tmp_val2, delta_pos[l][k], tmp_val3);
-
-                /*  flip force if close in */
-                f[l][j] += tmp_val;
-                f[l][i] -= tmp_val;
-              }
-            }
-            else
-            {
-              for(l=0;l<Ndim;l++)
-              {
-                tmp_val = force(tmp_val2, delta_pos[l][k], tmp_val3);
-
-                /*  flip force if close in */
-                f[l][j] -= tmp_val;
-                f[l][i] += tmp_val;
-              }
-              collisions++;
-            }
-            k = k + 1;
+    for(i=0; i<Nbody; ++i) {
+      memset(tmp_f, 0, sizeof(tmp_f));
+      #pragma simd aligned private(delta_r, delta_pos, force_val, mass_square, radious_add) reduction(+:tmp_f)
+      for(j=Nbody-1; j>=i+1; --j) {
+        delta_r = 0.0;
+        for(l=0;l<Ndim;++l) {
+          delta_pos[l] = pos[i][l] - pos[j][l];
+          delta_r += pow(delta_pos[l], 2);
         }
-      }
+        delta_r = sqrt(delta_r);
 
-    for(i=Ndim-1;i>=0;--i)
-    {
-      for(j=Nbody-1;j>=0;--j)
-      {
+        mass_square = G*mass[i]*mass[j];
+        radious_add = radius[i] + radius[j];
+
+        if( delta_r >= radious_add ) {
+          for(l=0;l<Ndim;l++) {
+            force_val = force(mass_square, delta_pos[l], delta_r);
+            f[j][l] += force_val;
+            tmp_f[l] -= force_val;
+          }
+        }
+        else {
+          for(l=0; l<Ndim; l++) {
+            force_val = force(mass_square, delta_pos[l], delta_r);
+            f[j][l] -= force_val;
+            tmp_f[l] += force_val;
+          }
+          collisions++;
+        }
+
+        k = k + 1;
+      }
+      for(l=0; l<Ndim; l++)
+        f[i][l] += tmp_f[l];
+    }
+
+
+    #pragma simd aligned
+    for(i=Nbody-1; i>=0; --i) {
+      for(l=0; l<Ndim; ++l) {
         /* update positions */
-        pos[i][j] += dt * velo[i][j];
+        pos[i][l] += dt * velo[i][l];
         /* update velocities */
-        velo[i][j] += dt * (f[i][j]/mass[j]);
+        velo[i][l] += dt * (f[i][l]/mass[i]);
       }
     }
 

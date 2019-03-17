@@ -30,25 +30,16 @@ enum
 { Xcoord = 0, Ycoord, Zcoord, Ndim };
 
 // cache line size
-#define padding 64
-#define B 64
+#define CACHE_LINE_SIZE 64
 
-DEF double vis[Nbody + padding], mass[Nbody + padding];
-DEF double pos[Ndim][Nbody + padding];
-DEF double delta_r[Npair + padding];
-DEF double velo[Ndim][Nbody + padding];
-DEF double r[Nbody + padding];
-DEF double f[Ndim][Nbody + padding];
-DEF double wind[Ndim + padding];
-DEF double radius[Nbody + padding];
-DEF double delta_pos[Ndim][Npair + padding];
-DEF unsigned int collisions;
-
+#define PADDING_NBODY 0
+#define PADDING_NDIM (CACHE_LINE_SIZE - Ndim*sizeof(double)) / sizeof(double)
 
 #define G 2.0
 #define M_central 1000.0
 #define M_central_x_G (M_central*G)
 
-void evolve (int Nstep, double dt);
+void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , double *vis, \
+  double velo[][Ndim] , double *mass, double *radius, const double *wind, unsigned int collisions);
 
 #endif

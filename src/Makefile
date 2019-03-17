@@ -1,31 +1,35 @@
 SRC=MD.c control.c
 OBJ=$(SRC:.c=.o)
-OBJ_ASSEMBLY=$(SRC:.c=.s)
-CC= icc # gcc 
+
+GCC= gcc
+ICC= icc
+
 INITIAL_FLAGS=-g -O0 -check=uninit -check-pointers:rw -no-vec
-CFLAGS= -g -Wall -Winline -axCORE-AVX2 -Ofast -ipo
-ASSEMBLY_FLAGS= -g -S -fsource-asm -c
-GPROF= -pg
-EXE = MD
 
-all: $(EXE)
+CFLAGS= -Winline -m64 -restrict
+DEBUG_FLAGS= -g -Wall -pg
+OPTIMISATION_FLAGS= -Ofast
 
-MD: $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -lm
+ICC_FLAGS= -axCORE-AVX2 -ipo -qopenmp-simd
+GCC_FLAGS= -fdump-tree-vect-all=report_gcc.txt -fopt-info -fopt-info-missed=missed.all -fopt-info-loop-optimized
 
-MD_gprof:
-	$(CC) $(GPROF) -c -o MD.o MD.c
-	$(CC) $(GPROF) -c -o control.o control.c
-	$(CC) $(GPROF) -c -o util.o util.c
-	$(CC) $(GPROF) -o $@ MD.o control.o util.o -lm
+%.o: %.c
+	$(ICC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(ICC_FLAGS) -c $< -o $@
 
-assembly:
-	$(CC) $(CFLAGS) $(ASSEMBLY_FLAGS) MD.c
+MD_icc: $(OBJ)
+	$(ICC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(ICC_FLAGS) -qopt-report-file=report_icc.txt -qopt-report=5 -o $@ $(OBJ) -lm
 
-output.dat: $(EXE) input.dat
-	./$(EXE)
+# %.o: %.c
+# 	$(ICC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(GCC_FLAGS) -c $< -o $@
+
+# MD_gcc:
+# 	make $(OBJ)
+# 	$(GCC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(GCC_FLAGS) -o $@ $(OBJ) -lm
+
+run_icc: MD_icc
+	./MD_icc
 
 clean:
-	rm -f $(EXE) $(OBJ) $(OBJ_ASSEMBLY)
+	rm -f MD_icc MD_gcc $(OBJ)
 
-$(OBJ) : coord.h Makefile
+.PHONY: MD_icc MD_gcc run_icc

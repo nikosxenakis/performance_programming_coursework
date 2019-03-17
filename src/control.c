@@ -25,16 +25,21 @@ int main(int argc, char *argv[])
   /*  number of timesteps to use. */
   int Nstep=100;
   int Nsave=5;
-  
+
+  double f[Nbody + PADDING_NBODY][Ndim] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double pos[Nbody + PADDING_NBODY][Ndim] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double vis[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double velo[Nbody + PADDING_NBODY][Ndim] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double mass[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double radius[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
+  const double wind[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE))) = { 0.9, 0.4, 0.0};
+  unsigned int collisions;
+
   if( argc > 1 )
   {
     Nstep=atoi(argv[1]);
   }
 
-  wind[Xcoord] = 0.9;
-  wind[Ycoord] = 0.4;
-  wind[Zcoord] = 0.0;
-  
   /* read the initial data from a file */
 
   collisions=0;
@@ -49,9 +54,9 @@ int main(int argc, char *argv[])
   for(i=0;i<Nbody;i++)
   {
     fscanf(in,"%16le%16le%16le%16le%16le%16le%16le%16le%16le\n",
-      mass+i,radius+i,vis+i,
-      &pos[Xcoord][i], &pos[Ycoord][i], &pos[Zcoord][i],
-      &velo[Xcoord][i], &velo[Ycoord][i], &velo[Zcoord][i]);
+      &mass[i], &radius[i], &vis[i],
+      &pos[i][Xcoord], &pos[i][Ycoord], &pos[i][Zcoord],
+      &velo[i][Xcoord], &velo[i][Ycoord], &velo[i][Zcoord]);
   }
   fclose(in);
 
@@ -63,7 +68,8 @@ int main(int argc, char *argv[])
   for(j=1;j<=Nsave;j++)
   {
     start=second();
-    evolve(Nstep,dt); 
+
+    evolve(Nstep,dt,f,pos,vis,velo,mass,radius,wind,collisions); 
     stop=second();
     printf("%d timesteps took %f seconds\n",Nstep,stop-start);
     printf("collisions %d\n",collisions);
@@ -81,9 +87,9 @@ int main(int argc, char *argv[])
     for(i=0;i<Nbody;i++)
     {
       fprintf(out,"%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E\n",
-      	mass[i],radius[i],vis[i],
-      	pos[Xcoord][i], pos[Ycoord][i], pos[Zcoord][i],
-      	velo[Xcoord][i], velo[Ycoord][i], velo[Zcoord][i]);
+      	mass[i], radius[i], vis[i],
+      	pos[i][Xcoord], pos[i][Ycoord], pos[i][Zcoord],
+        velo[i][Xcoord], velo[i][Ycoord], velo[i][Zcoord]);
     }
     fclose(out);
   }
@@ -102,7 +108,8 @@ double second()
 
   struct timeval tp;
   struct timezone tzp;
-
+// struct timezone { int   tz_minuteswest;
+//                int        tz_dsttime;      }tzp;
   gettimeofday(&tp,&tzp);
   return ( (double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
 }
