@@ -4,7 +4,7 @@ See "https://software.intel.com/en-us/intel-advisor-xe" for details.
 
 Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 17.0.2.174 Build 20170213
 
-Compiler options: -Winline -m64 -restrict -g -Wall -pg -Ofast -axCORE-AVX2 -ipo -qopenmp-simd -qopt-report-file=report_icc.txt -qopt-report=5 -o MD_icc -lm
+Compiler options: -Winline -m64 -restrict -g -Wall -pg -Ofast -axCORE-AVX2 -ipo -qopenmp-simd -inline-max-size=15 -qopt-report-file=report_icc.txt -qopt-report=5 -o MD_icc -lm
 
     Report from: Interprocedural optimizations [ipo]
 
@@ -15,7 +15,7 @@ Compiler options: -Winline -m64 -restrict -g -Wall -pg -Ofast -axCORE-AVX2 -ipo 
 INLINING OPTION VALUES:
   -inline-factor: 100
   -inline-min-size: 30
-  -inline-max-size: 230
+  -inline-max-size: 15 (user-specified)
   -inline-max-total-size: 2000
   -inline-max-per-routine: disabled
   -inline-max-per-compile: disabled
@@ -32,7 +32,7 @@ Begin optimization report for: main(int, char **)
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (main(int, char **)) [1/5=20.0%] control.c(16,1)
+INLINE REPORT: (main(int, char **)) [1/7=14.3%] control.c(16,1)
   -> EXTERN: (35,84) ?1memcpy
   -> INLINE (MANUAL): (40,11) atoi(const char *) (isz = 4) (sz = 11)
     -> EXTERN: /usr/include/stdlib.h:(280,16) strtol(const char *__restrict__, char **__restrict__, int)
@@ -45,8 +45,8 @@ INLINE REPORT: (main(int, char **)) [1/5=20.0%] control.c(16,1)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> INLINE: (70,11) second() (isz = 9) (sz = 14)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> (72,5) evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int) (isz = 346) (sz = 369)
-     [[ Inlining would exceed -inline-max-size value (369>230) <1>]]
+  -> (72,5) evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int) (isz = 338) (sz = 361)
+     [[ Inlining would exceed -inline-max-size value (361>15) <1>]]
   -> INLINE: (73,10) second() (isz = 9) (sz = 14)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> EXTERN: (74,5) printf(const char *__restrict__, ...)
@@ -114,7 +114,7 @@ Begin optimization report for: main(int, char **) [core_4th_gen_avx]
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (main(int, char **)) [1/5=20.0%] control.c(16,1)
+INLINE REPORT: (main(int, char **)) [1/7=14.3%] control.c(16,1)
   -> EXTERN: (35,84) ?1memcpy
   -> INLINE (MANUAL): (40,11) atoi(const char *) (isz = 4) (sz = 11)
     -> EXTERN: /usr/include/stdlib.h:(280,16) strtol(const char *__restrict__, char **__restrict__, int)
@@ -127,8 +127,8 @@ INLINE REPORT: (main(int, char **)) [1/5=20.0%] control.c(16,1)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> INLINE: (70,11) second() (isz = 9) (sz = 14)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> (72,5) evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int) (isz = 346) (sz = 369)
-     [[ Inlining would exceed -inline-max-size value (369>230) <1>]]
+  -> (72,5) evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int) (isz = 338) (sz = 361)
+     [[ Inlining would exceed -inline-max-size value (361>15) <1>]]
   -> INLINE: (73,10) second() (isz = 9) (sz = 14)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> EXTERN: (74,5) printf(const char *__restrict__, ...)
@@ -197,7 +197,7 @@ Begin optimization report for: main(int, char **) [generic]
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (main(int, char **)) [1/5=20.0%] control.c(16,1)
+INLINE REPORT: (main(int, char **)) [1/7=14.3%] control.c(16,1)
   -> EXTERN: (35,84) ?1memcpy
   -> INLINE (MANUAL): (40,11) atoi(const char *) (isz = 4) (sz = 11)
     -> EXTERN: /usr/include/stdlib.h:(280,16) strtol(const char *__restrict__, char **__restrict__, int)
@@ -210,8 +210,8 @@ INLINE REPORT: (main(int, char **)) [1/5=20.0%] control.c(16,1)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> INLINE: (70,11) second() (isz = 9) (sz = 14)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> (72,5) evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int) (isz = 346) (sz = 369)
-     [[ Inlining would exceed -inline-max-size value (369>230) <1>]]
+  -> (72,5) evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int) (isz = 338) (sz = 361)
+     [[ Inlining would exceed -inline-max-size value (361>15) <1>]]
   -> INLINE: (73,10) second() (isz = 9) (sz = 14)
     -> EXTERN: (113,3) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> EXTERN: (74,5) printf(const char *__restrict__, ...)
@@ -276,22 +276,22 @@ control.c(16,1):remark #34051: REGISTER ALLOCATION : [main.A] control.c:16
 
 ===========================================================================
 
-Begin optimization report for: evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int)
+Begin optimization report for: evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int)
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int)) [2/5=40.0%] MD.c(14,130)
+INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int)) [2/7=28.6%] MD.c(14,136)
   -> EXTERN: (28,5) printf(const char *__restrict__, ...)
   -> EXTERN: (29,5) printf(const char *__restrict__, ...)
   -> EXTERN: (38,14) pow(double, double)
-  -> INLINE (MANUAL): (46,20) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
+  -> INLINE (MANUAL): (44,20) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
   -> EXTERN: (52,7) memset(void *, int, size_t)
-  -> EXTERN: (58,22) pow(double, double)
-  -> INLINE (MANUAL): (67,25) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
-  -> INLINE (MANUAL): (74,25) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
+  -> EXTERN: (59,22) pow(double, double)
+  -> INLINE (MANUAL): (68,25) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
+  -> INLINE (MANUAL): (75,25) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
 
 
     Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
@@ -300,35 +300,35 @@ INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], double *, doub
 LOOP BEGIN at MD.c(26,3)
    remark #15542: loop was not vectorized: inner loop was already vectorized
 
-   LOOP BEGIN at MD.c(33,5)
+   LOOP BEGIN at MD.c(33,9)
       remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
       remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
       remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15305: vectorization support: vector length 4
       remark #15309: vectorization support: normalized vectorization overhead 0.072
-      remark #15300: LOOP WAS VECTORIZED
-      remark #15448: unmasked aligned unit stride loads: 6 
+      remark #15301: SIMD LOOP WAS VECTORIZED
+      remark #15448: unmasked aligned unit stride loads: 4 
       remark #15452: unmasked strided loads: 12 
       remark #15453: unmasked strided stores: 6 
       remark #15475: --- begin vector cost summary ---
@@ -344,12 +344,7 @@ LOOP BEGIN at MD.c(26,3)
       LOOP END
 
       LOOP BEGIN at MD.c(42,7)
-         remark #25045: Fused Loops: ( 42 45 )
-
          remark #25436: completely unrolled by 3   (pre-vector) 
-      LOOP END
-
-      LOOP BEGIN at MD.c(45,7)
       LOOP END
    LOOP END
 
@@ -357,23 +352,23 @@ LOOP BEGIN at MD.c(26,3)
       remark #15542: loop was not vectorized: inner loop was already vectorized
 
       LOOP BEGIN at MD.c(54,7)
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <mass[j]>, stride is -1   [ MD.c(62,33) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <radius[j]>, stride is -1   [ MD.c(63,35) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <mass[j]>, stride is -1   [ MD.c(63,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <radius[j]>, stride is -1   [ MD.c(64,35) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
          remark #15305: vectorization support: vector length 4
          remark #15309: vectorization support: normalized vectorization overhead 0.155
          remark #26012: vectorization support: data layout of a private variable delta_pos was optimized, converted to SoA
@@ -388,15 +383,15 @@ LOOP BEGIN at MD.c(26,3)
          remark #15486: divides: 6 
          remark #15488: --- end vector cost summary ---
 
-         LOOP BEGIN at MD.c(56,9)
+         LOOP BEGIN at MD.c(57,9)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
 
-         LOOP BEGIN at MD.c(66,11)
+         LOOP BEGIN at MD.c(67,11)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
 
-         LOOP BEGIN at MD.c(73,11)
+         LOOP BEGIN at MD.c(74,11)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
       LOOP END
@@ -405,7 +400,7 @@ LOOP BEGIN at MD.c(26,3)
       <Remainder loop for vectorization>
       LOOP END
 
-      LOOP BEGIN at MD.c(69,13)
+      LOOP BEGIN at MD.c(70,13)
          remark #25436: completely unrolled by 8  
       LOOP END
    LOOP END
@@ -452,7 +447,7 @@ LOOP END
 
     Report from: Code generation optimizations [cg]
 
-MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve] MD.c:14
+MD.c(14,136):remark #34051: REGISTER ALLOCATION : [evolve] MD.c:14
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -483,22 +478,22 @@ MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve] MD.c:14
 
 ===========================================================================
 
-Begin optimization report for: evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int) [core_4th_gen_avx]
+Begin optimization report for: evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int) [core_4th_gen_avx]
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int)) [2/5=40.0%] MD.c(14,130)
+INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int)) [2/7=28.6%] MD.c(14,136)
   -> EXTERN: (28,5) printf(const char *__restrict__, ...)
   -> EXTERN: (29,5) printf(const char *__restrict__, ...)
   -> EXTERN: (38,14) pow(double, double)
-  -> INLINE (MANUAL): (46,20) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
+  -> INLINE (MANUAL): (44,20) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
   -> EXTERN: (52,7) memset(void *, int, size_t)
-  -> EXTERN: (58,22) pow(double, double)
-  -> INLINE (MANUAL): (67,25) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
-  -> INLINE (MANUAL): (74,25) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
+  -> EXTERN: (59,22) pow(double, double)
+  -> INLINE (MANUAL): (68,25) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
+  -> INLINE (MANUAL): (75,25) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
 
 
     Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
@@ -507,41 +502,49 @@ INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], double *, doub
 LOOP BEGIN at MD.c(26,3)
    remark #15542: loop was not vectorized: inner loop was already vectorized
 
-   LOOP BEGIN at MD.c(33,5)
-      remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
-      remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
-      remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
+   LOOP BEGIN at MD.c(33,9)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=3
+   LOOP END
+
+   LOOP BEGIN at MD.c(33,9)
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ MD.c(43,21) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ MD.c(43,21) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ MD.c(43,21) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15305: vectorization support: vector length 4
-      remark #15309: vectorization support: normalized vectorization overhead 0.072
-      remark #15300: LOOP WAS VECTORIZED
-      remark #15448: unmasked aligned unit stride loads: 6 
+      remark #15309: vectorization support: normalized vectorization overhead 0.107
+      remark #15301: SIMD LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
       remark #15452: unmasked strided loads: 12 
       remark #15453: unmasked strided stores: 6 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 233 
-      remark #15477: vector cost: 93.250 
-      remark #15478: estimated potential speedup: 2.490 
+      remark #15477: vector cost: 93.500 
+      remark #15478: estimated potential speedup: 2.480 
       remark #15486: divides: 3 
       remark #15488: --- end vector cost summary ---
       remark #25015: Estimate of max trip count of loop=1024
@@ -551,36 +554,37 @@ LOOP BEGIN at MD.c(26,3)
       LOOP END
 
       LOOP BEGIN at MD.c(42,7)
-         remark #25045: Fused Loops: ( 42 45 )
-
          remark #25436: completely unrolled by 3   (pre-vector) 
       LOOP END
+   LOOP END
 
-      LOOP BEGIN at MD.c(45,7)
-      LOOP END
+   LOOP BEGIN at MD.c(33,9)
+   <Remainder loop for vectorization>
+      remark #15313: remainder loop was not vectorized: unsupported data type
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 3
    LOOP END
 
    LOOP BEGIN at MD.c(51,5)
       remark #15542: loop was not vectorized: inner loop was already vectorized
 
       LOOP BEGIN at MD.c(54,7)
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <mass[j]>, stride is -1   [ MD.c(62,33) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <radius[j]>, stride is -1   [ MD.c(63,35) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <mass[j]>, stride is -1   [ MD.c(63,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <radius[j]>, stride is -1   [ MD.c(64,35) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
          remark #15305: vectorization support: vector length 4
          remark #15309: vectorization support: normalized vectorization overhead 0.155
          remark #26012: vectorization support: data layout of a private variable delta_pos was optimized, converted to SoA
@@ -595,15 +599,15 @@ LOOP BEGIN at MD.c(26,3)
          remark #15486: divides: 6 
          remark #15488: --- end vector cost summary ---
 
-         LOOP BEGIN at MD.c(56,9)
+         LOOP BEGIN at MD.c(57,9)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
 
-         LOOP BEGIN at MD.c(66,11)
+         LOOP BEGIN at MD.c(67,11)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
 
-         LOOP BEGIN at MD.c(73,11)
+         LOOP BEGIN at MD.c(74,11)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
       LOOP END
@@ -612,7 +616,7 @@ LOOP BEGIN at MD.c(26,3)
       <Remainder loop for vectorization>
       LOOP END
 
-      LOOP BEGIN at MD.c(69,13)
+      LOOP BEGIN at MD.c(70,13)
          remark #25436: completely unrolled by 8  
       LOOP END
    LOOP END
@@ -661,14 +665,14 @@ LOOP END
 
 MD.c(38,18):remark #34030: adjacent sparse (strided) loads optimized for speed. Details: stride { 24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(43,31):remark #34030: adjacent sparse (strided) loads optimized for speed. Details: stride { 24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
-MD.c(46,9):remark #34034: adjacent sparse (strided) stores optimized for speed. Details: stride { 24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
+MD.c(44,9):remark #34034: adjacent sparse (strided) stores optimized for speed. Details: stride { 24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(92,9):remark #34030: adjacent sparse (strided) loads optimized for speed. Details: stride { -24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(92,27):remark #34030: adjacent sparse (strided) loads optimized for speed. Details: stride { -24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(94,29):remark #34030: adjacent sparse (strided) loads optimized for speed. Details: stride { -24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(92,9):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { -24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(94,9):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { -24 }, types { F64-V256, F64-V256, F64-V256 }, number of elements { 4 }, select mask { 0x000000007 }.
 MD.c(52,7):remark #34000: call to memset implemented inline with stores with proven (alignment, offset): (64, 0)
-MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve.V] MD.c:14
+MD.c(14,136):remark #34051: REGISTER ALLOCATION : [evolve.V] MD.c:14
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -677,19 +681,19 @@ MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve.V] MD.c:14
         Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
         
     Routine temporaries
-        Total         :     430
-            Global    :      71
-            Local     :     359
-        Regenerable   :      33
-        Spilled       :      13
+        Total         :     504
+            Global    :      91
+            Local     :     413
+        Regenerable   :      34
+        Spilled       :      19
         
     Routine stack
         Variables     :     576 bytes*
-            Reads     :      26 [1.35e+06 ~ 7.1%]
-            Writes    :      22 [7.11e+05 ~ 3.7%]
-        Spills        :      64 bytes*
-            Reads     :      20 [1.13e+05 ~ 0.6%]
-            Writes    :      12 [7.38e+04 ~ 0.4%]
+            Reads     :      26 [1.35e+06 ~ 7.6%]
+            Writes    :      22 [7.11e+05 ~ 4.0%]
+        Spills        :     112 bytes*
+            Reads     :      37 [1.52e+05 ~ 0.9%]
+            Writes    :      19 [1.13e+05 ~ 0.6%]
     
     Notes
     
@@ -699,22 +703,22 @@ MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve.V] MD.c:14
 
 ===========================================================================
 
-Begin optimization report for: evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int) [generic]
+Begin optimization report for: evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int) [generic]
 
     Report from: Interprocedural optimizations [ipo]
 
-INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int)) [2/5=40.0%] MD.c(14,130)
+INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int)) [2/7=28.6%] MD.c(14,136)
   -> EXTERN: (28,5) printf(const char *__restrict__, ...)
   -> EXTERN: (29,5) printf(const char *__restrict__, ...)
   -> EXTERN: (38,14) pow(double, double)
-  -> INLINE (MANUAL): (46,20) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
+  -> INLINE (MANUAL): (44,20) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
   -> EXTERN: (52,7) memset(void *, int, size_t)
-  -> EXTERN: (58,22) pow(double, double)
-  -> INLINE (MANUAL): (67,25) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
-  -> INLINE (MANUAL): (74,25) force(double, double, double) (isz = 3) (sz = 14)
-    -> EXTERN: util.h:(58,23) pow(double, double)
+  -> EXTERN: (59,22) pow(double, double)
+  -> INLINE (MANUAL): (68,25) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
+  -> INLINE (MANUAL): (75,25) force(double, double, double) (isz = 3) (sz = 14)
+    -> EXTERN: util.h:(56,23) pow(double, double)
 
 
     Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
@@ -723,40 +727,48 @@ INLINE REPORT: (evolve(int, double, double (*)[3], double (*)[3], double *, doub
 LOOP BEGIN at MD.c(26,3)
    remark #15542: loop was not vectorized: inner loop was already vectorized
 
-   LOOP BEGIN at MD.c(33,5)
-      remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
-      remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
-      remark #15388: vectorization support: reference vis[i] has aligned access   [ MD.c(43,21) ]
-      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(46,40) ]
+   LOOP BEGIN at MD.c(33,9)
+   <Peeled loop for vectorization>
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at MD.c(33,9)
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ MD.c(43,21) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ MD.c(43,21) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
+      remark #15389: vectorization support: reference vis[i] has unaligned access   [ MD.c(43,21) ]
+      remark #15388: vectorization support: reference mass[i] has aligned access   [ MD.c(44,40) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(38,18) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(43,9) ]
       remark #15328: vectorization support: non-unit strided load was emulated for the variable <velo[i][l]>, stride is 3   [ MD.c(43,31) ]
-      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(46,9) ]
-      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(46,49) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[i][l]>, stride is 3   [ MD.c(44,9) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[i][l]>, stride is 3   [ MD.c(44,49) ]
       remark #15305: vectorization support: vector length 2
-      remark #15309: vectorization support: normalized vectorization overhead 0.101
-      remark #15300: LOOP WAS VECTORIZED
-      remark #15448: unmasked aligned unit stride loads: 6 
+      remark #15309: vectorization support: normalized vectorization overhead 0.144
+      remark #15301: SIMD LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
       remark #15452: unmasked strided loads: 12 
       remark #15453: unmasked strided stores: 6 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 250 
-      remark #15477: vector cost: 149.000 
+      remark #15477: vector cost: 149.500 
       remark #15478: estimated potential speedup: 1.670 
       remark #15486: divides: 3 
       remark #15488: --- end vector cost summary ---
@@ -767,36 +779,35 @@ LOOP BEGIN at MD.c(26,3)
       LOOP END
 
       LOOP BEGIN at MD.c(42,7)
-         remark #25045: Fused Loops: ( 42 45 )
-
          remark #25436: completely unrolled by 3   (pre-vector) 
       LOOP END
+   LOOP END
 
-      LOOP BEGIN at MD.c(45,7)
-      LOOP END
+   LOOP BEGIN at MD.c(33,9)
+   <Remainder loop for vectorization>
    LOOP END
 
    LOOP BEGIN at MD.c(51,5)
       remark #15542: loop was not vectorized: inner loop was already vectorized
 
       LOOP BEGIN at MD.c(54,7)
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(57,38) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <mass[j]>, stride is -1   [ MD.c(62,33) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <radius[j]>, stride is -1   [ MD.c(63,35) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(68,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
-         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(75,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <pos[j][l]>, stride is -3   [ MD.c(58,38) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <mass[j]>, stride is -1   [ MD.c(63,33) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <radius[j]>, stride is -1   [ MD.c(64,35) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(69,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15329: vectorization support: non-unit strided store was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
+         remark #15328: vectorization support: non-unit strided load was emulated for the variable <f[j][l]>, stride is -3   [ MD.c(76,13) ]
          remark #15305: vectorization support: vector length 2
          remark #15309: vectorization support: normalized vectorization overhead 0.181
          remark #26012: vectorization support: data layout of a private variable delta_pos was optimized, converted to SoA
@@ -811,15 +822,15 @@ LOOP BEGIN at MD.c(26,3)
          remark #15486: divides: 6 
          remark #15488: --- end vector cost summary ---
 
-         LOOP BEGIN at MD.c(56,9)
+         LOOP BEGIN at MD.c(57,9)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
 
-         LOOP BEGIN at MD.c(66,11)
+         LOOP BEGIN at MD.c(67,11)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
 
-         LOOP BEGIN at MD.c(73,11)
+         LOOP BEGIN at MD.c(74,11)
             remark #25436: completely unrolled by 3   (pre-vector) 
          LOOP END
       LOOP END
@@ -828,7 +839,7 @@ LOOP BEGIN at MD.c(26,3)
       <Remainder loop for vectorization>
       LOOP END
 
-      LOOP BEGIN at MD.c(69,13)
+      LOOP BEGIN at MD.c(70,13)
          remark #25436: completely unrolled by 8  
       LOOP END
    LOOP END
@@ -877,14 +888,14 @@ LOOP END
 
 MD.c(38,18):remark #34069: optimization of adjacent sparse (strided) loads seems unprofitable. Details: stride { 24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(43,31):remark #34069: optimization of adjacent sparse (strided) loads seems unprofitable. Details: stride { 24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
-MD.c(46,9):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { 24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
+MD.c(44,9):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { 24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(92,9):remark #34069: optimization of adjacent sparse (strided) loads seems unprofitable. Details: stride { -24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(92,27):remark #34069: optimization of adjacent sparse (strided) loads seems unprofitable. Details: stride { -24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(94,29):remark #34069: optimization of adjacent sparse (strided) loads seems unprofitable. Details: stride { -24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(92,9):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { -24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(94,9):remark #34033: adjacent sparse (strided) stores are not optimized. Details: stride { -24 }, types { F64-V128, F64-V128 }, number of elements { 2 }, select mask { 0x000000003 }.
 MD.c(52,7):remark #34000: call to memset implemented inline with stores with proven (alignment, offset): (64, 0)
-MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve.A] MD.c:14
+MD.c(14,136):remark #34051: REGISTER ALLOCATION : [evolve.A] MD.c:14
 
     Hardware registers
         Reserved     :    2[ rsp rip]
@@ -893,19 +904,19 @@ MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve.A] MD.c:14
         Assigned     :   30[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm15]
         
     Routine temporaries
-        Total         :     335
-            Global    :      70
-            Local     :     265
-        Regenerable   :      32
-        Spilled       :      14
+        Total         :     417
+            Global    :      84
+            Local     :     333
+        Regenerable   :      33
+        Spilled       :      18
         
     Routine stack
         Variables     :     320 bytes*
-            Reads     :      34 [1.35e+06 ~ 7.3%]
-            Writes    :      24 [7.52e+05 ~ 4.1%]
-        Spills        :      80 bytes*
-            Reads     :      21 [1.13e+05 ~ 0.6%]
-            Writes    :      14 [9.22e+04 ~ 0.5%]
+            Reads     :      34 [1.35e+06 ~ 7.7%]
+            Writes    :      24 [7.52e+05 ~ 4.3%]
+        Spills        :     112 bytes*
+            Reads     :      28 [1.52e+05 ~ 0.9%]
+            Writes    :      18 [1.13e+05 ~ 0.6%]
     
     Notes
     
@@ -915,11 +926,107 @@ MD.c(14,130):remark #34051: REGISTER ALLOCATION : [evolve.A] MD.c:14
 
 ===========================================================================
 
+Begin optimization report for: wind_visc_force..xN4vvvvv.J(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (wind_visc_force..xN4vvvvv.J(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)) util.h(27,123)
+
+===========================================================================
+
+Begin optimization report for: wind_visc_force..xN4vvvvv(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (wind_visc_force..xN4vvvvv(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)) util.h(27,123)
+
+===========================================================================
+
+Begin optimization report for: wind_visc_force..xM4vvvvv.J(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (wind_visc_force..xM4vvvvv.J(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)) util.h(27,123)
+
+===========================================================================
+
+Begin optimization report for: wind_visc_force..xM4vvvvv(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (wind_visc_force..xM4vvvvv(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)) util.h(27,123)
+
+===========================================================================
+
+Begin optimization report for: wind_visc_force(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (wind_visc_force(int, double *__restrict__, double, double *__restrict__, const double *__restrict__)) util.h(27,123)
+
+===========================================================================
+
+Begin optimization report for: add_norm..xN2vv.J(int, double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (add_norm..xN2vv.J(int, double *__restrict__)) util.h(43,56)
+
+===========================================================================
+
+Begin optimization report for: add_norm..xN2vv(int, double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (add_norm..xN2vv(int, double *__restrict__)) util.h(43,56)
+
+===========================================================================
+
+Begin optimization report for: add_norm..xM2vv.J(int, double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (add_norm..xM2vv.J(int, double *__restrict__)) util.h(43,56)
+
+===========================================================================
+
+Begin optimization report for: add_norm..xM2vv(int, double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (add_norm..xM2vv(int, double *__restrict__)) util.h(43,56)
+
+===========================================================================
+
+Begin optimization report for: add_norm(int, double *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (add_norm(int, double *__restrict__)) util.h(43,56)
+
+===========================================================================
+
+Begin optimization report for: force..xM2vvv.J(double, double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (force..xM2vvv.J(double, double, double)) util.h(55,1)
+
+===========================================================================
+
+Begin optimization report for: force..xM2vvv(double, double, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (force..xM2vvv(double, double, double)) util.h(55,1)
+
+===========================================================================
+
 Begin optimization report for: force(double, double, double)
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (force(double, double, double)) util.h(57,1)
+DEAD STATIC FUNCTION: (force(double, double, double)) util.h(55,1)
 
 ===========================================================================
 
@@ -938,7 +1045,7 @@ DEAD STATIC FUNCTION: (second()) control.c(102,1)
 Profile feedback used a statically estimated profile for the following routines:
 
   File: MD.c
-        evolve(int, double, double (*)[3], double (*)[3], double *, double (*)[3], double *, double *, const double *, unsigned int)(14)
+        evolve(int, double, double (*)[3], double (*)[3], const double *, double (*)[3], double *, const double *, const double *, unsigned int)(14)
 
   File: control.c
         main(int, char **)(16)

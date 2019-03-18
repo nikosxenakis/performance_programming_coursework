@@ -10,7 +10,7 @@ CFLAGS= -Winline -m64 -restrict
 DEBUG_FLAGS= -g -Wall -pg
 OPTIMISATION_FLAGS= -Ofast
 
-ICC_FLAGS= -axCORE-AVX2 -ipo -qopenmp-simd
+ICC_FLAGS= -axCORE-AVX2 -ipo -qopenmp-simd -inline-max-size=15
 GCC_FLAGS= -fdump-tree-vect-all=report_gcc.txt -fopt-info -fopt-info-missed=missed.all -fopt-info-loop-optimized
 
 %.o: %.c
