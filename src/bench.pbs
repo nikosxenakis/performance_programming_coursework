@@ -10,20 +10,20 @@
 # Switch to current working directory
 cd $PBS_O_WORKDIR
 
-rm bench.o*;
-rm bench.e*;
+rm ../bench.o*;
+rm ../bench.e*;
 
 # load modules
 module load intel-compilers-17
 module load gcc
 
-make -C ./src clean;
+make clean;
 
 # spawn 1 thread
 export OMP_NUM_THREADS=1
 
 
 # Run the parallel program
-make -C ./src run_icc;
+make run_icc;
 
-python correctness.py;
+python ../correctness.py;

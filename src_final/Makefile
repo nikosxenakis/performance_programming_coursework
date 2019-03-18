@@ -6,10 +6,11 @@ ICC= icc
 
 INITIAL_FLAGS=-g -O0 -check=uninit -check-pointers:rw -no-vec
 
-CFLAGS= -g -Wall -Winline -pg -restrict
+CFLAGS= -Winline -m64 -restrict
+DEBUG_FLAGS= -g -Wall -pg
 OPTIMISATION_FLAGS= -Ofast
 
-ICC_FLAGS= -ipo -qopenmp-simd -xBROADWELL # -march=core-avx2 # -axCORE-AVX2
+ICC_FLAGS= -axCORE-AVX2 -ipo -qopenmp-simd -inline-max-size=15
 
 GCC_FLAGS= -fdump-tree-vect-all=report_gcc.txt -fopt-info -fopt-info-missed=missed.all -fopt-info-loop-optimized
 

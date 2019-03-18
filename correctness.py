@@ -7,19 +7,19 @@ import math
 
 
 dataList = [
-    'output_100.dat',
-    'output_200.dat',
-    'output_300.dat',
-    'output_400.dat',
-    'output_500.dat'
+    'output.dat100',
+    'output.dat200',
+    'output.dat300',
+    'output.dat400',
+    'output.dat500',
 ]
 
 currDataPathList = [
-    './data/'+dataList[0],
-    './data/'+dataList[1],
-    './data/'+dataList[2],
-    './data/'+dataList[3],
-    './data/'+dataList[4],
+    './src/'+dataList[0],
+    './src/'+dataList[1],
+    './src/'+dataList[2],
+    './src/'+dataList[3],
+    './src/'+dataList[4],
 ]
 
 def isnan(value):
@@ -47,11 +47,11 @@ def checkNan():
 
 def compareFiles():
     initDataPathList = [
-        './data/initial/'+dataList[0],
-        './data/initial/'+dataList[1],
-        './data/initial/'+dataList[2],
-        './data/initial/'+dataList[3],
-        './data/initial/'+dataList[4],
+        './data/'+dataList[0],
+        './data/'+dataList[1],
+        './data/'+dataList[2],
+        './data/'+dataList[3],
+        './data/'+dataList[4],
     ]
 
     for i in range(5):
