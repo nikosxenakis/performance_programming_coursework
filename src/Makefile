@@ -16,7 +16,7 @@ GCC_FLAGS= -fdump-tree-vect-all=report_gcc.txt -fopt-info -fopt-info-missed=miss
 %.o: %.c
 	$(ICC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(ICC_FLAGS) -c $< -o $@
 
-MD_icc: $(OBJ)
+MD: $(OBJ)
 	$(ICC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(ICC_FLAGS) -qopt-report-file=report_icc.txt -qopt-report=5 -o $@ $(OBJ) -lm
 
 # %.o: %.c
@@ -26,10 +26,10 @@ MD_icc: $(OBJ)
 # 	make $(OBJ)
 # 	$(GCC) $(CFLAGS) $(DEBUG_FLAGS) $(OPTIMISATION_FLAGS) $(GCC_FLAGS) -o $@ $(OBJ) -lm
 
-run_icc: MD_icc
-	./MD_icc
+run: MD
+	./MD
 
 clean:
-	rm -f MD_icc MD_gcc $(OBJ)
+	rm -f MD $(OBJ)
 
-.PHONY: MD_icc MD_gcc run_icc
+.PHONY: MD run

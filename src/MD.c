@@ -89,7 +89,7 @@ void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const
     for(i=Nbody-1; i>=0; --i) {
       for(l=0; l<Ndim; ++l) {
         /* update positions */
-        pos[i][l] += dt * velo[i][l];
+        pos[i][l] += dt * velo[i][l];        
         /* update velocities */
         velo[i][l] += dt * (f[i][l]/mass[i]);
       }

@@ -1,0 +1,32 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 99.74     29.19    29.19        5     5.84     5.84  evolve
+  0.21     29.25     0.06                             reduction_final_strided
+  0.07     29.27     0.02                             __intel_reduction_init_array
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.03% of 29.27 seconds
+
+index % time    self  children    called     name
+               29.19    0.00       5/5           main [2]
+[1]     99.7   29.19    0.00       5         evolve [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     99.7    0.00   29.19                 main [2]
+               29.19    0.00       5/5           evolve [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]      0.2    0.06    0.00                 reduction_final_strided [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]      0.1    0.02    0.00                 __intel_reduction_init_array [4]
+-----------------------------------------------
+
+Index by function name
+
+   [4] __intel_reduction_init_array [1] evolve (MD.c)      [3] reduction_final_strided
