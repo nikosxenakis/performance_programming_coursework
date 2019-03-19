@@ -2,10 +2,12 @@
 #B136013
 #
 
-module load intel-compilers-17;
-make -C ./src clean;
+FOLDER=./src_v3_data_structures_i
 
-make -C ./src run_icc;
+module load intel-compilers-17;
+make -C $FOLDER clean;
+
+make -C $FOLDER run;
 
 echo "Test results:";
 python correctness.py;

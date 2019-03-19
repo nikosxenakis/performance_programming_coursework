@@ -14,12 +14,15 @@ dataList = [
     'output.dat500',
 ]
 
+# SRC_FOLDER = './src_v2_add_opt_flags/'
+SRC_FOLDER = './src_v3_data_structures_i/'
+
 currDataPathList = [
-    './src/'+dataList[0],
-    './src/'+dataList[1],
-    './src/'+dataList[2],
-    './src/'+dataList[3],
-    './src/'+dataList[4],
+    SRC_FOLDER+dataList[0],
+    SRC_FOLDER+dataList[1],
+    SRC_FOLDER+dataList[2],
+    SRC_FOLDER+dataList[3],
+    SRC_FOLDER+dataList[4],
 ]
 
 def isnan(value):

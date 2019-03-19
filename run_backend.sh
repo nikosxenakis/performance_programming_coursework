@@ -2,4 +2,8 @@
 #B136013
 #
 
-qsub ./src/bench.pbs
+cd ./src_v3_data_structures_i;
+
+qsub bench.pbs;
+
+cd ..;

@@ -1,6 +1,6 @@
 #!/bin/bash --login
 #
-#PBS -l select=1:ncpus=36
+#PBS -l select=1:ncpus=1
 #PBS -l place=excl
 #PBS -N bench
 #PBS -A d167-s1770309
@@ -9,9 +9,6 @@
 
 # Switch to current working directory
 cd $PBS_O_WORKDIR
-
-rm ../bench.o*;
-rm ../bench.e*;
 
 # load modules
 module load intel-compilers-17
@@ -22,8 +19,11 @@ make clean;
 # spawn 1 thread
 export OMP_NUM_THREADS=1
 
-
 # Run the parallel program
-make run_icc;
+make run;
 
+gprof -b MD gmon.out > gprof.txt
+rm gmon.out
+
+echo "Test results:";
 python ../correctness.py;
