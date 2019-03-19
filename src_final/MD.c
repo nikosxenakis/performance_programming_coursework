@@ -5,16 +5,16 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <assert.h>
+
 #include "coord.h"
 #include "util.h"
 
-#include <assert.h>
-
 void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const double * restrict vis, \
-  double velo[][Ndim] , double * restrict mass, const double * restrict radius, const double * restrict wind, unsigned int collisions) {
+  double velo[][Ndim] , double * restrict mass, const double * restrict radius, const double * restrict wind) {
 
-  unsigned int step;
   int i, j, k, l;
+  unsigned int step;
   double size, force_val, mass_square, radious_add, delta_r, r;
   double delta_pos[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE)));
   double tmp_f[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE)));
@@ -50,7 +50,7 @@ void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const
 
     for(i=0; i<Nbody; ++i) {
       memset(tmp_f, 0, sizeof(tmp_f));
-      #pragma simd aligned private(delta_r, delta_pos, force_val, mass_square, radious_add) reduction(+:tmp_f)
+      #pragma simd aligned private(delta_r, delta_pos, force_val, mass_square, radious_add) reduction(+:tmp_f, collisions)
       for(j=Nbody-1; j>=i+1; --j) {
 
         delta_r = 0.0;
@@ -89,12 +89,11 @@ void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const
     for(i=Nbody-1; i>=0; --i) {
       for(l=0; l<Ndim; ++l) {
         /* update positions */
-        pos[i][l] += dt * velo[i][l];
+        pos[i][l] += dt * velo[i][l];        
         /* update velocities */
         velo[i][l] += dt * (f[i][l]/mass[i]);
       }
     }
 
   }
-
 }

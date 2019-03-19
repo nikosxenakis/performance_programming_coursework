@@ -33,7 +33,6 @@ int main(int argc, char *argv[])
   double mass[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
   double radius[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
   const double wind[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE))) = { 0.9, 0.4, 0.0};
-  unsigned int collisions;
 
   if( argc > 1 )
   {
@@ -69,7 +68,7 @@ int main(int argc, char *argv[])
   {
     start=second();
 
-    evolve(Nstep,dt,f,pos,vis,velo,mass,radius,wind,collisions); 
+    evolve(Nstep,dt,f,pos,vis,velo,mass,radius,wind); 
     stop=second();
     printf("%d timesteps took %f seconds\n",Nstep,stop-start);
     printf("collisions %d\n",collisions);

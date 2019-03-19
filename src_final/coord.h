@@ -39,7 +39,9 @@ enum
 #define M_central 1000.0
 #define M_central_x_G (M_central*G)
 
+DEF unsigned int collisions;
+
 void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const double *vis, \
-  double velo[][Ndim] , double *mass, const double *radius, const double *wind, unsigned int collisions);
+  double velo[][Ndim] , double *mass, const double *radius, const double *wind);
 
 #endif
