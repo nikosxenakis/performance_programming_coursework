@@ -2,7 +2,7 @@
 #B136013
 #
 
-FOLDER=./src_v3_data_structures_i
+FOLDER=./src_v10_memory_accesses
 
 module load intel-compilers-17;
 make -C $FOLDER clean;

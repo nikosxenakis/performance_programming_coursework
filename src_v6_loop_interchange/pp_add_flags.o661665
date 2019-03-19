@@ -1,0 +1,27 @@
+rm -f MD MD.o control.o
+icc -g -Wall -Winline -pg -restrict -qopenmp-simd  -Ofast -ipo  -xBROADWELL  -c MD.c -o MD.o
+icc -g -Wall -Winline -pg -restrict -qopenmp-simd  -Ofast -ipo  -xBROADWELL  -c control.c -o control.o
+icc -g -Wall -Winline -pg -restrict -qopenmp-simd  -Ofast -ipo  -xBROADWELL  -qopt-report-file=report_icc.txt -qopt-report=5 -o MD MD.o control.o -lm
+./MD
+timestep 1
+collisions 0
+100 timesteps took 0.265626 seconds
+collisions 0
+timestep 1
+collisions 0
+100 timesteps took 0.142896 seconds
+collisions 0
+timestep 1
+collisions 0
+100 timesteps took 0.133717 seconds
+collisions 0
+timestep 1
+collisions 0
+100 timesteps took 0.133704 seconds
+collisions 0
+timestep 1
+collisions 0
+100 timesteps took 0.133742 seconds
+collisions 0
+500 timesteps took 0.909683 seconds
+Test results:

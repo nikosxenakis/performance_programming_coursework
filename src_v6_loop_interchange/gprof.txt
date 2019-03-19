@@ -1,0 +1,28 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 90.03      0.72     0.72        5   144.04   144.04  evolve
+ 10.00      0.80     0.08                             __intel_avx_rep_memset
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 1.25% of 0.80 seconds
+
+index % time    self  children    called     name
+                0.72    0.00       5/5           main [2]
+[1]     90.0    0.72    0.00       5         evolve [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     90.0    0.00    0.72                 main [2]
+                0.72    0.00       5/5           evolve [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     10.0    0.08    0.00                 __intel_avx_rep_memset [3]
+-----------------------------------------------
+
+Index by function name
+
+   [3] __intel_avx_rep_memset  [1] evolve (MD.c)

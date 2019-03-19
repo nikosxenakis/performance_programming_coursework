@@ -1,0 +1,28 @@
+#!/bin/bash --login
+#
+#PBS -l select=1:ncpus=1
+#PBS -l place=excl
+#PBS -N pp_add_flags
+#PBS -A d167-s1770309
+#PBS -l walltime=0:02:00
+
+# Switch to current working directory
+cd $PBS_O_WORKDIR
+
+# load modules
+module load intel-compilers-17
+module load gcc
+
+make clean;
+
+# spawn 1 thread
+export OMP_NUM_THREADS=1
+
+# Run the parallel program
+make run;
+
+gprof -b MD gmon.out > gprof.txt
+rm gmon.out
+
+echo "Test results:";
+python ../correctness.py;

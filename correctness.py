@@ -14,8 +14,7 @@ dataList = [
     'output.dat500',
 ]
 
-# SRC_FOLDER = './src_v2_add_opt_flags/'
-SRC_FOLDER = './src_v3_data_structures_i/'
+SRC_FOLDER = './src_v10_memory_accesses/'
 
 currDataPathList = [
     SRC_FOLDER+dataList[0],

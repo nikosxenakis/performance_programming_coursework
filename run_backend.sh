@@ -2,7 +2,7 @@
 #B136013
 #
 
-cd ./src_v3_data_structures_i;
+cd ./src_v6_loop_interchange;
 
 qsub bench.pbs;
 
