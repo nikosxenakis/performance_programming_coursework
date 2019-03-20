@@ -13,151 +13,167 @@ User annotated:
 Auto-annotation:  on
 
 --------------------------------------------------------------------------------
-           Ir  I1mr  ILmr          Dr       D1mr   DLmr          Dw   D1mw   DLmw 
+         Ir  I1mr  ILmr          Dr      D1mr   DLmr         Dw   D1mw   DLmw 
 --------------------------------------------------------------------------------
-2,010,586,642 1,764 1,418 563,276,966 41,307,869 11,517 318,876,726 59,851 16,296  PROGRAM TOTALS
+447,040,637 1,585 1,461 122,633,644 8,271,434 11,523 67,846,639 16,426 16,307  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
-           Ir I1mr ILmr          Dr       D1mr  DLmr          Dw   D1mw  DLmw  file:function
+         Ir I1mr ILmr         Dr      D1mr  DLmr         Dw  D1mw  DLmw  file:function
 --------------------------------------------------------------------------------
-1,426,923,660   37   13 461,731,865 41,261,383     0 251,760,665  7,680 1,536  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v10_memory_accesses/MD.c:evolve
-  177,995,664  116   99  36,923,482         56     3  26,795,873 40,991 8,194  ???:__printf_fp
-  125,921,280    1    1      61,440      7,680     0           0      0     0  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v10_memory_accesses/util.h:evolve
-   57,687,040    6    6  19,142,411          0     0   8,916,860      5     0  ???:hack_digit.13574
-   43,119,322   90   63   9,853,458        123     8  10,016,744     55     2  ???:vfprintf
-   41,614,180    9    5   6,128,335          0     0   4,132,970      5     1  ???:__mpn_mul_1
-   26,100,773   68   68   7,720,964      9,294 9,291   2,584,580  4,611 4,611  ???:_IO_vfscanf
-   19,693,213   17    5   5,266,053          0     0   4,857,844      0     0  ???:__mpn_divrem
-   18,740,564   53   53   2,628,836          4     4   1,380,234      3     3  ???:____strtod_l_internal
-   13,540,553    4    4   3,338,936          0     0   2,744,860     11     1  ???:_IO_file_xsputn@@GLIBC_2.2.5
-    7,925,820    6    2   2,211,865          5     0     552,965      0     0  ???:read_int
-    7,005,464    3    3     778,402          0     0     389,219  5,450 1,087  ???:__GI_mempcpy
-    5,345,440    3    3   1,290,275          0     0     921,625      0     0  ???:_IO_padn
-    4,711,833    2    2     409,727         16     2           0      0     0  ???:strchrnul
-    4,233,264    7    7     650,954          2     2     364,873      1     1  ???:str_to_mpn.isra.0
-    3,870,846    4    4     368,652          0     0     921,630      5     0  ???:__mpn_extract_double
-    3,796,909    4    3     506,255          0     0     253,128      0     0  ???:__mpn_lshift
-    3,376,910    6    3     423,862          1     1     266,662      1     1  ???:__GI_memcpy
-    3,119,755    7    3     550,545          0     0     367,030      0     0  ???:__mpn_rshift
-    3,096,674    4    4     442,382          6     1           0      0     0  ???:__GI_strlen
-    2,787,452    7    4     806,894          5     0     733,540      1     1  ???:__mpn_mul
-    2,396,238    2    1     184,326          0     0           0      0     0  ???:isinf
+260,195,358   14   14 92,336,133 8,251,932     0 50,352,133 1,536 1,536  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v10_memory_accesses/MD.c:evolve
+ 50,351,105    5    5     13,313     1,537     1          0     0     0  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v10_memory_accesses/util.h:evolve
+ 35,609,202  100   99  7,386,630        12     3  5,359,760 8,198 8,194  ???:__printf_fp
+ 26,100,773   68   68  7,720,964     9,293 9,290  2,584,580 4,611 4,611  ???:_IO_vfscanf
+ 18,740,564   53   53  2,628,836         4     4  1,380,234     3     3  ???:____strtod_l_internal
+ 11,536,490    6    6  3,828,230         0     0  1,782,476     1     0  ???:hack_digit.13574
+  8,624,230   66   63  1,970,790        31     8  2,003,436    16     3  ???:vfprintf
+  8,483,216    5    5  1,249,668         0     0    842,618     1     0  ???:__mpn_mul_1
+  4,233,264    7    7    650,954         2     2    364,873     1     1  ???:str_to_mpn.isra.0
+  3,935,428    5    5  1,052,767         0     0    971,127     0     0  ???:__mpn_divrem
+  2,708,253    4    4    667,820         0     0    548,996     3     1  ???:_IO_file_xsputn@@GLIBC_2.2.5
+  1,903,354    8    8    258,048         0     0    239,004     1     1  ???:round_and_return
+  1,585,164    2    2    442,373         0     0    110,593     0     0  ???:read_int
+  1,585,009    4    3    211,335         0     0    105,668     0     0  ???:__mpn_lshift
+  1,401,140    3    3    155,686         0     0     77,847 1,090 1,087  ???:__GI_mempcpy
+  1,362,800    6    3    161,152         1     1     91,522     1     1  ???:__GI_memcpy
+  1,089,522    1    1    466,938         0     0    155,646     0     0  ???:_IO_sputbackc
+  1,069,088    3    3    258,055         0     0    184,325     0     0  ???:_IO_padn
+  1,032,234    4    4    147,462         2     1          0     0     0  ???:__GI_strlen
+    942,429    2    2     81,951         5     3          0     0     0  ???:strchrnul
+    858,002    7    4    248,369         1     0    225,790     1     1  ???:__mpn_mul
+    774,186    4    4     73,732         0     0    184,330     1     0  ???:__mpn_extract_double
+    625,022    3    3    110,298         0     0     73,532     0     0  ???:__mpn_rshift
+    479,258    2    1     36,866         0     0          0     0     0  ???:isinf
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v10_memory_accesses/MD.c
 --------------------------------------------------------------------------------
-         Ir I1mr ILmr          Dr       D1mr DLmr          Dw  D1mw  DLmw 
+        Ir I1mr ILmr         Dr      D1mr DLmr         Dw  D1mw  DLmw 
 
 -- line 2 ----------------------------------------
-          .    .    .           .          .    .           .     .     .   *  Simple molecular dynamics code.
-          .    .    .           .          .    .           .     .     .   *
-          .    .    .           .          .    .           .     .     .   */
-          .    .    .           .          .    .           .     .     .  #include <stdio.h>
-          .    .    .           .          .    .           .     .     .  #include <math.h>
-          .    .    .           .          .    .           .     .     .  #include "coord.h"
-          .    .    .           .          .    .           .     .     .  #include "util.h"
-          .    .    .           .          .    .           .     .     .  
-         35    1    1           0          0    0          15     0     0  void evolve(int count,double dt) {
-          .    .    .           .          .    .           .     .     .    int  step;
-     81,920    0    0           0          0    0           0     0     0    int i,j,k,l;
-          .    .    .           .          .    .           .     .     .    double radious_sum, force_val, mass_square, r, delta_r, delta_pos[Ndim];
-          .    .    .           .          .    .           .     .     .    /*
-          .    .    .           .          .    .           .     .     .    * Loop over timesteps.
-          .    .    .           .          .    .           .     .     .    */
-          .    .    .           .          .    .           .     .     .    count = 1;
-          .    .    .           .          .    .           .     .     .    for(step = 1;step<=count;step++){
-         20    0    0           0          0    0           5     0     0      printf("timestep %d\n",step);
-         25    1    1           5          5    0           5     0     0      printf("collisions %d\n",collisions);
-          .    .    .           .          .    .           .     .     .      
-     81,930    0    0           0          0    0           0     0     0      for(i=0; i<Nbody; i++) {
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .        /* calculate distance from central mass */
-          .    .    .           .          .    .           .     .     .        r = 0.0;
-          .    .    .           .          .    .           .     .     .        add_norm(Ndim,&r,pos[i]);
-     61,440    1    1           0          0    0           0     0     0        r = sqrt(r);
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .        /* set the viscosity term in the force calculation */
-          .    .    .           .          .    .           .     .     .        /* add the wind term in the force calculation */
-     20,495    0    0      20,495      2,565    0           0     0     0        visc_wind_force(Ndim, f[i], vis[i], velo[i], wind);
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .        /* calculate central force */
-          .    .    .           .          .    .           .     .     .        for(l=0; l<Ndim; l++) {
-    266,245    1    1     143,365     10,240    0      61,440 7,680 1,536          f[i][l] -= force(G_mul_M_central*mass[i],pos[i][l],r);
-          .    .    .           .          .    .           .     .     .        }
-          .    .    .           .          .    .           .     .     .      }
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .      /*
-          .    .    .           .          .    .           .     .     .      * add pairwise forces.
-          .    .    .           .          .    .           .     .     .      */
-          .    .    .           .          .    .           .     .     .      k = 0;
-     40,980    0    0           0          0    0           0     0     0      for(i=0; i<Nbody; i++) {
-167,833,590    5    3           0          0    0           0     0     0        for(j=i+1; j<Nbody; j++) {
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .          /* calculate pairwise separation of particles */
-          .    .    .           .          .    .           .     .     .          for(l=0; l<Ndim; l++) {
-125,859,825    1    1 125,859,825 15,461,329    0           0     0     0            delta_pos[l] = pos[i][l] - pos[j][l];
-          .    .    .           .          .    .           .     .     .          }
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .          /* calculate norm of separation vector */
-          .    .    .           .          .    .           .     .     .          delta_r = 0.0;
-          .    .    .           .          .    .           .     .     .          add_norm(Ndim, &delta_r, delta_pos);
-125,798,400    5    1           0          0    0           0     0     0          delta_r = sqrt(delta_r);
-          .    .    .           .          .    .           .     .     .  
- 83,886,075    0    0  41,953,275  5,158,137    0           0     0     0          radious_sum = radius[i] + radius[j];
- 41,953,280    0    0  41,953,280  5,157,854    0           0     0     0          mass_square = G*mass[i]*mass[j];
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .          /*  flip force if close in */
- 83,865,600    0    0           0          0    0           0     0     0          if( delta_r >= radious_sum ) {
-          .    .    .           .          .    .           .     .     .            for(l=0; l<Ndim; l++) {
-          .    .    .           .          .    .           .     .     .              force_val = force(mass_square,delta_pos[l],delta_r);
-377,395,200    0    0 125,798,400      2,240    0 125,798,400     0     0              f[i][l] -= force_val;
-419,328,000   10    2 125,798,400 15,443,403    0 125,798,400     0     0              f[j][l] += force_val;
-          .    .    .           .          .    .           .     .     .            }
-          .    .    .           .          .    .           .     .     .          }
-          .    .    .           .          .    .           .     .     .          else {
-          .    .    .           .          .    .           .     .     .            for(l=0; l<Ndim; l++) {
-          .    .    .           .          .    .           .     .     .              force_val = force(mass_square,delta_pos[l],delta_r);
-          .    .    .           .          .    .           .     .     .              f[i][l] += force_val;
-          .    .    .           .          .    .           .     .     .              f[j][l] -= force_val;
-          .    .    .           .          .    .           .     .     .            }
-          .    .    .           .          .    .           .     .     .            collisions++;
-          .    .    .           .          .    .           .     .     .          }
-          .    .    .           .          .    .           .     .     .          k = k + 1;
-          .    .    .           .          .    .           .     .     .        }
-          .    .    .           .          .    .           .     .     .      }
-          .    .    .           .          .    .           .     .     .  
-          .    .    .           .          .    .           .     .     .      
-     81,930    5    0           0          0    0           0     0     0      for(i=0; i<Nbody; i++) {
-          .    .    .           .          .    .           .     .     .        for(l=0; l<Ndim; l++) {
-          .    .    .           .          .    .           .     .     .          /* update positions */
-    204,805    5    1     122,885     15,365    0      61,440     0     0          pos[i][l] += + dt * velo[i][l];
-          .    .    .           .          .    .           .     .     .          /* update velocities */
-    163,840    2    1      81,920     10,240    0      40,960     0     0          velo[i][l] += + dt * (f[i][l]/mass[i]);
-          .    .    .           .          .    .           .     .     .        }
-          .    .    .           .          .    .           .     .     .      }
-          .    .    .           .          .    .           .     .     .    }
-         25    0    0          15          5    0           0     0     0  }
+         .    .    .          .         .    .          .     .     .   *  Simple molecular dynamics code.
+         .    .    .          .         .    .          .     .     .   *
+         .    .    .          .         .    .          .     .     .   */
+         .    .    .          .         .    .          .     .     .  #include <stdio.h>
+         .    .    .          .         .    .          .     .     .  #include <math.h>
+         .    .    .          .         .    .          .     .     .  #include "coord.h"
+         .    .    .          .         .    .          .     .     .  #include "util.h"
+         .    .    .          .         .    .          .     .     .  
+         7    1    1          0         0    0          3     0     0  void evolve(int count,double dt) {
+         .    .    .          .         .    .          .     .     .    int  step;
+    16,384    1    1          0         0    0          0     0     0    int i,j,k,l;
+         .    .    .          .         .    .          .     .     .    double radious_sum, force_val, mass_square, r, delta_r;
+         .    .    .          .         .    .          .     .     .    double delta_pos[Ndim + PADDING] __attribute__((aligned(64)));
+         .    .    .          .         .    .          .     .     .    // double tmp_f[Ndim + PADDING] __attribute__((aligned(64)));
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .    /*
+         .    .    .          .         .    .          .     .     .    * Loop over timesteps.
+         .    .    .          .         .    .          .     .     .    */
+         .    .    .          .         .    .          .     .     .    count = 1;
+         .    .    .          .         .    .          .     .     .    for(step = 1;step<=count;step++){
+         4    0    0          0         0    0          1     0     0      printf("timestep %d\n",step);
+         5    1    1          1         1    0          1     0     0      printf("collisions %d\n",collisions);
+         .    .    .          .         .    .          .     .     .      
+         .    .    .          .         .    .          .     .     .      // #pragma simd aligned linear(vis, mass)
+     4,098    0    0          0         0    0          0     0     0      for(i=0; i<Nbody; i++) {
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .        /* calculate distance from central mass */
+         .    .    .          .         .    .          .     .     .        r = add_norm(Ndim, pos[i]);
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .        for(l=0; l<Ndim; l++) {
+         .    .    .          .         .    .          .     .     .          /* set the viscosity term in the force calculation */
+         .    .    .          .         .    .          .     .     .          /* add the wind term in the force calculation */
+    16,387    1    1     13,315     2,049    0          0     0     0          f[i][l] = visc_wind_force(vis[i], velo[i][l], wind[l]);
+         .    .    .          .         .    .          .     .     .      
+         .    .    .          .         .    .          .     .     .          /* calculate central force */
+    31,745    3    3      9,217       513    0     12,288 1,536 1,536          f[i][l] -= force(G_mul_M_central*mass[i],pos[i][l],r);
+         .    .    .          .         .    .          .     .     .        }
+         .    .    .          .         .    .          .     .     .      }
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .      /*
+         .    .    .          .         .    .          .     .     .      * add pairwise forces.
+         .    .    .          .         .    .          .     .     .      */
+         .    .    .          .         .    .          .     .     .      k = 0;
+     8,196    0    0          0         0    0          0     0     0      for(i=0; i<Nbody; i++) {
+         .    .    .          .         .    .          .     .     .        // memset(tmp_f, 0, sizeof(tmp_f));
+         .    .    .          .         .    .          .     .     .        // #pragma simd aligned private(delta_r, delta_pos, force_val, mass_square, radious_add) reduction(+:tmp_f, collisions)
+33,566,718    1    1          0         0    0          0     0     0        for(j=i+1; j<Nbody; j++) {
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .          /* calculate pairwise separation of particles */
+         .    .    .          .         .    .          .     .     .          for(l=0; l<Ndim; l++) {
+25,171,965    0    0 25,171,965 3,092,261    0          0     0     0            delta_pos[l] = pos[i][l] - pos[j][l];
+         .    .    .          .         .    .          .     .     .          }
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .          /* calculate norm of separation vector */
+         .    .    .          .         .    .          .     .     .          delta_r = add_norm(Ndim, delta_pos);
+         .    .    .          .         .    .          .     .     .  
+16,777,216    1    1  8,390,656 1,031,569    0          0     0     0          mass_square = G*mass[i]*mass[j];
+ 8,390,655    1    1  8,390,655 1,031,626    0          0     0     0          radious_sum = radius[i] + radius[j];
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .          /*  flip force if close in */
+16,773,120    0    0          0         0    0          0     0     0          if( delta_r >= radious_sum ) {
+         .    .    .          .         .    .          .     .     .            for(l=0; l<Ndim; l++) {
+         .    .    .          .         .    .          .     .     .              force_val = force(mass_square,delta_pos[l],delta_r);
+75,479,040    2    2 25,159,680       448    0 25,159,680     0     0              f[i][l] -= force_val;
+83,865,600    0    0 25,159,680 3,088,676    0 25,159,680     0     0              f[j][l] += force_val;
+         .    .    .          .         .    .          .     .     .            }
+         .    .    .          .         .    .          .     .     .          }
+         .    .    .          .         .    .          .     .     .          else {
+         .    .    .          .         .    .          .     .     .            for(l=0; l<Ndim; l++) {
+         .    .    .          .         .    .          .     .     .              force_val = force(mass_square,delta_pos[l],delta_r);
+         .    .    .          .         .    .          .     .     .              f[i][l] += force_val;
+         .    .    .          .         .    .          .     .     .              f[j][l] -= force_val;
+         .    .    .          .         .    .          .     .     .            }
+-- line 74 ----------------------------------------
+-- line 76 ----------------------------------------
+         .    .    .          .         .    .          .     .     .          }
+         .    .    .          .         .    .          .     .     .          k++;
+         .    .    .          .         .    .          .     .     .        }
+         .    .    .          .         .    .          .     .     .        // for(l=0; l<Ndim; l++)
+         .    .    .          .         .    .          .     .     .          // f[i][l] += tmp_f[l];
+         .    .    .          .         .    .          .     .     .      }
+         .    .    .          .         .    .          .     .     .  
+         .    .    .          .         .    .          .     .     .      // #pragma simd aligned linear(mass)
+    20,483    0    0          0         0    0          0     0     0      for(i=Nbody-1; i>=0; i--) {
+         .    .    .          .         .    .          .     .     .        for(l=0; l<Ndim; l++) {
+         .    .    .          .         .    .          .     .     .          /* update positions */
+    40,961    0    0     24,577     2,945    0     12,288     0     0          pos[i][l] += + dt * velo[i][l];
+         .    .    .          .         .    .          .     .     .          /* update velocities */
+    32,768    2    2     16,384     1,842    0      8,192     0     0          velo[i][l] += + dt * (f[i][l]/mass[i]);
+         .    .    .          .         .    .          .     .     .        }
+         .    .    .          .         .    .          .     .     .      }
+         .    .    .          .         .    .          .     .     .    }
+         6    0    0          3         2    0          0     0     0  }
 
 --------------------------------------------------------------------------------
 -- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v10_memory_accesses/util.h
 --------------------------------------------------------------------------------
         Ir I1mr ILmr     Dr  D1mr DLmr Dw D1mw DLmw 
 
--- line 22 ----------------------------------------
-         .    .    .      .     .    .  .    .    .    for(l=0; l<N; l++){
-         .    .    .      .     .    .  .    .    .      f[l] = -vis * (velo[l] + wind[l]);
-         .    .    .      .     .    .  .    .    .    }
+-- line 13 ----------------------------------------
+         .    .    .      .     .    .  .    .    .  // inline void wind_force(int N,double * restrict f, double vis, double * restrict wind) {
+         .    .    .      .     .    .  .    .    .  //   int l;
+         .    .    .      .     .    .  .    .    .  //   for(l=0; l<N; l++){
+         .    .    .      .     .    .  .    .    .  //     f[l] += -vis * wind[l];
+         .    .    .      .     .    .  .    .    .  //   }
+         .    .    .      .     .    .  .    .    .  // }
+         .    .    .      .     .    .  .    .    .  
+         .    .    .      .     .    .  .    .    .  inline double visc_wind_force(double vis, double velo, double wind) {
+     9,216    1    1  3,072     0    0  0    0    0    return -vis * (velo + wind);
          .    .    .      .     .    .  .    .    .  }
          .    .    .      .     .    .  .    .    .  
-         .    .    .      .     .    .  .    .    .  inline void add_norm(int N,double * restrict r, double * restrict delta) {
+         .    .    .      .     .    .  .    .    .  inline double add_norm(int N, double * restrict delta) {
          .    .    .      .     .    .  .    .    .    int k;
+         .    .    .      .     .    .  .    .    .    double r = 0.0;
          .    .    .      .     .    .  .    .    .    for(k=0;k<N;k++){
-42,014,720    1    1 61,440 7,680    0  0    0    0      *r += (delta[k] * delta[k]);
+ 8,403,968    3    3 10,240 1,536    0  0    0    0      r += (delta[k] * delta[k]);
          .    .    .      .     .    .  .    .    .    }
+         .    .    .      .     .    .  .    .    .  
+25,160,704    0    0      0     0    0  0    0    0    return sqrt(r);
          .    .    .      .     .    .  .    .    .  }
          .    .    .      .     .    .  .    .    .  
          .    .    .      .     .    .  .    .    .  inline double force(double W, double delta, double r) {
-83,906,560    0    0      0     0    0  0    0    0    return W*delta/(pow(r,3.0));
+16,777,217    1    1      1     1    1  0    0    0    return W*delta/(pow(r,3.0));
          .    .    .      .     .    .  .    .    .  }
          .    .    .      .     .    .  .    .    .  
          .    .    .      .     .    .  .    .    .  #endif
@@ -165,5 +181,5 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
 Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw 
 --------------------------------------------------------------------------------
-77    2    1 82  100    0 79   13    9  percentage of events annotated
+69    1    1 75  100    0 74    9    9  percentage of events annotated
 

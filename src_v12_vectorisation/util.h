@@ -26,11 +26,14 @@ inline void visc_wind_force(int N,double * restrict f, double vis, double * rest
 }
 
 // #pragma omp declare simd
-inline void add_norm(int N,double * restrict r, double * restrict delta) {
+inline double add_norm(int N, double * restrict delta) {
   int k;
+  double r = 0.0;
   for(k=0;k<N;k++){
-    *r += (delta[k] * delta[k]);
+    r += (delta[k] * delta[k]);
   }
+
+  return sqrt(r);
 }
 
 // #pragma omp declare simd inbranch

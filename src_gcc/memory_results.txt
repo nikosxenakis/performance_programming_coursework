@@ -1,0 +1,5 @@
+timestep 1
+collisions 0
+100 timesteps took 6.189504 seconds
+collisions 0
+100 timesteps took 7.036590 seconds

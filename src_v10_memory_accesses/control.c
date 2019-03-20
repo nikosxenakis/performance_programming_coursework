@@ -55,9 +55,9 @@ int main(int argc, char *argv[]){
  */
  
    tstart=second();
+   // Nsave = 1;
    for(j=1;j<=Nsave;j++){
       start=second();
-      Nstep = 1;
       evolve(Nstep,dt); 
       stop=second();
       printf("%d timesteps took %f seconds\n",Nstep,stop-start);

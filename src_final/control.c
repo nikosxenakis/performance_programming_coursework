@@ -1,7 +1,7 @@
 /*
  *
  * Control program for the MD update
- *
+ *  Student: B136013
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,13 +26,13 @@ int main(int argc, char *argv[])
   int Nstep=100;
   int Nsave=5;
 
-  double f[Nbody + PADDING_NBODY][Ndim] __attribute__((aligned(CACHE_LINE_SIZE)));
-  double pos[Nbody + PADDING_NBODY][Ndim] __attribute__((aligned(CACHE_LINE_SIZE)));
-  double vis[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
-  double velo[Nbody + PADDING_NBODY][Ndim] __attribute__((aligned(CACHE_LINE_SIZE)));
-  double mass[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
-  double radius[Nbody] __attribute__((aligned(CACHE_LINE_SIZE)));
-  const double wind[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE))) = { 0.9, 0.4, 0.0};
+  double f[Nbody][Ndim] __attribute__((aligned(64)));
+  double pos[Nbody][Ndim] __attribute__((aligned(64)));
+  double vis[Nbody] __attribute__((aligned(64)));
+  double velo[Nbody][Ndim] __attribute__((aligned(64)));
+  double mass[Nbody] __attribute__((aligned(64)));
+  double radius[Nbody] __attribute__((aligned(64)));
+  const double wind[Ndim + PADDING] __attribute__((aligned(64))) = { 0.9, 0.4, 0.0};
 
   if( argc > 1 )
   {

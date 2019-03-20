@@ -28,9 +28,7 @@ void evolve(int Nstep, double dt, double pos[][Ndim], double velo[][Ndim], doubl
     #pragma simd aligned linear(vis, mass)
     for(i=0; i<Nbody; i++) {
       /* calculate distance from central mass */
-      r = 0.0;
-      add_norm(Ndim,&r,pos[i]);
-      r = sqrt(r);
+      r = add_norm(Ndim, pos[i]);
 
       /* set the viscosity term in the force calculation */
       /* add the wind term in the force calculation */
@@ -57,9 +55,7 @@ void evolve(int Nstep, double dt, double pos[][Ndim], double velo[][Ndim], doubl
         }
 
         /* calculate norm of separation vector */
-        delta_r = 0.0;
-        add_norm(Ndim, &delta_r, delta_pos);
-        delta_r = sqrt(delta_r);
+        delta_r = add_norm(Ndim, delta_pos);
 
         radius_sum = radius[i] + radius[j];
         mass_square = G*mass[i]*mass[j];

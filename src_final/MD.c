@@ -1,6 +1,6 @@
 /*
  *  Simple molecular dynamics code.
- *
+ *  Student: B136013
  */
 #include <stdio.h>
 #include <math.h>
@@ -16,8 +16,8 @@ void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const
   int i, j, k, l;
   unsigned int step;
   double size, force_val, mass_square, radious_add, delta_r, r;
-  double delta_pos[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE)));
-  double tmp_f[Ndim + PADDING_NDIM] __attribute__((aligned(CACHE_LINE_SIZE)));
+  double delta_pos[Ndim + PADDING] __attribute__((aligned(64)));
+  double tmp_f[Ndim + PADDING] __attribute__((aligned(64)));
 
   /*
    * Loop over timesteps.
@@ -32,15 +32,10 @@ void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const
     #pragma simd aligned linear(vis, mass)
     for(i=0; i<Nbody; ++i) {
 
-      // r = add_norm(Ndim, pos[i]);
-      r = 0.0;
-      for(l=0; l<Ndim; l++)
-        r += pow(pos[i][l], 2);
-      r = sqrt(r);
+      r = add_norm(Ndim, pos[i]);
 
-      // wind_visc_force(Ndim, f[i], vis[i], velo[i], wind);
       for(l=0; l<Ndim; l++) {
-        f[i][l] = - vis[i] * (velo[i][l] + wind[l]);
+        f[i][l] = visc_wind_force(vis[i], velo[i][l], wind[l]);
         f[i][l] -= force(M_central_x_G*mass[i], pos[i][l], r);
       }
 
@@ -52,13 +47,10 @@ void evolve (int Nstep, double dt, double f[][Ndim] , double pos[][Ndim] , const
       memset(tmp_f, 0, sizeof(tmp_f));
       #pragma simd aligned private(delta_r, delta_pos, force_val, mass_square, radious_add) reduction(+:tmp_f, collisions)
       for(j=Nbody-1; j>=i+1; --j) {
-
-        delta_r = 0.0;
-        for(l=0;l<Ndim;++l) {
+        for(l=0;l<Ndim;++l) 
           delta_pos[l] = pos[i][l] - pos[j][l];
-          delta_r += pow(delta_pos[l], 2);
-        }
-        delta_r = sqrt(delta_r);
+        delta_r = add_norm(Ndim, delta_pos);
+
 
         mass_square = G*mass[i]*mass[j];
         radious_add = radius[i] + radius[j];

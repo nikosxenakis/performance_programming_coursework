@@ -1,0 +1,564 @@
+
+;; Function second (second, funcdef_no=8, decl_uid=2636, cgraph_uid=8)
+
+
+Pass statistics:
+----------------
+
+
+Pass statistics:
+----------------
+
+second ()
+{
+  struct timezone tzpD.2675;
+  struct timeval tpD.2671;
+  long intD.8 _3;
+  doubleD.32 _4;
+  long intD.8 _5;
+  doubleD.32 _6;
+  doubleD.32 _7;
+  doubleD.32 _8;
+
+;;   basic block 2, loop depth 0, count 0, freq 10000, maybe hot
+;;    prev block 0, next block 1, flags: (NEW, REACHABLE)
+;;    pred:       ENTRY [100.0%]  (FALLTHRU,EXECUTABLE)
+  # .MEM_2 = VDEF <.MEM_1(D)>
+  # USE = nonlocal { D.2671 D.2675 }
+  # CLB = nonlocal { D.2671 D.2675 }
+  gettimeofdayD.2600 (&tpD.2671, &tzpD.2675);
+  # VUSE <.MEM_2>
+  _3 = tpD.2671.tv_secD.2576;
+  _4 = (doubleD.32) _3;
+  # VUSE <.MEM_2>
+  _5 = tpD.2671.tv_usecD.2577;
+  _6 = (doubleD.32) _5;
+  _7 = _6 * 9.99999999999999954748111825886258685613938723690807819366e-7;
+  _8 = _7 + _4;
+  # .MEM_9 = VDEF <.MEM_2>
+  tpD.2671 ={v} {CLOBBER};
+  # .MEM_10 = VDEF <.MEM_9>
+  tzpD.2675 ={v} {CLOBBER};
+  # VUSE <.MEM_10>
+  return _8;
+;;    succ:       EXIT [100.0%] 
+
+}
+
+
+
+;; Function main (main, funcdef_no=7, decl_uid=2639, cgraph_uid=7) (executed once)
+
+
+Pass statistics:
+----------------
+
+
+Analyzing loop at control.c:87
+
+control.c:87: note: ===== analyze_loop_nest =====
+control.c:87: note: === vect_analyze_loop_form ===
+control.c:87: note: === get_loop_niters ===Analyzing # of iterations of loop 2
+  exit condition [4095, + , 65535] != 0
+  bounds on difference of bases: -4095 ... -4095
+  result:
+    # of iterations 4095, bounded by 4095
+
+control.c:87: note: ==> get_loop_niters:4096
+control.c:87: note: === vect_analyze_data_refs ===
+Creating dr for velo[_51][2]
+analyze_innermost: success.
+	base_address: &velo
+	offset from base address: 0
+	constant offset from base address: 16
+	step: 24
+	aligned to: 256
+	base_object: velo
+	Access function 0: 2
+	Access function 1: {0, +, 1}_2
+Creating dr for velo[_51][1]
+analyze_innermost: success.
+	base_address: &velo
+	offset from base address: 0
+	constant offset from base address: 8
+	step: 24
+	aligned to: 256
+	base_object: velo
+	Access function 0: 1
+	Access function 1: {0, +, 1}_2
+Creating dr for velo[_51][0]
+analyze_innermost: success.
+	base_address: &velo
+	offset from base address: 0
+	constant offset from base address: 0
+	step: 24
+	aligned to: 256
+	base_object: velo
+	Access function 0: 0
+	Access function 1: {0, +, 1}_2
+Creating dr for pos[_51][2]
+analyze_innermost: success.
+	base_address: &pos
+	offset from base address: 0
+	constant offset from base address: 16
+	step: 24
+	aligned to: 256
+	base_object: pos
+	Access function 0: 2
+	Access function 1: {0, +, 1}_2
+Creating dr for pos[_51][1]
+analyze_innermost: success.
+	base_address: &pos
+	offset from base address: 0
+	constant offset from base address: 8
+	step: 24
+	aligned to: 256
+	base_object: pos
+	Access function 0: 1
+	Access function 1: {0, +, 1}_2
+Creating dr for pos[_51][0]
+analyze_innermost: success.
+	base_address: &pos
+	offset from base address: 0
+	constant offset from base address: 0
+	step: 24
+	aligned to: 256
+	base_object: pos
+	Access function 0: 0
+	Access function 1: {0, +, 1}_2
+Creating dr for vis[_51]
+analyze_innermost: success.
+	base_address: &vis
+	offset from base address: 0
+	constant offset from base address: 0
+	step: 8
+	aligned to: 256
+	base_object: vis
+	Access function 0: {0, +, 1}_2
+Creating dr for radius[_51]
+analyze_innermost: success.
+	base_address: &radius
+	offset from base address: 0
+	constant offset from base address: 0
+	step: 8
+	aligned to: 256
+	base_object: radius
+	Access function 0: {0, +, 1}_2
+Creating dr for mass[_51]
+analyze_innermost: success.
+	base_address: &mass
+	offset from base address: 0
+	constant offset from base address: 0
+	step: 8
+	aligned to: 256
+	base_object: mass
+	Access function 0: {0, +, 1}_2
+Dependence tester statistics:
+Number of dependence tests: 0
+Number of dependence tests classified dependent: 0
+Number of dependence tests classified independent: 0
+Number of undetermined dependence tests: 0
+Number of subscript tests: 0
+Number of undetermined subscript tests: 0
+Number of same subscript function: 0
+Number of ziv tests: 0
+Number of ziv tests returning dependent: 0
+Number of ziv tests returning independent: 0
+Number of ziv tests unimplemented: 0
+Number of siv tests: 0
+Number of siv tests returning dependent: 0
+Number of siv tests returning independent: 0
+Number of siv tests unimplemented: 0
+Number of miv tests: 0
+Number of miv tests returning dependent: 0
+Number of miv tests returning independent: 0
+Number of miv tests unimplemented: 0
+
+control.c:87: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+control.c:87: note: bad data references.
+Analyzing loop at control.c:53
+
+control.c:53: note: ===== analyze_loop_nest =====
+control.c:53: note: === vect_analyze_loop_form ===
+control.c:53: note: === get_loop_niters ===Analyzing # of iterations of loop 1
+  exit condition [4095, + , 65535] != 0
+  bounds on difference of bases: -4095 ... -4095
+  result:
+    # of iterations 4095, bounded by 4095
+
+control.c:53: note: ==> get_loop_niters:4096
+control.c:53: note: === vect_analyze_data_refs ===
+Dependence tester statistics:
+Number of dependence tests: 0
+Number of dependence tests classified dependent: 0
+Number of dependence tests classified independent: 0
+Number of undetermined dependence tests: 0
+Number of subscript tests: 0
+Number of undetermined subscript tests: 0
+Number of same subscript function: 0
+Number of ziv tests: 0
+Number of ziv tests returning dependent: 0
+Number of ziv tests returning independent: 0
+Number of ziv tests unimplemented: 0
+Number of siv tests: 0
+Number of siv tests returning dependent: 0
+Number of siv tests returning independent: 0
+Number of siv tests unimplemented: 0
+Number of miv tests: 0
+Number of miv tests returning dependent: 0
+Number of miv tests returning independent: 0
+Number of miv tests unimplemented: 0
+
+control.c:53: note: not vectorized: loop contains function calls or data references that cannot be analyzed
+control.c:53: note: bad data references.
+control.c:15: note: vectorized 0 loops in function.
+
+Pass statistics:
+----------------
+
+main (intD.6 argcD.2637, charD.7 * * argvD.2638)
+{
+  const doubleD.32 windD.2659[8];
+  doubleD.32 radiusD.2658[4096];
+  doubleD.32 massD.2657[4096];
+  doubleD.32 veloD.2656[4096][3];
+  doubleD.32 visD.2655[4096];
+  doubleD.32 posD.2654[4096][3];
+  doubleD.32 fD.2653[4096][3];
+  intD.6 NstepD.2651;
+  charD.7 nameD.2649[80];
+  doubleD.32 stopD.2648;
+  doubleD.32 startD.2647;
+  doubleD.32 tstopD.2646;
+  doubleD.32 tstartD.2645;
+  struct FILED.2143 * outD.2644;
+  struct FILED.2143 * inD.2643;
+  short unsigned intD.16 jD.2642;
+  short unsigned intD.16 iD.2641;
+  unsigned intD.9 collisions.1D.2695;
+  short unsigned intD.16 ivtmp_6;
+  charD.7 * _14;
+  intD.6 _20;
+  doubleD.32 * _21;
+  doubleD.32 * _22;
+  doubleD.32 * _23;
+  doubleD.32 * _24;
+  doubleD.32 * _25;
+  doubleD.32 * _26;
+  doubleD.32 * _27;
+  doubleD.32 * _28;
+  doubleD.32 * _29;
+  doubleD.32 _41;
+  short unsigned intD.16 ivtmp_45;
+  intD.6 _51;
+  doubleD.32 _52;
+  doubleD.32 _54;
+  doubleD.32 _55;
+  doubleD.32 _56;
+  doubleD.32 _57;
+  doubleD.32 _58;
+  doubleD.32 _59;
+  doubleD.32 _60;
+  doubleD.32 _61;
+  doubleD.32 _68;
+  long intD.8 _79;
+  short unsigned intD.16 ivtmp_85;
+  short unsigned intD.16 ivtmp_89;
+
+;;   basic block 2, loop depth 0, count 0, freq 100, maybe hot
+;;    prev block 0, next block 3, flags: (NEW, REACHABLE)
+;;    pred:       ENTRY [100.0%]  (FALLTHRU,EXECUTABLE)
+  # DEBUG dtD.2650 => 2.00000000000000004163336342344337026588618755340576171875e-2
+  # DEBUG NstepD.2651 => 100
+  # DEBUG NsaveD.2652 => 5
+  # .MEM_9 = VDEF <.MEM_8(D)>
+  windD.2659 = {};
+  # .MEM_10 = VDEF <.MEM_9>
+  windD.2659[0] = 9.0000000000000002220446049250313080847263336181640625e-1;
+  # .MEM_11 = VDEF <.MEM_10>
+  windD.2659[1] = 4.0000000000000002220446049250313080847263336181640625e-1;
+  if (argc_12(D) > 1)
+    goto <bb 3>;
+  else
+    goto <bb 4>;
+;;    succ:       3 [52.5%]  (TRUE_VALUE,EXECUTABLE)
+;;                4 [47.5%]  (FALSE_VALUE,EXECUTABLE)
+
+;;   basic block 3, loop depth 0, count 0, freq 53
+;;    prev block 2, next block 4, flags: (NEW, REACHABLE)
+;;    pred:       2 [52.5%]  (TRUE_VALUE,EXECUTABLE)
+  # VUSE <.MEM_11>
+  # PT = nonlocal escaped 
+  _14 = MEM[(charD.7 * *)argv_13(D) + 8B];
+  # DEBUG __nptrD.2732 => _14
+  # .MEM_82 = VDEF <.MEM_11>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  _79 = strtolD.2475 (_14, 0B, 10);
+  Nstep_80 = (intD.6) _79;
+  # DEBUG NstepD.2651 => NULL
+;;    succ:       4 [100.0%]  (FALLTHRU,EXECUTABLE)
+
+;;   basic block 4, loop depth 0, count 0, freq 100, maybe hot
+;;    prev block 3, next block 5, flags: (NEW, REACHABLE)
+;;    pred:       2 [47.5%]  (FALSE_VALUE,EXECUTABLE)
+;;                3 [100.0%]  (FALLTHRU,EXECUTABLE)
+  # Nstep_4 = PHI <100(2), Nstep_80(3)>
+  # .MEM_81 = PHI <.MEM_11(2), .MEM_82(3)>
+  # DEBUG NstepD.2651 => Nstep_4
+  # .MEM_15 = VDEF <.MEM_81>
+  collisionsD.2624 = 0;
+  # .MEM_16 = VDEF <.MEM_15>
+  # PT = nonlocal escaped 
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  in_17 = fopenD.2291 ("input.dat", "r");
+  # DEBUG inD.2643 => in_17
+  if (in_17 == 0B)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+;;    succ:       5 [0.0%]  (TRUE_VALUE,EXECUTABLE)
+;;                6 [100.0%]  (FALSE_VALUE,EXECUTABLE)
+
+;;   basic block 5, loop depth 0, count 0, freq 0
+;;    prev block 4, next block 6, flags: (NEW, REACHABLE)
+;;    pred:       4 [0.0%]  (TRUE_VALUE,EXECUTABLE)
+  # .MEM_18 = VDEF <.MEM_16>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  perrorD.2429 ("input.dat");
+  # .MEM_19 = VDEF <.MEM_18>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  exitD.816 (1);
+;;    succ:      
+
+;;   basic block 6, loop depth 0, count 0, freq 100, maybe hot
+;;    prev block 5, next block 7, flags: (NEW)
+;;    pred:       4 [100.0%]  (FALSE_VALUE,EXECUTABLE)
+;;    succ:       7 [100.0%]  (FALLTHRU,EXECUTABLE)
+
+;;   basic block 7, loop depth 1, count 0, freq 9900, maybe hot
+;;    prev block 6, next block 8, flags: (NEW, REACHABLE)
+;;    pred:       8 [100.0%]  (FALLTHRU,DFS_BACK,EXECUTABLE)
+;;                6 [100.0%]  (FALLTHRU,EXECUTABLE)
+  # i_87 = PHI <i_31(8), 0(6)>
+  # .MEM_91 = PHI <.MEM_30(8), .MEM_16(6)>
+  # ivtmp_6 = PHI <ivtmp_85(8), 4096(6)>
+  # DEBUG iD.2641 => i_87
+  _20 = (intD.6) i_87;
+  # PT = { D.2656 }
+  # ALIGN = 8, MISALIGN = 0
+  _21 = &veloD.2656[_20][2];
+  # PT = { D.2656 }
+  # ALIGN = 8, MISALIGN = 0
+  _22 = &veloD.2656[_20][1];
+  # PT = { D.2656 }
+  # ALIGN = 8, MISALIGN = 0
+  _23 = &veloD.2656[_20][0];
+  # PT = { D.2654 }
+  # ALIGN = 8, MISALIGN = 0
+  _24 = &posD.2654[_20][2];
+  # PT = { D.2654 }
+  # ALIGN = 8, MISALIGN = 0
+  _25 = &posD.2654[_20][1];
+  # PT = { D.2654 }
+  # ALIGN = 8, MISALIGN = 0
+  _26 = &posD.2654[_20][0];
+  # PT = { D.2655 }
+  # ALIGN = 8, MISALIGN = 0
+  _27 = &visD.2655[_20];
+  # PT = { D.2658 }
+  # ALIGN = 8, MISALIGN = 0
+  _28 = &radiusD.2658[_20];
+  # PT = { D.2657 }
+  # ALIGN = 8, MISALIGN = 0
+  _29 = &massD.2657[_20];
+  # .MEM_30 = VDEF <.MEM_91>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  *__isoc99_fscanfD.682 (in_17, "%16le%16le%16le%16le%16le%16le%16le%16le%16le\n", _29, _28, _27, _26, _25, _24, _23, _22, _21);
+  i_31 = i_87 + 1;
+  # DEBUG iD.2641 => i_31
+  # DEBUG iD.2641 => i_31
+  ivtmp_85 = ivtmp_6 - 1;
+  if (ivtmp_85 != 0)
+    goto <bb 8>;
+  else
+    goto <bb 9>;
+;;    succ:       8 [99.0%]  (TRUE_VALUE,EXECUTABLE)
+;;                9 [1.0%]  (FALSE_VALUE,EXECUTABLE)
+
+;;   basic block 8, loop depth 1, count 0, freq 9800, maybe hot
+;;    prev block 7, next block 9, flags: (NEW)
+;;    pred:       7 [99.0%]  (TRUE_VALUE,EXECUTABLE)
+  goto <bb 7>;
+;;    succ:       7 [100.0%]  (FALLTHRU,DFS_BACK,EXECUTABLE)
+
+;;   basic block 9, loop depth 0, count 0, freq 100, maybe hot
+;;    prev block 8, next block 10, flags: (NEW, REACHABLE)
+;;    pred:       7 [1.0%]  (FALSE_VALUE,EXECUTABLE)
+  # .MEM_32 = VDEF <.MEM_30>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  fcloseD.2286 (in_17);
+  # DEBUG NsaveD.2652 => 1
+  # .MEM_33 = VDEF <.MEM_32>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  tstart_34 = secondD.2636 ();
+  # DEBUG tstartD.2645 => tstart_34
+  # DEBUG jD.2642 => 1
+  # DEBUG jD.2642 => 1
+  # DEBUG jD.2642 => 1
+  # .MEM_36 = VDEF <.MEM_33>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  start_37 = secondD.2636 ();
+  # DEBUG startD.2647 => start_37
+  # .MEM_38 = VDEF <.MEM_36>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  evolveD.2634 (Nstep_4, 2.00000000000000004163336342344337026588618755340576171875e-2, &fD.2653, &posD.2654, &visD.2655, &veloD.2656, &massD.2657, &radiusD.2658, &windD.2659);
+  # .MEM_39 = VDEF <.MEM_38>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  stop_40 = secondD.2636 ();
+  # DEBUG stopD.2648 => stop_40
+  _41 = stop_40 - start_37;
+  # .MEM_42 = VDEF <.MEM_39>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  printfD.687 ("%d timesteps took %f seconds\n", Nstep_4, _41);
+  # VUSE <.MEM_42>
+  collisions.1_43 = collisionsD.2624;
+  # .MEM_44 = VDEF <.MEM_42>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  printfD.687 ("collisions %d\n", collisions.1_43);
+  # .MEM_46 = VDEF <.MEM_44>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  sprintfD.700 (&nameD.2649, "output.dat%03d", Nstep_4);
+  # .MEM_47 = VDEF <.MEM_46>
+  # PT = nonlocal escaped 
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  out_48 = fopenD.2291 (&nameD.2649, "w");
+  # DEBUG outD.2644 => out_48
+  if (out_48 == 0B)
+    goto <bb 10>;
+  else
+    goto <bb 11>;
+;;    succ:       10 [0.0%]  (TRUE_VALUE,EXECUTABLE)
+;;                11 [100.0%]  (FALSE_VALUE,EXECUTABLE)
+
+;;   basic block 10, loop depth 0, count 0, freq 0
+;;    prev block 9, next block 11, flags: (NEW, REACHABLE)
+;;    pred:       9 [0.0%]  (TRUE_VALUE,EXECUTABLE)
+  # .MEM_49 = VDEF <.MEM_47>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  perrorD.2429 (&nameD.2649);
+  # .MEM_50 = VDEF <.MEM_49>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  exitD.816 (1);
+;;    succ:      
+
+;;   basic block 11, loop depth 0, count 0, freq 100, maybe hot
+;;    prev block 10, next block 12, flags: (NEW)
+;;    pred:       9 [100.0%]  (FALSE_VALUE,EXECUTABLE)
+;;    succ:       12 [100.0%]  (FALLTHRU,EXECUTABLE)
+
+;;   basic block 12, loop depth 1, count 0, freq 9892, maybe hot
+;;    prev block 11, next block 13, flags: (NEW, REACHABLE)
+;;    pred:       13 [100.0%]  (FALLTHRU,DFS_BACK,EXECUTABLE)
+;;                11 [100.0%]  (FALLTHRU,EXECUTABLE)
+  # i_90 = PHI <i_63(13), 0(11)>
+  # .MEM_92 = PHI <.MEM_62(13), .MEM_47(11)>
+  # ivtmp_89 = PHI <ivtmp_45(13), 4096(11)>
+  # DEBUG iD.2641 => i_90
+  _51 = (intD.6) i_90;
+  # VUSE <.MEM_92>
+  _52 = veloD.2656[_51][2];
+  # VUSE <.MEM_92>
+  _54 = veloD.2656[_51][1];
+  # VUSE <.MEM_92>
+  _55 = veloD.2656[_51][0];
+  # VUSE <.MEM_92>
+  _56 = posD.2654[_51][2];
+  # VUSE <.MEM_92>
+  _57 = posD.2654[_51][1];
+  # VUSE <.MEM_92>
+  _58 = posD.2654[_51][0];
+  # VUSE <.MEM_92>
+  _59 = visD.2655[_51];
+  # VUSE <.MEM_92>
+  _60 = radiusD.2658[_51];
+  # VUSE <.MEM_92>
+  _61 = massD.2657[_51];
+  # .MEM_62 = VDEF <.MEM_92>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  fprintfD.670 (out_48, "%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E%16.8E\n", _61, _60, _59, _58, _57, _56, _55, _54, _52);
+  i_63 = i_90 + 1;
+  # DEBUG iD.2641 => i_63
+  # DEBUG iD.2641 => i_63
+  ivtmp_45 = ivtmp_89 - 1;
+  if (ivtmp_45 != 0)
+    goto <bb 13>;
+  else
+    goto <bb 14>;
+;;    succ:       13 [99.0%]  (TRUE_VALUE,EXECUTABLE)
+;;                14 [1.0%]  (FALSE_VALUE,EXECUTABLE)
+
+;;   basic block 13, loop depth 1, count 0, freq 9792, maybe hot
+;;    prev block 12, next block 14, flags: (NEW)
+;;    pred:       12 [99.0%]  (TRUE_VALUE,EXECUTABLE)
+  goto <bb 12>;
+;;    succ:       12 [100.0%]  (FALLTHRU,DFS_BACK,EXECUTABLE)
+
+;;   basic block 14, loop depth 0, count 0, freq 100, maybe hot
+;;    prev block 13, next block 1, flags: (NEW, REACHABLE)
+;;    pred:       12 [1.0%]  (FALSE_VALUE,EXECUTABLE)
+  # .MEM_64 = VDEF <.MEM_62>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  fcloseD.2286 (out_48);
+  # DEBUG jD.2642 => 2
+  # DEBUG jD.2642 => 2
+  # .MEM_66 = VDEF <.MEM_64>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  tstop_67 = secondD.2636 ();
+  # DEBUG tstopD.2646 => tstop_67
+  _68 = tstop_67 - tstart_34;
+  # .MEM_70 = VDEF <.MEM_66>
+  # USE = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  # CLB = nonlocal null { D.2649 D.2653 D.2654 D.2655 D.2656 D.2657 D.2658 D.2659 }
+  printfD.687 ("%d timesteps took %f seconds\n", Nstep_4, _68);
+  # .MEM_71 = VDEF <.MEM_70>
+  nameD.2649 ={v} {CLOBBER};
+  # .MEM_72 = VDEF <.MEM_71>
+  fD.2653 ={v} {CLOBBER};
+  # .MEM_73 = VDEF <.MEM_72>
+  posD.2654 ={v} {CLOBBER};
+  # .MEM_74 = VDEF <.MEM_73>
+  visD.2655 ={v} {CLOBBER};
+  # .MEM_75 = VDEF <.MEM_74>
+  veloD.2656 ={v} {CLOBBER};
+  # .MEM_76 = VDEF <.MEM_75>
+  massD.2657 ={v} {CLOBBER};
+  # .MEM_77 = VDEF <.MEM_76>
+  radiusD.2658 ={v} {CLOBBER};
+  # .MEM_78 = VDEF <.MEM_77>
+  windD.2659 ={v} {CLOBBER};
+  # VUSE <.MEM_78>
+  return 0;
+;;    succ:       EXIT [100.0%] 
+
+}
+
+

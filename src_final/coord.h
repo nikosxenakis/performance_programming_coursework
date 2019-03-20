@@ -12,6 +12,8 @@
  *  mass		mass of each particle
  *  delta_pos	seperation vector for each particle pair
  *  delta_r		seperation for each particle pair
+ *    
+ *  Student: B136013
  */
 #ifndef COORD
 #define COORD
@@ -32,8 +34,7 @@ enum
 // cache line size
 #define CACHE_LINE_SIZE 64
 
-#define PADDING_NBODY 0
-#define PADDING_NDIM (CACHE_LINE_SIZE - Ndim*sizeof(double)) / sizeof(double)
+#define PADDING (CACHE_LINE_SIZE - Ndim*sizeof(double)) / sizeof(double)
 
 #define G 2.0
 #define M_central 1000.0

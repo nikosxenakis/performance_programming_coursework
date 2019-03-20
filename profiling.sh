@@ -2,7 +2,7 @@
 #B136013
 #
 
-FOLDER=./src_v12_vectorisation
+FOLDER=./src_gcc
 
 module load intel-compilers-17;
 module load valgrind;
