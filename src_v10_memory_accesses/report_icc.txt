@@ -44,8 +44,8 @@ INLINE REPORT: (main(int, char **)) [1/7=14.3%] control.c(14,33)
     -> EXTERN: (100,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> INLINE: (59,13) second() (isz = 10) (sz = 15)
     -> EXTERN: (100,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> (61,7) evolve(int, double) (isz = 301) (sz = 308)
-     [[ Inlining would exceed -inline-max-size value (308>230) <1>]]
+  -> (61,7) evolve(int, double) (isz = 241) (sz = 248)
+     [[ Inlining would exceed -inline-max-size value (248>230) <1>]]
   -> INLINE: (62,12) second() (isz = 10) (sz = 15)
     -> EXTERN: (100,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
   -> EXTERN: (63,7) printf(const char *__restrict__, ...)
@@ -256,30 +256,6 @@ MD.c(10,34):remark #34051: REGISTER ALLOCATION : [evolve] MD.c:10
         *Non-overlapping variables and spills may share stack space,
          so the total stack size might be less than this.
     
-
-===========================================================================
-
-Begin optimization report for: visc_wind_force(int, double *__restrict__, double, double *__restrict__, double *__restrict__)
-
-    Report from: Interprocedural optimizations [ipo]
-
-DEAD STATIC FUNCTION: (visc_wind_force(int, double *__restrict__, double, double *__restrict__, double *__restrict__)) util.h(20,116)
-
-===========================================================================
-
-Begin optimization report for: add_norm(int, double *__restrict__, double *__restrict__)
-
-    Report from: Interprocedural optimizations [ipo]
-
-DEAD STATIC FUNCTION: (add_norm(int, double *__restrict__, double *__restrict__)) util.h(27,74)
-
-===========================================================================
-
-Begin optimization report for: force(double, double, double)
-
-    Report from: Interprocedural optimizations [ipo]
-
-DEAD STATIC FUNCTION: (force(double, double, double)) util.h(34,55)
 
 ===========================================================================
 

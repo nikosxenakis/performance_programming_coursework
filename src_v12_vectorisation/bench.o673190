@@ -1,0 +1,5 @@
+rm -f MD MD.o control.o
+icc -g -Wall -Winline -pg -restrict -qopenmp-simd  -Ofast -ipo  -xBROADWELL  -c MD.c -o MD.o
+icc -g -Wall -Winline -pg -restrict -qopenmp-simd  -Ofast -ipo  -xBROADWELL  -c control.c -o control.o
+icc -g -Wall -Winline -pg -restrict -qopenmp-simd  -Ofast -ipo  -xBROADWELL  -qopt-report-file=report_icc.txt -qopt-report=5 -o MD MD.o control.o -lm
+Test results:

@@ -1,0 +1,21 @@
+timestep 1
+collisions 0
+1 timesteps took 5.942364 seconds
+collisions 0
+timestep 1
+collisions 0
+1 timesteps took 5.915076 seconds
+collisions 0
+timestep 1
+collisions 0
+1 timesteps took 5.909345 seconds
+collisions 0
+timestep 1
+collisions 0
+1 timesteps took 5.910674 seconds
+collisions 0
+timestep 1
+collisions 0
+1 timesteps took 5.932694 seconds
+collisions 0
+5 timesteps took 33.062218 seconds

@@ -4,7 +4,7 @@
 #PBS -l place=excl
 #PBS -N bench
 #PBS -A d167-s1770309
-#PBS -l walltime=0:02:00
+#PBS -l walltime=0:00:40
 
 # Switch to current working directory
 cd $PBS_O_WORKDIR

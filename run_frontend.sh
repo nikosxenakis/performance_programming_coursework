@@ -2,7 +2,7 @@
 #B136013
 #
 
-FOLDER=./src_v10_memory_accesses
+FOLDER=./src_v12_vectorisation
 
 module load intel-compilers-17;
 make -C $FOLDER clean;

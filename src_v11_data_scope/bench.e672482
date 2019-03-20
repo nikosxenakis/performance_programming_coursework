@@ -1,0 +1,10 @@
+make: *** test: No such file or directory.  Stop.
+make: *** test: No such file or directory.  Stop.
+Traceback (most recent call last):
+  File "../correctness.py", line 79, in <module>
+    main()
+  File "../correctness.py", line 72, in main
+    if checkNan() and compareFiles():
+  File "../correctness.py", line 36, in checkNan
+    f = open(path, 'r')
+IOError: [Errno 2] No such file or directory: './src_v11_data_scope/output.dat100'
