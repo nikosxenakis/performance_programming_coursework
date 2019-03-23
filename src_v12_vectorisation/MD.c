@@ -20,7 +20,7 @@ void evolve(int Nstep, double dt, double pos[][Ndim], double velo[][Ndim], doubl
   /*
   * Loop over timesteps.
   */
-  Nstep = 1;
+  // Nstep = 1;
   for(step = 1;step<=Nstep;step++){
     printf("timestep %d\n",step);
     printf("collisions %d\n",collisions);
@@ -83,7 +83,7 @@ void evolve(int Nstep, double dt, double pos[][Ndim], double velo[][Ndim], doubl
     }
 
     #pragma simd aligned linear(mass)
-    for(i=0; i<Nbody; i++) {
+    for(i=Nbody-1; i>=0; i--) {
       for(l=0; l<Ndim; l++) {
         /* update positions */
         pos[i][l] += + dt * velo[i][l];

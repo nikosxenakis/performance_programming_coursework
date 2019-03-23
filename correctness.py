@@ -14,7 +14,7 @@ dataList = [
     'output.dat500',
 ]
 
-SRC_FOLDER = './src_gcc/'
+SRC_FOLDER = './src_v12_vectorisation/'
 
 currDataPathList = [
     SRC_FOLDER+dataList[0],

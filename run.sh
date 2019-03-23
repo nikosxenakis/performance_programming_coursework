@@ -2,7 +2,7 @@
 #B136013
 #
 
-FOLDER=./src_gcc
+FOLDER=./src_v12_vectorisation
 
 module load intel-compilers-17;
 module load gcc;

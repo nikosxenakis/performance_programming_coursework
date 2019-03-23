@@ -61,7 +61,7 @@ int main(int argc, char *argv[]){
    tstart=second();
    for(j=1;j<=Nsave;j++){
       start=second();
-      Nstep = 1;
+      // Nstep = 1;
       evolve(Nstep,dt,pos,velo,f,vis,radius,mass,wind); 
       stop=second();
       printf("%d timesteps took %f seconds\n",Nstep,stop-start);
