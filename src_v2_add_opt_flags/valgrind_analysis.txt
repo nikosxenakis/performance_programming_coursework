@@ -1,0 +1,201 @@
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         48234496 B, 64 B, 23-way associative
+Command:          ./MD
+Data file:        cachegrind_output.txt
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+            Ir  I1mr  ILmr             Dr        D1mr       DLmr            Dw       D1mw       DLmw 
+--------------------------------------------------------------------------------
+73,156,080,918 2,015 1,942 26,320,131,913 107,402,722 57,709,059 7,156,295,322 21,059,616 21,022,937  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+            Ir I1mr ILmr            Dr       D1mr       DLmr            Dw       D1mw       DLmw  file:function
+--------------------------------------------------------------------------------
+25,920,798,720   12   12 7,549,747,200  3,769,245        532   754,974,720          0          0  ???:__libm_pow_l9
+23,409,133,450   67   67 9,061,335,515 71,951,123 26,242,309 1,720,064,270 20,990,640 20,968,481  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v2_add_opt_flags/MD.c:evolve
+ 7,801,407,998    7    6 3,019,899,845        506        175   503,316,720         12          5  ???:__mcount_internal
+ 5,284,823,040    2    2 1,761,607,680         10         10 1,761,607,680         10          5  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v2_add_opt_flags/util.c:force
+ 5,033,166,360   11   11 2,516,583,180          0          0 2,013,266,544         65         20  ???:mcount
+ 3,775,795,680    2    2 1,762,037,880 31,465,010 31,449,630   251,719,860         10          5  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v2_add_opt_flags/util.c:add_norm
+   754,974,720    5    5   251,658,240         10         10             0          0          0  ???:pow
+   419,532,800    7    7    41,953,280          0          0    83,906,560          0          0  ???:__libm_sqrt_ex
+   251,777,371   84   76   251,724,188        318         60            94          2          1  ???:???
+   177,997,490  126  112    36,923,858        816         55    26,795,995     41,077     40,987  ???:__printf_fp
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v2_add_opt_flags/MD.c
+--------------------------------------------------------------------------------
+           Ir I1mr ILmr            Dr       D1mr       DLmr          Dw       D1mw       DLmw 
+
+-- line 10 ----------------------------------------
+            .    .    .             .          .          .           .          .          .  void add_norm(int N,double *r, double *delta);
+            .    .    .             .          .          .           .          .          .  double force(double W, double delta, double r);
+            .    .    .             .          .          .           .          .          .  void wind_force(int N,double *f, double *vis, double vel);
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+           45    5    5             0          0          0          25          0          0  void evolve(int count,double dt){
+            .    .    .             .          .          .           .          .          .  int  step;
+            .    .    .             .          .          .           .          .          .  int i,j,k,l;
+            .    .    .             .          .          .           .          .          .  int collided;
+            .    .    .             .          .          .           .          .          .  double Size;
+            .    .    .             .          .          .           .          .          .  /*
+            .    .    .             .          .          .           .          .          .   * Loop over timesteps.
+            .    .    .             .          .          .           .          .          .   */
+            5    0    0             0          0          0           5          0          0  count = 1;
+           70    0    0            25          0          0          10          0          0        for(step = 1;step<=count;step++){
+           35    1    1             5          0          0          10          0          0          printf("timestep %d\n",step);
+           35    0    0             5          0          0          10          0          0          printf("collisions %d\n",collisions);
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  /* set the viscosity term in the force calculation */
+          130    0    0            35          0          0          20          0          0          for(j=0;j<Ndim;j++){
+          315    4    4            75         25          0          30          0          0            visc_force(Nbody,f[j],vis,velo[j]);
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  /* add the wind term in the force calculation */
+          130    0    0            35          0          0          20          0          0          for(j=0;j<Ndim;j++){
+          285    1    1            75         30          0          15          0          0            wind_force(Nbody,f[j],vis,wind[j]);
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  /* calculate distance from central mass */
+      143,380    2    2        40,965          0          0      20,485          0          0          for(k=0;k<Nbody;k++){
+      122,880    0    0        40,960          5          0      20,480      2,565      2,048            r[k] = 0.0;
+            .    .    .             .          .          .           .          .          .          }
+          130    1    1            35          0          0          20          0          0          for(i=0;i<Ndim;i++){
+          195    1    1            45         25          0          15          0          0  	  add_norm(Nbody,r,pos[i]);
+            .    .    .             .          .          .           .          .          .          }
+      143,380    0    0        40,965          0          0      20,485          0          0          for(k=0;k<Nbody;k++){
+      266,240    2    2       122,880      2,280          0      61,440          5          4            r[k] = sqrt(r[k]);
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .         /* calculate central force */
+      143,385    0    0        40,965          0          0      20,485          0          0          for(i=0;i<Nbody;i++){
+      532,480    1    1       143,360          0          0      81,920          0          0  	  for(l=0;l<Ndim;l++){
+    1,228,800    0    0       430,080      8,335          0      61,440          0          0                  f[l][i] = f[l][i] - 
+    1,781,760    3    3       798,720     13,435          4     122,880          0          0                     force(G*mass[i]*M_central,pos[l][i],r[i]);
+            .    .    .             .          .          .           .          .          .  	  }
+            .    .    .             .          .          .           .          .          .  	}
+            .    .    .             .          .          .           .          .          .  /* calculate pairwise separation of particles */
+            5    0    0             0          0          0           5          0          0          k = 0;
+      143,385    0    0        40,965          0          0      20,485          0          0          for(i=0;i<Nbody;i++){
+  293,652,480    6    6    83,906,560          0          0  41,953,280          0          0            for(j=i+1;j<Nbody;j++){
+1,048,320,000    0    0   293,529,600          0          0 167,731,200          0          0              for(l=0;l<Ndim;l++){
+3,899,750,400    2    2 1,383,782,400 15,359,122          0 125,798,400 15,746,455 15,724,814                delta_pos[l][k] = pos[l][i] - pos[l][j];
+            .    .    .             .          .          .           .          .          .              }
+  125,798,400    0    0    41,932,800          0          0  41,932,800          0          0              k = k + 1;
+            .    .    .             .          .          .           .          .          .            }
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  /* calculate norm of separation vector */
+  293,529,620    0    0    83,865,605          0          0  41,932,805          0          0          for(k=0;k<Npair;k++){
+  251,596,800    0    0    83,865,600          5          5  41,932,800  5,241,605  5,241,605            delta_r[k] = 0.0;
+            .    .    .             .          .          .           .          .          .          }
+          130    5    5            35          0          0          20          0          0          for(i=0;i<Ndim;i++){
+          195    5    5            45         25         25          15          0          0  	  add_norm(Npair,delta_r,delta_pos[i]);
+            .    .    .             .          .          .           .          .          .          }
+  293,529,620    0    0    83,865,605          0          0  41,932,805          0          0          for(k=0;k<Npair;k++){
+  545,126,400    5    5   251,596,800  5,241,610  5,241,610 125,798,400          5          5            delta_r[k] = sqrt(delta_r[k]);
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  /*
+            .    .    .             .          .          .           .          .          .   * add pairwise forces.
+            .    .    .             .          .          .           .          .          .   */
+            5    0    0             0          0          0           5          0          0          k = 0;
+      143,385    0    0        40,965          0          0      20,485          0          0          for(i=0;i<Nbody;i++){
+  293,652,480    5    5    83,906,560          0          0  41,953,280          0          0            for(j=i+1;j<Nbody;j++){
+  503,193,600    1    1   251,596,800  5,975,969      2,565  41,932,800          0          0              Size = radius[i] + radius[j];
+   41,932,800    0    0             0          0          0  41,932,800          0          0              collided=0;
+1,090,252,800    0    0   293,529,600          0          0 167,731,200          0          0              for(l=0;l<Ndim;l++){
+            .    .    .             .          .          .           .          .          .  /*  flip force if close in */
+1,006,387,200    1    1   503,193,600  5,241,605  5,241,605           0          0          0                if( delta_r[k] >= Size ){
+2,515,968,000    1    1   880,588,800  1,357,299         20 125,798,400          0          0                  f[l][i] = f[l][i] - 
+4,151,347,200    4    4 1,886,976,000 21,870,371 15,727,385 251,596,800          0          0                     force(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+2,641,766,400    2    2   880,588,800 16,847,662      7,670 125,798,400          0          0                  f[l][j] = f[l][j] + 
+4,151,347,200    1    1 1,886,976,000          0          0 251,596,800          5          5                     force(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+            .    .    .             .          .          .           .          .          .                }else{
+            .    .    .             .          .          .           .          .          .                  f[l][i] = f[l][i] + 
+            .    .    .             .          .          .           .          .          .                     force(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+            .    .    .             .          .          .           .          .          .                  f[l][j] = f[l][j] - 
+            .    .    .             .          .          .           .          .          .                     force(G*mass[i]*mass[j],delta_pos[l][k],delta_r[k]);
+            .    .    .             .          .          .           .          .          .  		collided=1;
+            .    .    .             .          .          .           .          .          .                }
+            .    .    .             .          .          .           .          .          .              }
+  125,798,400    2    2    41,932,800          0          0           0          0          0  	    if( collided == 1 ){
+            .    .    .             .          .          .           .          .          .  	      collisions++;
+            .    .    .             .          .          .           .          .          .  	    }
+  125,798,400    1    1    41,932,800          0          0  41,932,800          0          0              k = k + 1;
+            .    .    .             .          .          .           .          .          .            }
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  /* update positions */
+      143,385    0    0        40,965          0          0      20,485          0          0          for(i=0;i<Nbody;i++){
+      512,000    1    1       143,360          0          0      81,920          0          0            for(j=0;j<Ndim;j++){
+    2,027,520    2    2       737,280     15,375     15,365      61,440          0          0              pos[j][i] = pos[j][i] + dt * velo[j][i];
+            .    .    .             .          .          .           .          .          .            }
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  /* update velocities */
+      143,385    0    0        40,965          0          0      20,485          0          0          for(i=0;i<Nbody;i++){
+      512,000    1    1       143,360          0          0      81,920          0          0            for(j=0;j<Ndim;j++){
+    2,396,160    1    1       921,600     17,940      6,050      61,440          0          0              velo[j][i] = velo[j][i] + dt * (f[j][i]/mass[i]);
+            .    .    .             .          .          .           .          .          .            }
+            .    .    .             .          .          .           .          .          .          }
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .        }
+            .    .    .             .          .          .           .          .          .  
+           15    0    0            15          5          5           0          0          0  }
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+            .    .    .             .          .          .           .          .          .  
+
+--------------------------------------------------------------------------------
+-- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v2_add_opt_flags/util.c
+--------------------------------------------------------------------------------
+           Ir I1mr ILmr            Dr       D1mr       DLmr            Dw  D1mw  DLmw 
+
+            .    .    .             .          .          .             .     .     .  #include <math.h>
+            .    .    .             .          .          .             .     .     .  
+            .    .    .             .          .          .             .     .     .  void visc_force(int N,double *f, double *vis, double *velo)
+          150    6    6             0          0          0            90     0     0  {
+            .    .    .             .          .          .             .     .     .    int i;
+      491,595    0    0       184,350          0          0        61,455     0     0            for(i=0;i<N;i++){
+    1,044,480    5    5       552,960     15,375          0        61,440 7,685 1,507              f[i] = -vis[i] * velo[i];
+            .    .    .             .          .          .             .     .     .            }
+           30    0    0            30          0          0             0     0     0  }
+            .    .    .             .          .          .             .     .     .  void wind_force(int N,double *f, double *vis, double velo)
+          150    2    2             0          0          0            90     0     0  {
+            .    .    .             .          .          .             .     .     .    int i;
+      491,595    0    0       184,350          0          0        61,455     0     0            for(i=0;i<N;i++){
+    1,105,920    0    0       552,960     15,375          0        61,440     0     0              f[i] = f[i] -vis[i] * velo;
+            .    .    .             .          .          .             .     .     .            }
+           30    0    0            30          0          0             0     0     0  }
+            .    .    .             .          .          .             .     .     .  void add_norm(int N,double *r, double *delta)
+          270    1    1             0          0          0           150    10     5  {
+            .    .    .             .          .          .             .     .     .    int k;
+1,006,878,870    1    1   377,579,580          0          0   125,859,870     0     0          for(k=0;k<N;k++){
+2,768,916,480    0    0 1,384,458,240 31,465,010 31,449,630   125,859,840     0     0            r[k] += (delta[k] * delta[k]);
+            .    .    .             .          .          .             .     .     .          }
+           60    0    0            60          0          0             0     0     0  }
+            .    .    .             .          .          .             .     .     .  
+2,264,924,160    2    2             0          0          0 1,258,291,200    10     5  double force(double W, double delta, double r){
+3,019,898,880    0    0 1,761,607,680         10         10   503,316,480     0     0    return W*delta/(pow(r,3.0));
+            .    .    .             .          .          .             .     .     .  }
+            .    .    .             .          .          .             .     .     .  
+            .    .    .             .          .          .             .     .     .  
+            .    .    .             .          .          .             .     .     .  
+
+--------------------------------------------------------------------------------
+Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw 
+--------------------------------------------------------------------------------
+44    4    4 48   96  100 52  100  100  percentage of events annotated
+

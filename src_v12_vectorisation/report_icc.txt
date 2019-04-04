@@ -4,7 +4,7 @@ See "https://software.intel.com/en-us/intel-advisor-xe" for details.
 
 Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 17.0.2.174 Build 20170213
 
-Compiler options: -g -Wall -Winline -pg -restrict -qopenmp-simd -Ofast -ipo -xBROADWELL -qopt-report-file=report_icc.txt -qopt-report=5 -o MD -lm
+Compiler options: -g -Wall -Winline -pg -restrict -qopenmp-simd -Ofast -ipo -xBROADWELL -pc32 -qopt-report-file=report_icc.txt -qopt-report=5 -o MD -lm
 
     Report from: Interprocedural optimizations [ipo]
 
@@ -33,6 +33,7 @@ Begin optimization report for: main(int, char **)
     Report from: Interprocedural optimizations [ipo]
 
 INLINE REPORT: (main(int, char **)) [1/7=14.3%] control.c(14,33)
+  -> EXTERN: (14,33) ?1fpsetmask
   -> INLINE (MANUAL): (28,11) atoi(const char *) (isz = 4) (sz = 11)
     -> EXTERN: /usr/include/stdlib.h:(280,16) strtol(const char *__restrict__, char **__restrict__, int)
   -> EXTERN: (37,60) ?1memcpy
@@ -89,10 +90,10 @@ control.c(14,33):remark #34051: REGISTER ALLOCATION : [main] control.c:14
         Assigned     :   22[ rax rdx rcx rbx rsi rdi r8-r15 zmm0-zmm7]
         
     Routine temporaries
-        Total         :     157
+        Total         :     158
             Global    :      47
-            Local     :     110
-        Regenerable   :      67
+            Local     :     111
+        Regenerable   :      68
         Spilled       :      10
         
     Routine stack

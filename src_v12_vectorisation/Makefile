@@ -8,7 +8,7 @@ INITIAL_FLAGS=-g -O0 #-check=uninit -check-pointers:rw -no-vec
 
 CFLAGS= -g -Wall -Winline -pg -restrict -qopenmp-simd
 OPTIMISATION_FLAGS= -Ofast
-ICC_FLAGS= -ipo  -xBROADWELL # -march=core-avx2 # -axCORE-AVX2
+ICC_FLAGS= -ipo  -xBROADWELL #  -march=core-avx2 # -axCORE-AVX2
 
 # GCC_FLAGS= -fdump-tree-vect-all=report_gcc.txt -fopt-info -fopt-info-missed=missed.all -fopt-info-loop-optimized
 

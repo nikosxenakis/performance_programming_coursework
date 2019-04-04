@@ -35,44 +35,44 @@ Begin optimization report for: main(int, char **)
 INLINE REPORT: (main(int, char **)) [1/8=12.5%] control.c(14,33)
   -> INLINE (MANUAL): (28,11) atoi(const char *) (isz = 4) (sz = 11)
     -> EXTERN: /usr/include/stdlib.h:(280,16) strtol(const char *__restrict__, char **__restrict__, int)
-  -> EXTERN: (54,8) fopen(const char *__restrict__, const char *__restrict__)
-  -> EXTERN: (57,5) perror(const char *)
-  -> EXTERN: (58,5) exit(int)
-  -> EXTERN: (62,5) fscanf(FILE *__restrict__, const char *__restrict__, ...)
-  -> EXTERN: (67,3) fclose(FILE *)
-  -> INLINE: (73,11) second() (isz = 10) (sz = 15)
-    -> EXTERN: (116,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> INLINE: (75,13) second() (isz = 10) (sz = 15)
-    -> EXTERN: (116,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> (77,7) evolve(int, double) (isz = 500) (sz = 507)
+  -> EXTERN: (46,8) fopen(const char *__restrict__, const char *__restrict__)
+  -> EXTERN: (49,5) perror(const char *)
+  -> EXTERN: (50,5) exit(int)
+  -> EXTERN: (54,5) fscanf(FILE *__restrict__, const char *__restrict__, ...)
+  -> EXTERN: (59,3) fclose(FILE *)
+  -> INLINE: (65,11) second() (isz = 10) (sz = 15)
+    -> EXTERN: (108,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -> INLINE: (67,13) second() (isz = 10) (sz = 15)
+    -> EXTERN: (108,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -> (69,7) evolve(int, double) (isz = 500) (sz = 507)
      [[ Inlining would exceed -inline-max-size value (507>230) <1>]]
-  -> INLINE: (78,12) second() (isz = 10) (sz = 15)
-    -> EXTERN: (116,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> EXTERN: (79,7) printf(const char *__restrict__, ...)
-  -> EXTERN: (80,7) printf(const char *__restrict__, ...)
-  -> EXTERN: (83,7) sprintf(char *__restrict__, const char *__restrict__, ...)
-  -> EXTERN: (84,13) fopen(const char *__restrict__, const char *__restrict__)
-  -> EXTERN: (87,2) perror(const char *)
-  -> EXTERN: (88,2) exit(int)
-  -> EXTERN: (92,2) fprintf(FILE *__restrict__, const char *__restrict__, ...)
-  -> EXTERN: (97,7) fclose(FILE *)
-  -> INLINE: (99,9) second() (isz = 10) (sz = 15)
-    -> EXTERN: (116,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
-  -> EXTERN: (100,3) printf(const char *__restrict__, ...)
+  -> INLINE: (70,12) second() (isz = 10) (sz = 15)
+    -> EXTERN: (108,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -> EXTERN: (71,7) printf(const char *__restrict__, ...)
+  -> EXTERN: (72,7) printf(const char *__restrict__, ...)
+  -> EXTERN: (75,7) sprintf(char *__restrict__, const char *__restrict__, ...)
+  -> EXTERN: (76,13) fopen(const char *__restrict__, const char *__restrict__)
+  -> EXTERN: (79,2) perror(const char *)
+  -> EXTERN: (80,2) exit(int)
+  -> EXTERN: (84,2) fprintf(FILE *__restrict__, const char *__restrict__, ...)
+  -> EXTERN: (89,7) fclose(FILE *)
+  -> INLINE: (91,9) second() (isz = 10) (sz = 15)
+    -> EXTERN: (108,13) gettimeofday(struct timeval *__restrict__, __timezone_ptr_t)
+  -> EXTERN: (92,3) printf(const char *__restrict__, ...)
 
 
     Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
 
 
-LOOP BEGIN at control.c(61,3)
-   remark #15527: loop was not vectorized: function call to fscanf(FILE *__restrict__, const char *__restrict__, ...) cannot be vectorized   [ control.c(62,5) ]
+LOOP BEGIN at control.c(53,3)
+   remark #15527: loop was not vectorized: function call to fscanf(FILE *__restrict__, const char *__restrict__, ...) cannot be vectorized   [ control.c(54,5) ]
 LOOP END
 
-LOOP BEGIN at control.c(74,4)
-   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ control.c(88,2) ]
+LOOP BEGIN at control.c(66,4)
+   remark #15520: loop was not vectorized: loop with multiple exits cannot be vectorized unless it meets search loop idiom criteria   [ control.c(80,2) ]
 
-   LOOP BEGIN at control.c(91,7)
-      remark #15527: loop was not vectorized: function call to fprintf(FILE *__restrict__, const char *__restrict__, ...) cannot be vectorized   [ control.c(92,2) ]
+   LOOP BEGIN at control.c(83,7)
+      remark #15527: loop was not vectorized: function call to fprintf(FILE *__restrict__, const char *__restrict__, ...) cannot be vectorized   [ control.c(84,2) ]
    LOOP END
 LOOP END
 
@@ -539,7 +539,7 @@ Begin optimization report for: second()
 
     Report from: Interprocedural optimizations [ipo]
 
-DEAD STATIC FUNCTION: (second()) control.c(105,1)
+DEAD STATIC FUNCTION: (second()) control.c(97,1)
 
 ===========================================================================
 

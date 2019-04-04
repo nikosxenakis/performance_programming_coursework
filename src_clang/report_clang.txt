@@ -1,0 +1,1138 @@
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: '/usr/include/stdlib.h', Line: 280, Column: 16 }
+Function:        atoi
+Args:            
+  - Callee:          strtol
+  - String:          ' will not be inlined into '
+  - Caller:          atoi
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 279, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+Function:        second
+Args:            
+  - Callee:          gettimeofday
+  - String:          ' will not be inlined into '
+  - Caller:          second
+    DebugLoc:        { File: control.c, Line: 93, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        second
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        second
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 42, Column: 8 }
+Function:        main
+Args:            
+  - Callee:          fopen
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 45, Column: 5 }
+Function:        main
+Args:            
+  - Callee:          perror
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 46, Column: 5 }
+Function:        main
+Args:            
+  - Callee:          exit
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 50, Column: 5 }
+Function:        main
+Args:            
+  - Callee:          __isoc99_fscanf
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 55, Column: 3 }
+Function:        main
+Args:            
+  - Callee:          fclose
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 65, Column: 7 }
+Function:        main
+Args:            
+  - Callee:          evolve
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 67, Column: 7 }
+Function:        main
+Args:            
+  - Callee:          printf
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 68, Column: 7 }
+Function:        main
+Args:            
+  - Callee:          printf
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 71, Column: 7 }
+Function:        main
+Args:            
+  - Callee:          sprintf
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+Function:        main
+Args:            
+  - Callee:          fopen
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 75, Column: 2 }
+Function:        main
+Args:            
+  - Callee:          perror
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 76, Column: 2 }
+Function:        main
+Args:            
+  - Callee:          exit
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 80, Column: 2 }
+Function:        main
+Args:            
+  - Callee:          fprintf
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 85, Column: 7 }
+Function:        main
+Args:            
+  - Callee:          fclose
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Missed
+Pass:            inline
+Name:            NoDefinition
+DebugLoc:        { File: control.c, Line: 88, Column: 3 }
+Function:        main
+Args:            
+  - Callee:          printf
+  - String:          ' will not be inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' because its definition is unavailable'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: control.c, Line: 28, Column: 11 }
+Function:        main
+Args:            
+  - Callee:          atoi
+    DebugLoc:        { File: '/usr/include/stdlib.h', Line: 279, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: control.c, Line: 61, Column: 11 }
+Function:        main
+Args:            
+  - Callee:          second
+    DebugLoc:        { File: control.c, Line: 93, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '50'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: control.c, Line: 0, Column: 0 }
+Function:        main
+Args:            
+  - Callee:          second
+    DebugLoc:        { File: control.c, Line: 93, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '50'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+...
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: control.c, Line: 66, Column: 12 }
+Function:        main
+Args:            
+  - Callee:          second
+    DebugLoc:        { File: control.c, Line: 93, Column: 0 }
+  - String:          ' inlined into '
+  - Caller:          main
+    DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '50'
+  - String:          ', threshold='
+  - Threshold:       '375'
+  - String:          ')'
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 101, Column: 9 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: control.c, Line: 101, Column: 9 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 100, Column: 9 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            bitcast
+    DebugLoc:        { File: control.c, Line: 100, Column: 9 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 65, Column: 23 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 65, Column: 23 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 65, Column: 27 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 65, Column: 27 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 65, Column: 32 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 65, Column: 32 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 65, Column: 34 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 65, Column: 34 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 65, Column: 38 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 65, Column: 38 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 65, Column: 45 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 65, Column: 45 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 100, Column: 9 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            bitcast
+    DebugLoc:        { File: control.c, Line: 100, Column: 9 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 101, Column: 9 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            bitcast
+    DebugLoc:        { File: control.c, Line: 101, Column: 9 }
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Passed
+Pass:            licm
+Name:            Hoisted
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'hoisting '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 68, Column: 32 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 51, Column: 11 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            zext
+    DebugLoc:        { File: control.c, Line: 51, Column: 11 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 68, Column: 32 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: control.c, Line: 41, Column: 13 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 67, Column: 7 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 68, Column: 32 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i32
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     store
+    DebugLoc:        { File: control.c, Line: 41, Column: 13 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 67, Column: 7 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            double
+  - String:          ' not eliminated'
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 72, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Missed
+Pass:            gvn
+Name:            LoadClobbered
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          'load of type '
+  - Type:            i64
+  - String:          ' not eliminated'
+  - String:          ' in favor of '
+  - OtherAccess:     load
+    DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+  - String:          ' because it is clobbered by '
+  - ClobberedBy:     call
+    DebugLoc:        { File: control.c, Line: 104, Column: 13 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 68, Column: 32 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            CantVectorizeCall
+DebugLoc:        { File: control.c, Line: 50, Column: 5 }
+Function:        main
+Args:            
+  - String:          'loop not vectorized: '
+  - String:          call instruction cannot be vectorized
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonSimpleLoad
+DebugLoc:        { File: control.c, Line: 49, Column: 3 }
+Function:        main
+Args:            
+  - String:          'loop not vectorized: '
+  - String:          read with atomic ordering or volatile read
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: control.c, Line: 49, Column: 3 }
+Function:        main
+Args:            
+  - String:          loop not vectorized
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            CantVectorizeCall
+DebugLoc:        { File: control.c, Line: 80, Column: 2 }
+Function:        main
+Args:            
+  - String:          'loop not vectorized: '
+  - String:          call instruction cannot be vectorized
+...
+--- !Analysis
+Pass:            loop-vectorize
+Name:            NonSimpleLoad
+DebugLoc:        { File: control.c, Line: 79, Column: 7 }
+Function:        main
+Args:            
+  - String:          'loop not vectorized: '
+  - String:          read with atomic ordering or volatile read
+...
+--- !Missed
+Pass:            loop-vectorize
+Name:            MissedDetails
+DebugLoc:        { File: control.c, Line: 79, Column: 7 }
+Function:        main
+Args:            
+  - String:          loop not vectorized
+...
+--- !Missed
+Pass:            slp-vectorizer
+Name:            NotBeneficial
+DebugLoc:        { File: control.c, Line: 105, Column: 37 }
+Function:        main
+Args:            
+  - String:          'List vectorization was possible but not beneficial with cost '
+  - Cost:            '0'
+  - String:          ' >= '
+  - Treshold:        '0'
+...
+--- !Passed
+Pass:            slp-vectorizer
+Name:            StoresVectorized
+DebugLoc:        { File: control.c, Line: 37, Column: 10 }
+Function:        main
+Args:            
+  - String:          'Stores SLP vectorized with cost '
+  - Cost:            '-1'
+  - String:          ' and with tree size '
+  - TreeSize:        '2'
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 21 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 11 }
+...
+--- !Passed
+Pass:            licm
+Name:            InstSunk
+DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+Function:        main
+Args:            
+  - String:          'sinking '
+  - Inst:            getelementptr
+    DebugLoc:        { File: control.c, Line: 81, Column: 3 }
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 68, Column: 32 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 30 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            licm
+Name:            LoadWithLoopInvariantAddressInvalidated
+DebugLoc:        { File: control.c, Line: 105, Column: 51 }
+Function:        main
+Args:            
+  - String:          failed to move load with loop-invariant address because the loop may invalidate its value
+...
+--- !Missed
+Pass:            regalloc
+Name:            LoopSpillReload
+DebugLoc:        { File: control.c, Line: 62, Column: 4 }
+Function:        main
+Args:            
+  - NumSpills:       '1'
+  - String:          ' spills '
+  - NumFoldedReloads: '1'
+  - String:          ' folded reloads '
+  - String:          generated in loop
+...
+--- !Missed
+Pass:            regalloc
+Name:            LoopSpillReload
+DebugLoc:        { File: control.c, Line: 51, Column: 11 }
+Function:        main
+Args:            
+  - NumSpills:       '2'
+  - String:          ' spills '
+  - NumReloads:      '1'
+  - String:          ' reloads '
+  - NumFoldedReloads: '2'
+  - String:          ' folded reloads '
+  - String:          generated in loop
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+Function:        main
+Args:            
+  - NumStackBytes:   '393976'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: control.c, Line: 14, Column: 0 }
+Function:        main
+Args:            
+  - NumInstructions: '187'
+  - String:          ' instructions in function'
+...
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: control.c, Line: 93, Column: 0 }
+Function:        second
+Args:            
+  - NumStackBytes:   '40'
+  - String:          ' stack bytes in function'
+...
+--- !Analysis
+Pass:            asm-printer
+Name:            InstructionCount
+DebugLoc:        { File: control.c, Line: 93, Column: 0 }
+Function:        second
+Args:            
+  - NumInstructions: '13'
+  - String:          ' instructions in function'
+...

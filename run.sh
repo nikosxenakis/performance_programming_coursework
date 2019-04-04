@@ -3,13 +3,19 @@
 #
 
 FOLDER=./src_v12_vectorisation
+FOLDER=./src_clang
 
 module load intel-compilers-17;
 module load gcc;
+module load clang;
 
 make -C $FOLDER clean;
 
-make -C $FOLDER run;
+cd src;
+
+./MD 1;
+
+cd ..;
 
 echo "Test results:";
 python correctness.py;

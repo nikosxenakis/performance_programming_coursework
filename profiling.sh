@@ -2,10 +2,14 @@
 #B136013
 #
 
-FOLDER=./src_gcc
+# FOLDER=./src_v1_remove_flags
+# FOLDER=./src_v4_array_interchange
+FOLDER=./src_v3_mem_alloc_kind
+FOLDER=./src_clang
 
 module load intel-compilers-17;
 module load valgrind;
+module load clang;
 
 cd $FOLDER;
 

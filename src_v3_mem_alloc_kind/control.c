@@ -28,13 +28,13 @@ int main(int argc, char *argv[]){
     Nstep=atoi(argv[1]);
   }
 
-  double pos[Ndim][Nbody], velo[Ndim][Nbody];
-  double f[Ndim][Nbody], vis[Nbody], radius[Nbody];
-  double mass[Nbody];
-  double delta_pos[Ndim][Npair];
-  double r[Nbody];
-  double delta_r[Npair];
-  double wind[Ndim];
+  // double pos[Ndim][Nbody], velo[Ndim][Nbody];
+  // double f[Ndim][Nbody], vis[Nbody], radius[Nbody];
+  // double mass[Nbody];
+  // double delta_pos[Ndim][Npair];
+  // double r[Nbody];
+  // double delta_r[Npair];
+  // double wind[Ndim];
 
   wind[Xcoord] = 0.9;
   wind[Ycoord] = 0.4;

@@ -15,22 +15,22 @@ Auto-annotation:  on
 --------------------------------------------------------------------------------
            Ir  I1mr  ILmr          Dr       D1mr       DLmr          Dw       D1mw       DLmw 
 --------------------------------------------------------------------------------
-3,006,818,200 1,912 1,887 668,047,756 93,972,339 52,466,660 811,712,272 21,053,071 21,023,154  PROGRAM TOTALS
+3,006,819,300 1,920 1,892 668,048,050 93,972,356 52,466,665 811,712,434 21,053,071 21,023,154  PROGRAM TOTALS
 
 --------------------------------------------------------------------------------
            Ir I1mr ILmr          Dr       D1mr       DLmr          Dw       D1mw       DLmw  file:function
 --------------------------------------------------------------------------------
-1,751,873,625   65   65 409,218,555 62,435,374 21,000,720 408,906,280 15,748,490 15,724,817  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_data_structures_i/MD.c:evolve
-  461,580,865   25   25 157,340,170 31,494,260 31,449,630      61,440      7,685      1,536  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_data_structures_i/util.c:evolve
+1,751,873,625   65   65 409,218,555 62,435,374 21,000,720 408,906,280 15,748,490 15,724,817  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_mem_alloc_kind/MD.c:evolve
+  461,580,865   25   25 157,340,170 31,494,260 31,449,630      61,440      7,685      1,536  /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_mem_alloc_kind/util.c:evolve
   335,626,570   14   14          20         20         14 335,626,240  5,244,170  5,244,170  ???:__intel_avx_rep_memset
-  177,995,637  121  119  36,923,473         56         55  26,795,873     40,991     40,991  ???:__printf_fp
-   57,687,055    6    6  19,142,417          0          0   8,916,866          5          5  ???:hack_digit.13574
+  177,995,950  121  119  36,923,537         56         55  26,795,888     40,991     40,991  ???:__printf_fp
+   57,687,290    6    6  19,142,500          0          0   8,916,900          5          5  ???:hack_digit.13574
    43,119,322   94   89   9,853,458        123         99  10,016,744         55         47  ???:vfprintf
-   41,614,180   11   10   6,128,335          0          0   4,132,970          5          5  ???:__mpn_mul_1
+   41,614,200   11   10   6,128,338          0          0   4,132,972          4          4  ???:__mpn_mul_1
    26,100,773   68   68   7,720,964      9,293      9,290   2,584,580      4,620      4,616  ???:_IO_vfscanf
-   19,693,237   21   21   5,266,056          0          0   4,857,847          0          0  ???:__mpn_divrem
+   19,693,652   22   21   5,266,169          0          0   4,857,951          2          2  ???:__mpn_divrem
    18,740,564   53   53   2,628,836          4          4   1,380,234          3          3  ???:____strtod_l_internal
-   13,540,553    4    4   3,338,936          0          0   2,744,860         11         11  ???:_IO_file_xsputn@@GLIBC_2.2.5
+   13,540,553    4    4   3,338,936          0          0   2,744,860         10         10  ???:_IO_file_xsputn@@GLIBC_2.2.5
     7,925,820    6    6   2,211,865          0          0     552,965          0          0  ???:read_int
     7,005,464    3    3     778,402          0          0     389,219      5,450      5,445  ???:__GI_mempcpy
     5,345,440    3    3   1,290,275          0          0     921,625          0          0  ???:_IO_padn
@@ -38,12 +38,12 @@ Auto-annotation:  on
     4,233,264    7    7     650,954          2          2     364,873          1          1  ???:str_to_mpn.isra.0
     3,870,846    4    4     368,652          0          0     921,630          5          5  ???:__mpn_extract_double
     3,796,909    4    4     506,255          0          0     253,128          0          0  ???:__mpn_lshift
-    3,376,910    6    6     423,862          1          1     266,662          1          1  ???:__GI_memcpy
-    3,119,755    7    7     550,545          0          0     367,030          0          0  ???:__mpn_rshift
+    3,376,956    5    5     423,868          2          2     266,666          2          2  ???:__GI_memcpy
+    3,119,789    8    7     550,551          0          0     367,034          0          0  ???:__mpn_rshift
     3,096,674    6    5     442,382          6          6           0          0          0  ???:__GI_strlen
 
 --------------------------------------------------------------------------------
--- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_data_structures_i/MD.c
+-- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_mem_alloc_kind/MD.c
 --------------------------------------------------------------------------------
          Ir I1mr ILmr          Dr       D1mr       DLmr          Dw       D1mw       DLmw 
 
@@ -170,7 +170,7 @@ Auto-annotation:  on
           .    .    .           .          .          .           .          .          .  
 
 --------------------------------------------------------------------------------
--- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_data_structures_i/util.c
+-- Auto-annotated source: /lustre/home/d167/s1770309/PP/performance_programming_coursework/src_v3_mem_alloc_kind/util.c
 --------------------------------------------------------------------------------
          Ir I1mr ILmr          Dr       D1mr       DLmr     Dw  D1mw  DLmw 
 
